@@ -513,7 +513,7 @@
         <!-- Connecting gradient bar -->
         <div style="position:absolute;top:2rem;left:calc(10% + 1rem);right:calc(10% + 1rem);height:3px;background:linear-gradient(to right, rgba(108,184,227,0.8), rgba(53,178,90,0.6), rgba(155,212,183,0.5), rgba(53,178,90,0.6), rgba(32,81,97,0.7));z-index:0;border-radius:2px;"></div>
 
-        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;position:relative;z-index:1;">
+        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;"><div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;position:relative;z-index:1;min-width:600px;">
 
           <!-- Stage 1: Prevention -->
           <div style="text-align:center;">
@@ -697,7 +697,7 @@
       </div>
 
       <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--bh-teal);margin-bottom:1rem;text-align:center;">Top 5 Scoring Concepts</div>
-      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0.75rem;">
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;"><div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0.75rem;min-width:600px;">
         <div style="background:var(--bh-teal);border-radius:8px;padding:1.25rem;text-align:center;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;margin-bottom:0.3rem;">9.49</div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.4rem;">#1</div><div style="font-size:0.75rem;font-weight:700;color:var(--cream);line-height:1.4;">Peer Support — Anywhere</div></div>
         <div style="background:var(--bh-teal);border-radius:8px;padding:1.25rem;text-align:center;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;margin-bottom:0.3rem;">9.09</div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.4rem;">#2</div><div style="font-size:0.75rem;font-weight:700;color:var(--cream);line-height:1.4;">Perpetual Screening</div></div>
         <div style="background:var(--bh-teal);border-radius:8px;padding:1.25rem;text-align:center;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;margin-bottom:0.3rem;">8.89</div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.4rem;">#3</div><div style="font-size:0.75rem;font-weight:700;color:var(--cream);line-height:1.4;">Navigational Pathways</div></div>
@@ -792,32 +792,32 @@
       <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.5rem;text-align:center;">Preliminary Ecosystem Roadmap</p>
       <p style="font-size:1.1rem;font-weight:700;color:var(--bh-teal);text-align:center;margin-bottom:0.5rem;">Proposed Staging of Design &amp; Development</p>
       <p style="font-size:0.82rem;color:var(--bh-teal);text-align:center;margin-bottom:2.5rem;max-width:560px;margin-left:auto;margin-right:auto;">The Behavioral Health Care Hub leads the roadmap as the foundation — other concepts integrate on top as they're developed and launched.</p>
-      <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;margin-bottom:1rem;">
+      <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;margin-bottom:1rem;min-width:600px;">
         <div></div>
         <div style="text-align:center;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-green);padding:0.5rem;background:rgba(53,178,90,0.08);border-radius:4px;">0–6 Months</div>
         <div style="text-align:center;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-blue);padding:0.5rem;background:rgba(108,184,227,0.08);border-radius:4px;">6–12 Months</div>
         <div style="text-align:center;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-teal);padding:0.5rem;background:rgba(108,184,227,0.08);border-radius:4px;">12–24 Months</div>
       </div>
       <div style="display:flex;flex-direction:column;gap:0.75rem;">
-        <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;align-items:start;">
+        <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;align-items:start;min-width:600px;">
           <div style="font-size:0.8rem;font-weight:700;color:var(--bh-teal);padding-top:0.75rem;">Behavioral Health Care Hub</div>
           <div style="background:rgba(53,178,90,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Design &amp; prototype hub MVP · Integrate existing Behavioral Health resources · Plan marketing for customers &amp; clinicians</div>
           <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Develop &amp; launch hub MVP · Integrate enhanced Behavioral Health clinician profiles · Build same-day Behavioral Health help model</div>
           <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Integrate ecosystem features as they roll out · Leverage partnerships to build &amp; release new functionality</div>
         </div>
-        <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;align-items:start;">
+        <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;align-items:start;min-width:600px;">
           <div style="font-size:0.8rem;font-weight:700;color:var(--bh-teal);padding-top:0.75rem;">Perpetual Screening</div>
           <div style="background:rgba(53,178,90,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Research partners &amp; rollout options · Design &amp; prototype MVP · Usability testing</div>
           <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Create operational &amp; marketing plans · Develop &amp; launch MVP across AHN</div>
           <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Enhance feature set with additional rollouts</div>
         </div>
-        <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;align-items:start;">
+        <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;align-items:start;min-width:600px;">
           <div style="font-size:0.8rem;font-weight:700;color:var(--bh-teal);padding-top:0.75rem;">Peer Support</div>
           <div style="background:rgba(53,178,90,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Discuss potential partners · Low-fidelity pilot for learning</div>
           <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Staff peer community organizer · Develop &amp; launch MVP</div>
           <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Build pathways for complex cases · Refine and scale</div>
         </div>
-        <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;align-items:start;">
+        <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;align-items:start;min-width:600px;">
           <div style="font-size:0.8rem;font-weight:700;color:var(--bh-teal);padding-top:0.75rem;">Culturally Competent Care</div>
           <div style="background:rgba(53,178,90,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Expand D&amp;I working group · Research clinician training needs</div>
           <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Develop training for AHN clinicians · Pilot with subset · Begin workforce diversity plan</div>
