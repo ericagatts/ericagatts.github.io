@@ -110,6 +110,12 @@
     .bh-roadmap-row { display:grid; grid-template-columns:10rem 1fr 1fr 1fr; gap:1rem; align-items:start; }
     .bh-period-label { display:none; font-size:0.6rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.35rem; }
 
+    .bh-scores-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:0.75rem; }
+    .bh-scores-mobile { display:none; flex-direction:column; gap:0.6rem; }
+
+    .bh-ecosystem-grid { display:grid; grid-template-columns:1fr 1.5fr 1fr; gap:1rem; align-items:center; }
+    .bh-ecosystem-mobile { display:none; flex-direction:column; gap:0.75rem; }
+
     @media (max-width:768px) {
       /* Vision pillars stack */
       .bh-vision-pillars { grid-template-columns:1fr; }
@@ -127,6 +133,17 @@
       .bh-period-label.green { color:var(--bh-green); }
       .bh-period-label.blue { color:var(--bh-blue); }
       .bh-period-label.teal { color:var(--bh-teal); }
+
+      /* Scores: hide 5-col grid, show stacked cards */
+      .bh-scores-grid { display:none; }
+      .bh-scores-mobile { display:flex; }
+
+      /* Ecosystem: hide 3-col layout, show hub-first stack */
+      .bh-ecosystem-grid { display:none; }
+      .bh-ecosystem-mobile { display:flex; }
+
+      /* Deep dives: already 1-col via .opp-grid; clean up last card span */
+      .opp-card[style*="grid-column"] { grid-column:auto; }
 
       /* Diagrams: reduce outer padding */
       div[style*="max-width:1100px"] { padding-left:1.5rem !important; padding-right:1.5rem !important; }
@@ -695,7 +712,7 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;">
         <div>
           <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:1rem;text-align:center;padding-bottom:0.75rem;border-bottom:1px solid rgba(247,244,232,0.12);">Maintain Behavioral Health</div>
-          <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;"><div style="display:flex;flex-direction:column;gap:0.75rem;min-width:560px;">
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
             <div style="background:rgba(53,178,90,0.15);border:1px solid rgba(53,178,90,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
               <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;"><div style="width:1.5rem;height:1.5rem;border-radius:50%;background:rgba(53,178,90,0.8);color:#fff;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Prevent &amp; Intervene Early</div></div>
               <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.5;margin:0;">Create awareness and activate mental resilience self-care in at-risk populations before conditions become acute.</p>
@@ -766,13 +783,25 @@
       </div>
 
       <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--bh-teal);margin-bottom:1rem;text-align:center;">Top 5 Scoring Concepts</div>
-      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;"><div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0.75rem;min-width:600px;">
+
+      <!-- Desktop: 5-col grid -->
+      <div class="bh-scores-grid">
         <div style="background:var(--bh-teal);border-radius:8px;padding:1.25rem;text-align:center;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;margin-bottom:0.3rem;">9.49</div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.4rem;">#1</div><div style="font-size:0.75rem;font-weight:700;color:var(--cream);line-height:1.4;">Peer Support — Anywhere</div></div>
         <div style="background:var(--bh-teal);border-radius:8px;padding:1.25rem;text-align:center;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;margin-bottom:0.3rem;">9.09</div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.4rem;">#2</div><div style="font-size:0.75rem;font-weight:700;color:var(--cream);line-height:1.4;">Perpetual Screening</div></div>
         <div style="background:var(--bh-teal);border-radius:8px;padding:1.25rem;text-align:center;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;margin-bottom:0.3rem;">8.89</div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.4rem;">#3</div><div style="font-size:0.75rem;font-weight:700;color:var(--cream);line-height:1.4;">Navigational Pathways</div></div>
         <div style="background:var(--bh-teal);border-radius:8px;padding:1.25rem;text-align:center;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;margin-bottom:0.3rem;">8.73</div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.4rem;">#4</div><div style="font-size:0.75rem;font-weight:700;color:var(--cream);line-height:1.4;">Behavioral Health Care Hub</div></div>
         <div style="background:var(--bh-teal);border-radius:8px;padding:1.25rem;text-align:center;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;margin-bottom:0.3rem;">8.73</div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.4rem;">#5</div><div style="font-size:0.75rem;font-weight:700;color:var(--cream);line-height:1.4;">Culturally Competent Care</div></div>
       </div>
+
+      <!-- Mobile: stacked ranked cards -->
+      <div class="bh-scores-mobile">
+        <div style="background:var(--bh-teal);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;flex-shrink:0;min-width:3.5rem;">9.49</div><div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.2rem;">#1</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Peer Support — Anywhere</div></div></div>
+        <div style="background:var(--bh-teal);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;flex-shrink:0;min-width:3.5rem;">9.09</div><div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.2rem;">#2</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Perpetual Screening</div></div></div>
+        <div style="background:var(--bh-teal);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;flex-shrink:0;min-width:3.5rem;">8.89</div><div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.2rem;">#3</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Navigational Pathways</div></div></div>
+        <div style="background:var(--bh-teal);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;flex-shrink:0;min-width:3.5rem;">8.73</div><div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.2rem;">#4</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Behavioral Health Care Hub</div></div></div>
+        <div style="background:var(--bh-teal);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;flex-shrink:0;min-width:3.5rem;">8.73</div><div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.2rem;">#5</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Culturally Competent Care</div></div></div>
+      </div>
+
     </div>
   </div>
 
@@ -792,8 +821,8 @@
       <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:0.5rem;text-align:center;">Behavioral Health Care Ecosystem</p>
       <p style="font-size:1.1rem;font-weight:700;color:var(--cream);text-align:center;margin-bottom:0.5rem;">Five Concepts as an Integrated Platform</p>
       <p style="font-size:0.82rem;color:rgba(247,244,232,0.55);text-align:center;margin-bottom:2.5rem;max-width:560px;margin-left:auto;margin-right:auto;">The four satellite concepts deliver through and alongside the Behavioral Health Care Hub — creating an ecosystem with impact across five of the six opportunity areas.</p>
-      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-      <div style="display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:1rem;align-items:center;min-width:540px;">
+      <!-- Desktop: 3-col hub layout -->
+      <div class="bh-ecosystem-grid">
         <div style="display:flex;flex-direction:column;gap:1rem;">
           <div style="background:rgba(53,178,90,0.15);border:1px solid rgba(53,178,90,0.3);border-radius:8px;padding:1.25rem;"><div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.4rem;">Concept #2</div><div style="font-size:0.85rem;font-weight:700;color:var(--cream);margin-bottom:0.3rem;">Perpetual Screening</div><p style="font-size:0.72rem;color:rgba(247,244,232,0.6);margin:0;line-height:1.5;">Ubiquitous, simplified self-screening across the clinical footprint — delivered via the Hub.</p></div>
           <div style="background:rgba(53,178,90,0.15);border:1px solid rgba(53,178,90,0.3);border-radius:8px;padding:1.25rem;"><div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.4rem;">Concept #3</div><div style="font-size:0.85rem;font-weight:700;color:var(--cream);margin-bottom:0.3rem;">Peer Support — Anywhere</div><p style="font-size:0.72rem;color:rgba(247,244,232,0.6);margin:0;line-height:1.5;">Offline and online peer connection, coordinated through the Hub's community layer.</p></div>
@@ -814,6 +843,26 @@
           <div style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1.25rem;"><div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-blue);margin-bottom:0.4rem;">Concept #5</div><div style="font-size:0.85rem;font-weight:700;color:var(--cream);margin-bottom:0.3rem;">Culturally Competent Care</div><p style="font-size:0.72rem;color:rgba(247,244,232,0.6);margin:0;line-height:1.5;">Diversify the clinical pipeline and elevate cultural competency across the AHN network.</p></div>
         </div>
       </div>
+
+      <!-- Mobile: hub first, then 4 satellite cards -->
+      <div class="bh-ecosystem-mobile">
+        <div style="background:rgba(155,212,183,0.12);border:2px solid rgba(155,212,183,0.35);border-radius:12px;padding:1.5rem;">
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:0.5rem;">Foundation · Score 8.73</div>
+          <div style="font-size:1.05rem;font-weight:800;color:var(--cream);margin-bottom:0.6rem;">Behavioral Health Care Hub</div>
+          <p style="font-size:0.78rem;color:rgba(247,244,232,0.7);line-height:1.6;margin-bottom:0.75rem;">A single access point for all Behavioral Health care, resources, and solutions.</p>
+          <div style="display:flex;flex-direction:column;gap:0.35rem;">
+            <div style="font-size:0.7rem;color:rgba(247,244,232,0.55);display:flex;gap:0.5rem;"><span style="color:var(--bh-mint);flex-shrink:0;">→</span>Provider search &amp; scheduling</div>
+            <div style="font-size:0.7rem;color:rgba(247,244,232,0.55);display:flex;gap:0.5rem;"><span style="color:var(--bh-mint);flex-shrink:0;">→</span>Curated wellness resources &amp; tools</div>
+            <div style="font-size:0.7rem;color:rgba(247,244,232,0.55);display:flex;gap:0.5rem;"><span style="color:var(--bh-mint);flex-shrink:0;">→</span>Real-time telehealth access</div>
+            <div style="font-size:0.7rem;color:rgba(247,244,232,0.55);display:flex;gap:0.5rem;"><span style="color:var(--bh-mint);flex-shrink:0;">→</span>Actionable care plans &amp; next steps</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+          <div style="background:rgba(53,178,90,0.15);border:1px solid rgba(53,178,90,0.3);border-radius:8px;padding:1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.3rem;">Concept #2</div><div style="font-size:0.8rem;font-weight:700;color:var(--cream);">Perpetual Screening</div></div>
+          <div style="background:rgba(53,178,90,0.15);border:1px solid rgba(53,178,90,0.3);border-radius:8px;padding:1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.3rem;">Concept #3</div><div style="font-size:0.8rem;font-weight:700;color:var(--cream);">Peer Support — Anywhere</div></div>
+          <div style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--bh-blue);margin-bottom:0.3rem;">Concept #4</div><div style="font-size:0.8rem;font-weight:700;color:var(--cream);">Navigational Pathways</div></div>
+          <div style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--bh-blue);margin-bottom:0.3rem;">Concept #5</div><div style="font-size:0.8rem;font-weight:700;color:var(--cream);">Culturally Competent Care</div></div>
+        </div>
       </div>
     </div>
   </div>
