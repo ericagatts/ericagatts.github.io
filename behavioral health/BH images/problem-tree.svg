@@ -1,0 +1,168 @@
+<svg viewBox="0 -90 1440 850" xmlns="http://www.w3.org/2000/svg" font-family="'Inter','Helvetica Neue',sans-serif">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0a2030"/>
+    <stop offset="100%" stop-color="#153d5f"/>
+  </linearGradient>
+  <linearGradient id="rootG" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#1e6b41"/>
+    <stop offset="100%" stop-color="#35b25a"/>
+  </linearGradient>
+  <linearGradient id="brG" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#0c3a56"/>
+    <stop offset="100%" stop-color="#205161"/>
+  </linearGradient>
+  <marker id="arr" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+    <polygon points="0 0,7 2.5,0 5" fill="rgba(155,212,183,0.65)"/>
+  </marker>
+  <filter id="sh"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.45)"/></filter>
+</defs>
+<rect x="0" y="-90" width="1440" height="850" fill="url(#bg)"/>
+<line x1="412" y1="0" x2="412" y2="760" stroke="rgba(247,244,232,0.04)" stroke-width="1"/>
+<line x1="734" y1="0" x2="734" y2="760" stroke="rgba(247,244,232,0.04)" stroke-width="1"/>
+<line x1="1056" y1="0" x2="1056" y2="760" stroke="rgba(247,244,232,0.04)" stroke-width="1"/>
+<line x1="0" y1="144" x2="1440" y2="144" stroke="rgba(247,244,232,0.04)" stroke-width="1"/>
+<line x1="0" y1="236" x2="1440" y2="236" stroke="rgba(247,244,232,0.04)" stroke-width="1"/>
+<line x1="0" y1="318" x2="1440" y2="318" stroke="rgba(247,244,232,0.04)" stroke-width="1"/>
+<line x1="0" y1="400" x2="1440" y2="400" stroke="rgba(247,244,232,0.04)" stroke-width="1"/>
+<text x="720" y="20" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="3" fill="rgba(53,178,90,0.6)">PROBLEM AREA 4  ·  BEHAVIORAL HEALTH  ·  SHIFT FROM REACTIVE TO PROACTIVE CARE</text>
+<rect x="190" y="30" width="1060" height="80" rx="6" fill="url(#rootG)" filter="url(#sh)"/>
+<text x="720" y="53" text-anchor="middle" font-size="8.5" font-weight="700" letter-spacing="1.5" fill="rgba(247,244,232,0.5)">CORE PROBLEM STATEMENT</text>
+<text x="720" y="73" text-anchor="middle" font-size="13" font-weight="700" fill="#F7F4E8">The failure to proactively intervene in behavioral health care</text>
+<text x="720" y="90" text-anchor="middle" font-size="13" font-weight="700" fill="#F7F4E8">causes conditions to become more acute and challenging to address.</text>
+<line x1="720" y1="110" x2="720" y2="132" stroke="rgba(53,178,90,0.45)" stroke-width="2"/>
+<line x1="211" y1="132" x2="1243" y2="132" stroke="rgba(53,178,90,0.28)" stroke-width="1.5"/>
+<line x1="211" y1="132" x2="211" y2="148" stroke="rgba(53,178,90,0.28)" stroke-width="1.5"/>
+<line x1="573" y1="132" x2="573" y2="148" stroke="rgba(53,178,90,0.28)" stroke-width="1.5"/>
+<line x1="895" y1="132" x2="895" y2="148" stroke="rgba(53,178,90,0.28)" stroke-width="1.5"/>
+<line x1="1243" y1="132" x2="1243" y2="148" stroke="rgba(53,178,90,0.28)" stroke-width="1.5"/>
+<rect x="16" y="148" width="390" height="74" rx="5" fill="url(#brG)" filter="url(#sh)"/>
+<text x="211" y="162" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1.5" fill="rgba(247,244,232,0.48)">PEOPLE</text>
+<text x="211" y="176" text-anchor="middle" font-size="10.5" font-weight="700" fill="#F7F4E8">People are often incapable of</text>
+<text x="211" y="190" text-anchor="middle" font-size="10.5" font-weight="700" fill="#F7F4E8">identifying the onset of</text>
+<text x="211" y="204" text-anchor="middle" font-size="10.5" font-weight="700" fill="#F7F4E8">behavioral health conditions</text>
+<rect x="418" y="148" width="310" height="74" rx="5" fill="url(#brG)" filter="url(#sh)"/>
+<text x="573" y="162" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1.5" fill="rgba(247,244,232,0.48)">PATIENTS</text>
+<text x="573" y="176" text-anchor="middle" font-size="10.5" font-weight="700" fill="#F7F4E8">Patients have not been empowered</text>
+<text x="573" y="190" text-anchor="middle" font-size="10.5" font-weight="700" fill="#F7F4E8">to manage their own care</text>
+<rect x="740" y="148" width="310" height="74" rx="5" fill="url(#brG)" filter="url(#sh)"/>
+<text x="895" y="162" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1.5" fill="rgba(247,244,232,0.48)">CLINICIANS</text>
+<text x="895" y="176" text-anchor="middle" font-size="10.5" font-weight="700" fill="#F7F4E8">Clinicians miss opportunities to</text>
+<text x="895" y="190" text-anchor="middle" font-size="10.5" font-weight="700" fill="#F7F4E8">appropriately identify and direct</text>
+<text x="895" y="204" text-anchor="middle" font-size="10.5" font-weight="700" fill="#F7F4E8">to appropriate care</text>
+<rect x="1062" y="148" width="362" height="74" rx="5" fill="url(#brG)" filter="url(#sh)"/>
+<text x="1243" y="162" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1.5" fill="rgba(247,244,232,0.48)">SYSTEM</text>
+<text x="1243" y="176" text-anchor="middle" font-size="10.5" font-weight="700" fill="#F7F4E8">Traditional, fragmented care</text>
+<text x="1243" y="190" text-anchor="middle" font-size="10.5" font-weight="700" fill="#F7F4E8">impairs care management</text>
+<text x="1243" y="204" text-anchor="middle" font-size="10.5" font-weight="700" fill="#F7F4E8">&amp; inhibits improved outcomes</text>
+<line x1="211" y1="222" x2="211" y2="230" stroke="rgba(108,184,227,0.55)" stroke-width="1.5"/>
+<line x1="16" y1="230" x2="406" y2="230" stroke="rgba(108,184,227,0.4)" stroke-width="1"/>
+<line x1="79" y1="230" x2="79" y2="244" stroke="rgba(108,184,227,0.4)" stroke-width="1"/>
+<line x1="211" y1="230" x2="211" y2="244" stroke="rgba(108,184,227,0.4)" stroke-width="1"/>
+<line x1="343" y1="230" x2="343" y2="244" stroke="rgba(108,184,227,0.4)" stroke-width="1"/>
+<rect x="16" y="244" width="126" height="68" rx="4" fill="rgba(108,184,227,0.42)" stroke="rgba(150,130,50,0.65)" stroke-width="1"/>
+<text x="79" y="268.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">Consumers lack the education</text>
+<text x="79" y="279.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">and awareness to</text>
+<text x="79" y="290.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">identify conditions</text>
+<rect x="148" y="244" width="126" height="68" rx="4" fill="rgba(108,184,227,0.42)" stroke="rgba(150,130,50,0.65)" stroke-width="1"/>
+<text x="211" y="268.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">Consumers suspecting BH needs</text>
+<text x="211" y="279.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">eschew treatment, thinking</text>
+<text x="211" y="290.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">it will just 'get better'</text>
+<rect x="280" y="244" width="126" height="68" rx="4" fill="rgba(108,184,227,0.42)" stroke="rgba(150,130,50,0.65)" stroke-width="1"/>
+<text x="343" y="268.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">Consumers seek care where they</text>
+<text x="343" y="279.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">know it is available, not</text>
+<text x="343" y="290.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">where they know it is effective</text>
+<line x1="16" y1="317" x2="406" y2="317" stroke="rgba(108,184,227,0.28)" stroke-width="1"/>
+<line x1="79" y1="317" x2="79" y2="326" stroke="rgba(108,184,227,0.28)" stroke-width="1"/>
+<line x1="211" y1="317" x2="211" y2="326" stroke="rgba(108,184,227,0.28)" stroke-width="1"/>
+<line x1="343" y1="317" x2="343" y2="326" stroke="rgba(108,184,227,0.28)" stroke-width="1"/>
+<rect x="16" y="326" width="126" height="68" rx="4" fill="rgba(108,184,227,0.22)" stroke="rgba(150,130,50,0.38)" stroke-width="1"/>
+<text x="79" y="350.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">Consumers do not have access</text>
+<text x="79" y="361.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">to tools/networks that can</text>
+<text x="79" y="372.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">identify their conditions</text>
+<rect x="148" y="326" width="126" height="68" rx="4" fill="rgba(108,184,227,0.22)" stroke="rgba(150,130,50,0.38)" stroke-width="1"/>
+<text x="211" y="350.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">Consumers do not have a support</text>
+<text x="211" y="361.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">network to tell them they</text>
+<text x="211" y="372.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">may be in need of help</text>
+<rect x="280" y="326" width="126" height="68" rx="4" fill="rgba(108,184,227,0.22)" stroke="rgba(150,130,50,0.38)" stroke-width="1"/>
+<text x="343" y="350.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">Consumers are not aware of how</text>
+<text x="343" y="361.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">best to navigate viable</text>
+<text x="343" y="372.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">solutions to their needs</text>
+<line x1="142" y1="360" x2="147" y2="360" stroke="rgba(155,212,183,0.55)" stroke-width="1.2" marker-end="url(#arr)"/>
+<line x1="573" y1="222" x2="573" y2="230" stroke="rgba(108,184,227,0.55)" stroke-width="1.5"/>
+<line x1="418" y1="230" x2="728" y2="230" stroke="rgba(108,184,227,0.4)" stroke-width="1"/>
+<line x1="494" y1="230" x2="494" y2="244" stroke="rgba(108,184,227,0.4)" stroke-width="1"/>
+<line x1="652" y1="230" x2="652" y2="244" stroke="rgba(108,184,227,0.4)" stroke-width="1"/>
+<rect x="418" y="244" width="152" height="68" rx="4" fill="rgba(108,184,227,0.42)" stroke="rgba(150,130,50,0.65)" stroke-width="1"/>
+<text x="494" y="268.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">Consumers do not receive 'BH</text>
+<text x="494" y="279.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">exercise' to prevent the</text>
+<text x="494" y="290.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">healthy from getting sick</text>
+<rect x="576" y="244" width="152" height="68" rx="4" fill="rgba(108,184,227,0.42)" stroke="rgba(150,130,50,0.65)" stroke-width="1"/>
+<text x="652" y="268.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">Consumers give up when care is</text>
+<text x="652" y="279.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">ineffective &amp; does not utilize</text>
+<text x="652" y="290.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">EBT, reinforcing biases</text>
+<line x1="418" y1="317" x2="728" y2="317" stroke="rgba(108,184,227,0.28)" stroke-width="1"/>
+<line x1="494" y1="317" x2="494" y2="326" stroke="rgba(108,184,227,0.28)" stroke-width="1"/>
+<line x1="652" y1="317" x2="652" y2="326" stroke="rgba(108,184,227,0.28)" stroke-width="1"/>
+<rect x="418" y="326" width="152" height="68" rx="4" fill="rgba(108,184,227,0.22)" stroke="rgba(150,130,50,0.38)" stroke-width="1"/>
+<text x="494" y="350.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">Consumers cannot access needed</text>
+<text x="494" y="361.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">care due to transportation /</text>
+<text x="494" y="372.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">SDOH challenges</text>
+<rect x="576" y="326" width="152" height="68" rx="4" fill="rgba(108,184,227,0.22)" stroke="rgba(150,130,50,0.38)" stroke-width="1"/>
+<text x="652" y="350.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">Consumers do not have tools</text>
+<text x="652" y="361.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">that can address needs</text>
+<text x="652" y="372.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">in real time</text>
+<line x1="895" y1="222" x2="895" y2="230" stroke="rgba(108,184,227,0.55)" stroke-width="1.5"/>
+<line x1="740" y1="230" x2="1050" y2="230" stroke="rgba(108,184,227,0.4)" stroke-width="1"/>
+<line x1="816" y1="230" x2="816" y2="244" stroke="rgba(108,184,227,0.4)" stroke-width="1"/>
+<line x1="974" y1="230" x2="974" y2="244" stroke="rgba(108,184,227,0.4)" stroke-width="1"/>
+<rect x="740" y="244" width="152" height="68" rx="4" fill="rgba(108,184,227,0.42)" stroke="rgba(150,130,50,0.65)" stroke-width="1"/>
+<text x="816" y="268.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">Insufficient claims and data</text>
+<text x="816" y="279.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">history inhibit early</text>
+<text x="816" y="290.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">identification</text>
+<rect x="898" y="244" width="152" height="68" rx="4" fill="rgba(108,184,227,0.42)" stroke="rgba(150,130,50,0.65)" stroke-width="1"/>
+<text x="974" y="268.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">Delays from inaccessibility</text>
+<text x="974" y="279.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">cause more acute conditions,</text>
+<text x="974" y="290.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">w/ challenging mitigation</text>
+<line x1="740" y1="317" x2="1050" y2="317" stroke="rgba(108,184,227,0.28)" stroke-width="1"/>
+<line x1="816" y1="317" x2="816" y2="326" stroke="rgba(108,184,227,0.28)" stroke-width="1"/>
+<line x1="974" y1="317" x2="974" y2="326" stroke="rgba(108,184,227,0.28)" stroke-width="1"/>
+<rect x="740" y="326" width="152" height="68" rx="4" fill="rgba(108,184,227,0.22)" stroke="rgba(150,130,50,0.38)" stroke-width="1"/>
+<text x="816" y="350.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">Benefit &amp; reimbursement models</text>
+<text x="816" y="361.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">cause nondiscoverable, OON</text>
+<text x="816" y="372.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">and cash payments</text>
+<rect x="898" y="326" width="152" height="68" rx="4" fill="rgba(108,184,227,0.22)" stroke="rgba(150,130,50,0.38)" stroke-width="1"/>
+<text x="974" y="350.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">Referring capabilities are</text>
+<text x="974" y="361.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">insufficient to route members</text>
+<text x="974" y="372.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">to the right specialty</text>
+<line x1="1243" y1="222" x2="1243" y2="230" stroke="rgba(108,184,227,0.55)" stroke-width="1.5"/>
+<line x1="1062" y1="230" x2="1424" y2="230" stroke="rgba(108,184,227,0.4)" stroke-width="1"/>
+<line x1="1151" y1="230" x2="1151" y2="244" stroke="rgba(108,184,227,0.4)" stroke-width="1"/>
+<line x1="1335" y1="230" x2="1335" y2="244" stroke="rgba(108,184,227,0.4)" stroke-width="1"/>
+<rect x="1062" y="244" width="178" height="68" rx="4" fill="rgba(108,184,227,0.42)" stroke="rgba(150,130,50,0.65)" stroke-width="1"/>
+<text x="1151" y="268.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">First clinical encounters – e.g.,</text>
+<text x="1151" y="279.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">PCPs – seldom address or</text>
+<text x="1151" y="290.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">include BH specialty</text>
+<rect x="1246" y="244" width="178" height="68" rx="4" fill="rgba(108,184,227,0.42)" stroke="rgba(150,130,50,0.65)" stroke-width="1"/>
+<text x="1335" y="268.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">Providers are rewarded for</text>
+<text x="1335" y="279.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">providing easy care,</text>
+<text x="1335" y="290.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">not the best care</text>
+<line x1="1240" y1="278" x2="1245" y2="278" stroke="rgba(155,212,183,0.55)" stroke-width="1.2" marker-end="url(#arr)"/>
+<line x1="1243" y1="312" x2="1243" y2="326" stroke="rgba(108,184,227,0.3)" stroke-width="1"/>
+<rect x="1062" y="326" width="362" height="68" rx="4" fill="rgba(108,184,227,0.22)" stroke="rgba(150,130,50,0.38)" stroke-width="1"/>
+<text x="1243" y="350.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">Disparate EMRs and system fragmentations</text>
+<text x="1243" y="361.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">prevent treatment 'conversations'</text>
+<text x="1243" y="372.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.78)">across care teams</text>
+<line x1="1062" y1="399" x2="1424" y2="399" stroke="rgba(108,184,227,0.28)" stroke-width="1"/>
+<line x1="1151" y1="399" x2="1151" y2="408" stroke="rgba(108,184,227,0.28)" stroke-width="1"/>
+<line x1="1335" y1="399" x2="1335" y2="408" stroke="rgba(108,184,227,0.28)" stroke-width="1"/>
+<rect x="1062" y="408" width="178" height="68" rx="4" fill="rgba(53,178,90,0.18)" stroke="rgba(150,120,80,0.32)" stroke-width="1"/>
+<text x="1151" y="432.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.55)">Physicians will not report BH needs</text>
+<text x="1151" y="443.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.55)">for fear of the demands of</text>
+<text x="1151" y="454.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.55)">appropriate follow-up</text>
+<rect x="1246" y="408" width="178" height="68" rx="4" fill="rgba(53,178,90,0.18)" stroke="rgba(150,120,80,0.32)" stroke-width="1"/>
+<text x="1335" y="432.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.55)">Providers cognizant of BH needs</text>
+<text x="1335" y="443.0" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.55)">are incentivized to prioritize</text>
+<text x="1335" y="454.1" text-anchor="middle" font-size="8.0" fill="rgba(247,244,232,0.55)">non-BH care / biases first</text>
+<line x1="1335" y1="394" x2="1335" y2="408" stroke="rgba(155,212,183,0.38)" stroke-width="1" marker-end="url(#arr)"/>
+</svg>

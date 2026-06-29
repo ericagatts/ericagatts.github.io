@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medicare Differentiation — Erica Gatts</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F4E8; --cream-alt: #EEE8D8; --charcoal: #1A1614;
+      --berry: #C83A58; --olive-gold: #786428; --warm-peach: #E0B090;
+      --warm-brown: #7A6050; --font-display: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--charcoal); font-family: var(--font-display); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: rgba(247,244,232,0.93); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,22,20,0.08); }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--berry); }
+    nav ul { list-style: none; display: flex; gap: 2.5rem; }
+    nav ul li a { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.65; transition: opacity 0.2s; }
+    nav ul li a:hover { opacity: 1; }
+    .case-hero { padding: 10rem 4rem 5rem; max-width: 900px; margin: 0 auto; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-brown); margin-bottom: 2.5rem; opacity: 0.7; transition: opacity 0.2s; }
+    .back-link:hover { opacity: 1; }
+    .case-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--berry); background: rgba(200,58,88,0.1); padding: 0.3rem 0.75rem; border-radius: 2rem; margin-bottom: 1.25rem; }
+    .case-title { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; }
+    .case-subtitle { font-size: 1.15rem; color: var(--warm-brown); max-width: 680px; margin-bottom: 2.5rem; line-height: 1.7; }
+    .case-meta { display: flex; gap: 3rem; padding-top: 2rem; border-top: 1px solid rgba(26,22,20,0.1); flex-wrap: wrap; }
+    .meta-item label { display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm-brown); margin-bottom: 0.3rem; }
+    .meta-item span { font-size: 0.95rem; font-weight: 600; }
+    .case-section { max-width: 900px; margin: 0 auto; padding: 0 4rem 5rem; }
+    .section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--berry); margin-bottom: 0.75rem; }
+    .section-heading { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.5rem; }
+    .case-body { font-size: 1rem; line-height: 1.8; }
+    .case-body p { margin-bottom: 1.25rem; }
+    .case-body p:last-child { margin-bottom: 0; }
+    .callout { background: var(--cream-alt); border-left: 3px solid var(--berry); padding: 1.5rem 2rem; border-radius: 0 6px 6px 0; margin: 2.5rem 0; font-size: 1.05rem; font-style: italic; line-height: 1.7; }
+    .pill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 2rem 0; }
+    .pill { background: var(--cream-alt); border-radius: 8px; padding: 1.25rem 1.5rem; }
+    .pill-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .pill h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .pill p { font-size: 0.82rem; color: var(--warm-brown); line-height: 1.5; margin: 0; }
+    .process-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 2rem 0 3rem; border: 1px solid rgba(247,244,232,0.25); border-radius: 8px; overflow: hidden; }
+    .process-step { padding: 1.5rem; border-right: 1px solid rgba(247,244,232,0.25); }
+    .process-step:last-child { border-right: none; }
+    .step-num { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(247,244,232,0.6); margin-bottom: 0.5rem; }
+    .step-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .step-items { font-size: 0.78rem; color: rgba(247,244,232,0.72); line-height: 1.7; }
+    .dark-section { background: #E3464B; color: var(--cream); padding: 5rem 4rem; margin: 5rem 0; }
+    .dark-section .section-label { color: rgba(247,244,232,0.75); }
+    .dark-section .section-heading { color: var(--cream); }
+    .dark-section .case-body { color: rgba(247,244,232,0.88); }
+    .dark-section-inner { max-width: 900px; margin: 0 auto; }
+    .outcomes-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0; }
+    .outcome-card { background: var(--charcoal); color: var(--cream); border-radius: 8px; padding: 2rem 1.5rem; text-align: center; }
+    .outcome-num { font-size: 2.8rem; font-weight: 800; letter-spacing: -0.04em; color: var(--warm-peach); line-height: 1; margin-bottom: 0.5rem; }
+    .outcome-label { font-size: 0.82rem; line-height: 1.4; opacity: 0.8; }
+    .divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, rgba(26,22,20,0.1), transparent); margin: 0 auto 5rem; max-width: 900px; }
+    .case-footer { background: var(--charcoal); color: var(--cream); padding: 4rem; text-align: center; }
+    .case-footer h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.75rem; }
+    .case-footer p { opacity: 0.65; margin-bottom: 2rem; }
+    .btn { display: inline-block; padding: 0.85rem 2rem; border-radius: 4px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.2s; }
+    .btn-berry { background: var(--berry); color: var(--cream); }
+    .btn-berry:hover { background: #a02e46; }
+    .btn-outline-light { border: 1.5px solid rgba(247,244,232,0.4); color: var(--cream); margin-left: 1rem; }
+    .btn-outline-light:hover { border-color: var(--cream); }
+    @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .case-hero, .case-section { padding-left: 1.5rem; padding-right: 1.5rem; } .dark-section { padding: 3rem 1.5rem; } .process-row { grid-template-columns: 1fr 1fr; } .outcomes-row { grid-template-columns: 1fr; } .case-footer { padding: 3rem 1.5rem; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="portfolio.html" class="nav-logo" style="display:flex;align-items:center;gap:0.45rem;text-decoration:none;color:inherit;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>Home</a>
+    <ul>
+      <li><a href="portfolio.html#projects">Work</a></li>
+      <li><a href="portfolio.html#about">About</a></li>
+      <li><a href="portfolio.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="case-hero">
+    <a href="portfolio.html" class="back-link">← Back to Work</a>
+    <div class="case-tag">Design Strategy · Innovation</div>
+    <h1 class="case-title">Medicare Differentiation</h1>
+    <p class="case-subtitle">A research-led innovation initiative to design differentiated Medicare experiences for the 60 million Americans aging into the program — resulting in a personalized digital tool that increased pre-Medicare member engagement by 15%.</p>
+    <div class="case-meta">
+      <div class="meta-item"><label>Company</label><span>Highmark Health</span></div>
+      <div class="meta-item"><label>Role</label><span>Healthcare Innovator · Lead Designer</span></div>
+      <div class="meta-item"><label>Launched</label><span>Q3 2021</span></div>
+      <div class="meta-item"><label>Platform</label><span>Web</span></div>
+    </div>
+  </div>
+
+  <section class="case-section">
+    <p class="section-label">The Problem</p>
+    <h2 class="section-heading">60 million Americans aging into Medicare — and a crowded market to compete in</h2>
+    <div class="case-body">
+      <p>With over 60 million Americans enrolling in Medicare every year, Highmark's healthcare offerings for seniors face strong competition. To stay competitive, Highmark needed to create differentiated experiences, services, and solutions for people aging into Medicare in the next 5–10 years.</p>
+      <p>The initiative was tasked with understanding this "age-in" population deeply — their needs, anxieties, and expectations — and designing a product concept that would set Highmark apart.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="case-section">
+    <p class="section-label">Research</p>
+    <h2 class="section-heading">Understanding the needs and behaviors of people aging into Medicare</h2>
+    <div class="case-body">
+      <p>My team conducted field research and stakeholder interviews to build foundational insights on the age-in population across four areas of their lives. We then leveraged market research from the Blue Cross Blue Shield Association to test and support our qualitative findings — and to develop four key personas that represented the range of age-in needs and motivations.</p>
+    </div>
+    <div class="pill-grid">
+      <div class="pill">
+        <div class="pill-icon">🏥</div>
+        <h4>Health Needs</h4>
+        <p>Managing chronic conditions, understanding coverage options, navigating the complexity of Medicare parts A, B, C, and D.</p>
+      </div>
+      <div class="pill">
+        <div class="pill-icon">💰</div>
+        <h4>Financial Concerns</h4>
+        <p>Balancing fixed income against rising healthcare costs — and finding plans that deliver real value without surprises.</p>
+      </div>
+      <div class="pill">
+        <div class="pill-icon">🤝</div>
+        <h4>Support Systems</h4>
+        <p>Many age-ins rely on family members and caregivers when making Medicare decisions — the experience needed to serve them too.</p>
+      </div>
+      <div class="pill">
+        <div class="pill-icon">📱</div>
+        <h4>Digital Comfort</h4>
+        <p>Varying levels of digital comfort shaped how concepts needed to be designed — simple, guided, and trustworthy above all.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="dark-section">
+    <div class="dark-section-inner">
+      <p class="section-label">Design Process</p>
+      <h2 class="section-heading">From field research to a piloted product</h2>
+      <div class="process-row">
+        <div class="process-step">
+          <div class="step-num">01 — Discover</div>
+          <div class="step-name">Field Research</div>
+          <div class="step-items">Contextual inquiry<br>Stakeholder interviews<br>BCBSA market research<br>Persona development</div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">02 — Define</div>
+          <div class="step-name">Ideation</div>
+          <div class="step-items">Brainstorming concepts<br>Opportunity mapping<br>Concept prioritization<br>Storyboarding</div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">03 — Develop</div>
+          <div class="step-name">Concept Testing</div>
+          <div class="step-items">21 age-in participants<br>Paper prototypes<br>Storyboard testing<br>22 participants Rd. 2</div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">04 — Deliver</div>
+          <div class="step-name">Launch</div>
+          <div class="step-items">Finalized design concept<br>Partner handoff<br>Pilot launch<br>Q3 2021 release</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="case-section">
+    <p class="section-label">Key Insight</p>
+    <h2 class="section-heading">It wasn't about the perks — it was about the plan</h2>
+    <div class="case-body">
+      <p>The first round of concept testing validated the core idea, but also surfaced a critical insight: participants felt the most important aspect of the experience was the personalized Medicare plan guidance, not the à la carte wellness perks. Age-ins wanted the tool to surface Medicare plans and services matched to their specific needs — not a menu of add-ons.</p>
+      <p>This reframe guided the final design: a "smart" questionnaire that leverages a patient's existing EMR and insurance data alongside their quiz responses to deliver a personalized report outlining the best Medicare plans, services, and coverage for that individual.</p>
+    </div>
+    <div class="callout">"What matters most to us is knowing which plan is right for our situation — not all the extra perks in those plan packages."<br><span style="font-size:0.85rem;font-style:normal;color:var(--warm-brown);margin-top:0.5rem;display:block;">— Age-in participant, concept testing</span></div>
+  </section>
+
+  <section class="case-section">
+    <p class="section-label">Outcomes</p>
+    <h2 class="section-heading">Launched as a Highmark product in Q3 2021</h2>
+    <div class="case-body">
+      <p>After delivering the finalized concept to partners in Senior Markets, Highmark's digital team built and launched a pilot with the design team's guidance. Member feedback was largely positive, and the tool was refined and released as a full Highmark product.</p>
+    </div>
+    <div class="outcomes-row">
+      <div class="outcome-card">
+        <div class="outcome-num">15%</div>
+        <div class="outcome-label">Increase in pre-Medicare member engagement after pilot launch</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">43</div>
+        <div class="outcome-label">Participants across two rounds of concept testing</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">Q3 '21</div>
+        <div class="outcome-label">Released as a full Highmark product</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="case-footer">
+    <h3>Want to talk through this work?</h3>
+    <p>I'm happy to walk through the research, process, and decisions in more detail.</p>
+    <a href="mailto:egatts@gmail.com" class="btn btn-berry">Get in Touch</a>
+    <a href="portfolio.html" class="btn btn-outline-light">← Back to Portfolio</a>
+  </footer>
+</body>
+</html>

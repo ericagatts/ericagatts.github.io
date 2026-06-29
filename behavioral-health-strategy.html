@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Behavioral Health Strategy — Erica Gatts</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F4E8; --cream-alt: #EEE8D8; --charcoal: #1A1614;
+      --berry: #C83A58; --olive-gold: #786428; --warm-peach: #E0B090;
+      --warm-brown: #7A6050;
+      
+      /* ── BH illustration palette ── */
+      --bh-green:  #35b25a;   /* vivid green — primary accent   */
+      --bh-blue:   #6cb8e3;   /* sky blue — secondary accent    */
+      --bh-teal:   #205161;   /* dark teal — dark section       */
+      --bh-navy:   #1d3461;   /* warm navy — step 4 accent      */
+      --bh-mint:   #9bd4b7;   /* light mint — highlight on dark */
+      --bh-light:  #e4f5ee;   /* very light green — light bg    */
+      --page-bg:   #f2f8f5;   /* BH page background             */
+      --font-display: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--page-bg); color: var(--bh-teal); font-family: var(--font-display); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: rgba(238,247,247,0.93); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(32,81,97,0.18); }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--bh-green); }
+    nav ul { list-style: none; display: flex; gap: 2.5rem; }
+    nav ul li a { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.65; transition: opacity 0.2s; }
+    nav ul li a:hover { opacity: 1; }
+    .case-hero { padding: 10rem 4rem 5rem; max-width: 900px; margin: 0 auto; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bh-teal); margin-bottom: 2.5rem; opacity: 0.7; transition: opacity 0.2s; }
+    .back-link:hover { opacity: 1; }
+    .case-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--berry); background: rgba(200,58,88,0.1); padding: 0.3rem 0.75rem; border-radius: 2rem; margin-bottom: 1.25rem; }
+    .case-title { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; }
+    .case-subtitle { font-size: 1.15rem; color: var(--bh-teal); max-width: 680px; margin-bottom: 2.5rem; line-height: 1.7; }
+    .case-meta { display: flex; gap: 3rem; padding-top: 2rem; border-top: 1px solid rgba(32,81,97,0.18); flex-wrap: wrap; }
+    .meta-item label { display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bh-teal); margin-bottom: 0.3rem; }
+    .meta-item span { font-size: 0.95rem; font-weight: 600; }
+    .cover-image { width: 100%; max-width: 1100px; margin: 0 auto 5rem; padding: 0 4rem; }
+    .cover-image img { width: 100%; border-radius: 8px; display: block; box-shadow: 0 20px 60px rgba(32,81,97,0.15); }
+    .case-section { max-width: 900px; margin: 0 auto; padding: 0 4rem 5rem; }
+    .section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--berry); margin-bottom: 0.75rem; }
+    .section-heading { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.5rem; }
+    .case-body { font-size: 1rem; line-height: 1.8; }
+    .case-body p { margin-bottom: 1.25rem; }
+    .case-body p:last-child { margin-bottom: 0; }
+    .slide-image { width: 100%; border-radius: 6px; display: block; margin: 2.5rem 0; box-shadow: 0 8px 32px rgba(32,81,97,0.12); }
+    .image-caption { font-size: 0.8rem; color: var(--bh-teal); text-align: center; margin-top: -1.5rem; margin-bottom: 2.5rem; font-style: italic; }
+    .callout { background: var(--bh-light); border-left: 3px solid var(--bh-green); padding: 1.5rem 2rem; border-radius: 0 6px 6px 0; margin: 2.5rem 0; font-size: 1.05rem; font-style: italic; line-height: 1.7; color: var(--bh-teal); }
+    .pill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 2rem 0; }
+    .pill { background: var(--bh-light); border-radius: 8px; padding: 1.25rem 1.5rem; }
+    .pill-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .pill h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .pill p { font-size: 0.82rem; color: var(--bh-teal); line-height: 1.5; margin: 0; }
+    .dark-section { background: var(--bh-teal); color: var(--cream); padding: 5rem 4rem; margin: 5rem 0; }
+    .dark-section .section-label { color: rgba(247,244,232,0.75); }
+    .dark-section .section-heading { color: var(--cream); }
+    .dark-section .case-body { color: rgba(247,244,232,0.88); }
+    .dark-section-inner { max-width: 900px; margin: 0 auto; }
+    .opp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin: 2rem 0; }
+    .opp-card { background: rgba(247,244,232,0.12); border-radius: 8px; padding: 1.5rem; }
+    .opp-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--cream); margin-bottom: 0.5rem; }
+    .opp-card p { font-size: 0.82rem; color: rgba(247,244,232,0.75); line-height: 1.6; margin: 0; }
+    .outcomes-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0; }
+    .outcome-card { background: var(--bh-teal); color: var(--cream); border-radius: 8px; padding: 2rem 1.5rem; text-align: center; }
+    .outcome-num { font-size: 2.8rem; font-weight: 800; letter-spacing: -0.04em; color: var(--bh-mint); line-height: 1; margin-bottom: 0.5rem; }
+    .outcome-label { font-size: 0.82rem; line-height: 1.4; opacity: 0.8; }
+    .divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, rgba(32,81,97,0.15), transparent); margin: 0 auto 5rem; max-width: 900px; }
+    .full-width-image { width: 100%; max-width: 1100px; margin: 0 auto 5rem; padding: 0 4rem; }
+    .full-width-image img { width: 100%; border-radius: 8px; display: block; box-shadow: 0 8px 32px rgba(32,81,97,0.18); }
+    .case-footer { background: var(--bh-teal); color: var(--cream); padding: 4rem; text-align: center; }
+    .case-footer h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.75rem; }
+    .case-footer p { opacity: 0.65; margin-bottom: 2rem; }
+    .btn { display: inline-block; padding: 0.85rem 2rem; border-radius: 4px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.2s; }
+    .btn-berry { background: var(--bh-green); color: var(--cream); }
+    .btn-berry:hover { background: #a02e46; }
+    .btn-outline-light { border: 1.5px solid rgba(247,244,232,0.4); color: var(--cream); margin-left: 1rem; }
+    .btn-outline-light:hover { border-color: var(--cream); }
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .case-hero, .case-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .cover-image, .full-width-image { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .dark-section { padding: 3rem 1.5rem; }
+      .opp-grid { grid-template-columns: 1fr; }
+      .outcomes-row { grid-template-columns: 1fr; }
+      .case-footer { padding: 3rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="portfolio.html" class="nav-logo" style="display:flex;align-items:center;gap:0.45rem;text-decoration:none;color:inherit;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>Home</a>
+    <ul>
+      <li><a href="portfolio.html#projects">Work</a></li>
+      <li><a href="portfolio.html#about">About</a></li>
+      <li><a href="portfolio.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="case-hero">
+    <a href="portfolio.html" class="back-link">← Back to Work</a>
+    <div class="case-tag">Design Strategy · Innovation</div>
+    <h1 class="case-title">Behavioral Health Strategy</h1>
+    <p class="case-subtitle">A cross-enterprise innovation initiative at Highmark Health to define, prioritize, and design solutions that address the systemic barriers preventing people from getting the behavioral health care they need.</p>
+    <div class="case-meta">
+      <div class="meta-item"><label>Company</label><span>Highmark Health</span></div>
+      <div class="meta-item"><label>Role</label><span>Healthcare Innovator · Design Strategy Lead</span></div>
+      <div class="meta-item"><label>Team</label><span>Strategy &amp; Transformation Office</span></div>
+      <div class="meta-item"><label>Scope</label><span>Research · Framework · Innovation</span></div>
+    </div>
+  </div>
+
+  <!-- INNOVATION PROCESS DIAGRAM -->
+  <div style="max-width:1100px;margin:0 auto 5rem;padding:0 4rem;">
+    <div style="background:var(--bh-light);border-radius:12px;padding:3rem;overflow:hidden;">
+
+      <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.5rem;text-align:center;">Behavioral Health Innovation Process</p>
+      <p style="font-size:0.85rem;color:var(--bh-teal);text-align:center;margin-bottom:2.5rem;">A phased approach from problem discovery through concept development and testing</p>
+
+      <!-- Timeline connector row -->
+      <div style="position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem;">
+
+        <!-- Connecting line -->
+        <div style="position:absolute;top:2.1rem;left:calc(12.5% + 0.5rem);right:calc(12.5% + 0.5rem);height:2px;background:linear-gradient(to right,var(--bh-green),var(--bh-blue),var(--bh-teal),var(--bh-teal));z-index:0;"></div>
+
+        <!-- Step 1 -->
+        <div style="position:relative;z-index:1;text-align:center;">
+          <div style="width:4rem;height:4rem;border-radius:50%;background:var(--bh-green);color:var(--cream);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;margin:0 auto 1rem;box-shadow:0 4px 12px rgba(53,178,90,0.3);">1</div>
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.3rem;">Phase 1 · 13 wks</div>
+          <div style="font-size:0.9rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.4rem;">Research &amp; Synthesize</div>
+          <p style="font-size:0.75rem;color:var(--bh-teal);line-height:1.5;margin:0;">Conduct deep research with patients, clinicians, providers, and payers to understand the fundamental Behavioral Health problem space.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div style="position:relative;z-index:1;text-align:center;">
+          <div style="width:4rem;height:4rem;border-radius:50%;background:var(--bh-blue);color:var(--cream);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;margin:0 auto 1rem;box-shadow:0 4px 12px rgba(108,184,227,0.3);">2</div>
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--bh-blue);margin-bottom:0.3rem;">Bridge · 5 wks</div>
+          <div style="font-size:0.9rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.4rem;">Strategic Framework</div>
+          <p style="font-size:0.75rem;color:var(--bh-teal);line-height:1.5;margin:0;">Develop and vet a cross-enterprise Behavioral Health framework with senior leadership to align all initiatives for long-term impact.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div style="position:relative;z-index:1;text-align:center;">
+          <div style="width:4rem;height:4rem;border-radius:50%;background:var(--bh-teal);color:var(--cream);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;margin:0 auto 1rem;box-shadow:0 4px 12px rgba(108,184,227,0.3);">3</div>
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--bh-teal);margin-bottom:0.3rem;">Phase 2 · 9 wks</div>
+          <div style="font-size:0.9rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.4rem;">Scope &amp; Recommend</div>
+          <p style="font-size:0.75rem;color:var(--bh-teal);line-height:1.5;margin:0;">Summarize problems across strategic pillars, coordinate innovation approaches, and scope the highest-priority opportunities.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div style="position:relative;z-index:1;text-align:center;">
+          <div style="width:4rem;height:4rem;border-radius:50%;background:var(--bh-navy);color:var(--cream);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;margin:0 auto 1rem;box-shadow:0 4px 12px rgba(29,52,97,0.3);">4</div>
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--bh-navy);opacity:0.5;margin-bottom:0.3rem;">Phase 3 · 4 wks</div>
+          <div style="font-size:0.9rem;font-weight:700;color:var(--bh-navy);margin-bottom:0.4rem;">Concept Development</div>
+          <p style="font-size:0.75rem;color:var(--bh-navy);line-height:1.5;margin:0;">Define principles, design innovative solutions, and prototype and test the highest-priority innovation concepts.</p>
+        </div>
+      </div>
+
+      <!-- Key outputs row -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding-top:1.5rem;border-top:1px solid rgba(32,81,97,0.18);margin-top:0.5rem;">
+        <div style="text-align:center;">
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.3rem;">Output</div>
+          <div style="font-size:0.75rem;color:var(--bh-teal);">Problem synthesis &amp; strategic framework</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--bh-blue);margin-bottom:0.3rem;">Output</div>
+          <div style="font-size:0.75rem;color:var(--bh-teal);">Executive-vetted Behavioral Health vision &amp; pillars</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--bh-teal);margin-bottom:0.3rem;">Output</div>
+          <div style="font-size:0.75rem;color:var(--bh-teal);">Prioritized opportunities with business cases</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--bh-navy);opacity:0.5;margin-bottom:0.3rem;">Output</div>
+          <div style="font-size:0.75rem;color:var(--bh-navy);">Innovation concepts ready for hand-off</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section class="case-section">
+    <p class="section-label">The Initiative</p>
+    <h2 class="section-heading">Tackling a behavioral health epidemic — systemically</h2>
+    <div class="case-body">
+      <p>Behavioral health conditions affect tens of millions of Americans, yet the systems designed to help them — clinical, financial, and organizational — are fundamentally misaligned. At Highmark Health, I led the design strategy phase of a cross-enterprise innovation initiative focused on defining the problems to solve, building a strategic framework to align all Behavioral Health efforts, and recommending opportunities for innovation.</p>
+      <p>The work involved extensive research with internal subject matter experts, competitive analysis, and synthesis of secondary data across six interconnected problem areas. The output was a strategic framework and a prioritized set of innovation opportunities to guide Highmark's long-term behavioral health investments.</p>
+    </div>
+  </section>
+
+  <!-- VISION FRAMEWORK DIAGRAM -->
+  <div style="max-width:1100px;margin:0 auto 5rem;padding:0 4rem;">
+    <div style="background:var(--bh-teal);border-radius:12px;padding:3rem;overflow:hidden;">
+
+      <!-- Vision statement -->
+      <div style="text-align:center;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(247,244,232,0.12);">
+        <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:0.75rem;">Vision</p>
+        <p style="font-size:1.1rem;color:var(--cream);line-height:1.6;max-width:720px;margin:0 auto;font-style:italic;">Be the catalyst in re-thinking the industry approach to behavioral health — convening innovators to identify more effective solutions and address systemic barriers to care.</p>
+      </div>
+
+      <!-- Four pillars -->
+      <div style="display:grid;grid-template-columns:1fr 2fr 1fr;gap:1rem;margin-bottom:1rem;">
+
+        <!-- A: Change the Dialog -->
+        <div style="background:rgba(53,178,90,0.18);border:1px solid rgba(53,178,90,0.35);border-radius:8px;padding:1.5rem;">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.5rem;">Pillar A</div>
+          <div style="font-size:1rem;font-weight:700;color:var(--cream);margin-bottom:0.75rem;">Change the Dialog</div>
+          <p style="font-size:0.78rem;color:rgba(247,244,232,0.65);line-height:1.6;">Make Behavioral Health care as ubiquitous as physical care — address stigma and barriers that stand in the way of population-level impact.</p>
+        </div>
+
+        <!-- B: Innovate the Value Chain (with 3 sub-pillars) -->
+        <div style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1.5rem;">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:0.5rem;">Pillar B</div>
+          <div style="font-size:1rem;font-weight:700;color:var(--cream);margin-bottom:1rem;">Innovate the Value Chain</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;">
+            <div style="background:rgba(247,244,232,0.06);border-radius:6px;padding:1rem;">
+              <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:0.4rem;">B1</div>
+              <div style="font-size:0.82rem;font-weight:700;color:var(--cream);margin-bottom:0.4rem;">Maintain Behavioral Health</div>
+              <p style="font-size:0.73rem;color:rgba(247,244,232,0.55);line-height:1.5;margin:0;">Robust prevention and early intervention for rising-risk populations.</p>
+            </div>
+            <div style="background:rgba(247,244,232,0.06);border-radius:6px;padding:1rem;">
+              <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:0.4rem;">B2</div>
+              <div style="font-size:0.82rem;font-weight:700;color:var(--cream);margin-bottom:0.4rem;">Improve Interventions</div>
+              <p style="font-size:0.73rem;color:rgba(247,244,232,0.55);line-height:1.5;margin:0;">Lead the industry in evidence-based Behavioral Health solutions, programs, and care pathways.</p>
+            </div>
+            <div style="background:rgba(247,244,232,0.06);border-radius:6px;padding:1rem;">
+              <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:0.4rem;">B3</div>
+              <div style="font-size:0.82rem;font-weight:700;color:var(--cream);margin-bottom:0.4rem;">Optimize Capacity</div>
+              <p style="font-size:0.73rem;color:rgba(247,244,232,0.55);line-height:1.5;margin:0;">Re-focus clinical workforce on highest-impact needs and activate the full caregiver community.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- C: Fix the Business Model -->
+        <div style="background:rgba(53,178,90,0.18);border:1px solid rgba(53,178,90,0.35);border-radius:8px;padding:1.5rem;">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.5rem;">Pillar C</div>
+          <div style="font-size:1rem;font-weight:700;color:var(--cream);margin-bottom:0.75rem;">Fix the Business Model</div>
+          <p style="font-size:0.78rem;color:rgba(247,244,232,0.65);line-height:1.6;">Understand current economics and respond with new approaches for balancing payer, provider, and patient responsibility to create lasting value.</p>
+        </div>
+      </div>
+
+      <!-- D: Foundation row -->
+      <div style="background:rgba(247,244,232,0.05);border:1px solid rgba(247,244,232,0.12);border-radius:8px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1.5rem;">
+        <div style="flex-shrink:0;">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.3rem;">Pillar D — Foundation</div>
+          <div style="font-size:0.95rem;font-weight:700;color:var(--cream);">Establish Structure &amp; Governance</div>
+        </div>
+        <div style="width:1px;height:2.5rem;background:rgba(247,244,232,0.15);flex-shrink:0;"></div>
+        <p style="font-size:0.8rem;color:rgba(247,244,232,0.6);line-height:1.6;margin:0;">Appoint enterprise-level Behavioral Health leadership aligned to the Blended Health Model — providing oversight and activation for short and long-term strategies across all pillars.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <section class="case-section">
+    <p class="section-label">Strategic Framework</p>
+    <h2 class="section-heading">A vision to be the industry catalyst for behavioral health</h2>
+    <div class="case-body">
+      <p>The strategic framework organized Highmark's Behavioral Health ambitions across four pillars: changing the dialog around mental health to reduce stigma, innovating the value chain from prevention through treatment, optimizing clinical and community capacity, and fixing the underlying business model to enable long-term investment in care.</p>
+      <p>Near-term priorities focused on the highest-cost, most acute needs — where the path to impact was clearest. Longer-term, the vision was to convene the academic, clinical, and innovation community around more systemic, cost-effective solutions for sustaining and restoring mental health at scale.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- 6 PROBLEM AREAS -->
+  <section class="case-section">
+    <p class="section-label">Research</p>
+    <h2 class="section-heading">Six interconnected behavioral health problem areas</h2>
+    <div class="case-body">
+      <p>Through extensive interviews with internal subject matter experts and deep secondary research, the team identified six problem areas that are both complex and deeply interconnected — each one reinforcing and exacerbating the others.</p>
+    </div>
+  </section>
+
+  <!-- SIX PROBLEM AREAS DIAGRAM -->
+  <div style="max-width:1100px;margin:0 auto 2rem;padding:0 4rem;">
+    <div style="background:var(--bh-teal);border-radius:12px;padding:3rem;">
+
+      <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:0.5rem;text-align:center;">Research Synthesis</p>
+      <p style="font-size:1.1rem;font-weight:700;color:var(--cream);text-align:center;margin-bottom:0.5rem;">Six Interconnected Problem Areas</p>
+      <p style="font-size:0.82rem;color:rgba(247,244,232,0.55);text-align:center;margin-bottom:2.5rem;max-width:560px;margin-left:auto;margin-right:auto;">Through extensive interviews with internal SMEs and secondary research, we identified six problem areas in behavioral health that are complex and deeply interconnected.</p>
+
+      <!-- Center label + hex grid -->
+      <div style="position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+
+        <!-- Row 1 -->
+        <div style="background:rgba(227,70,75,0.15);border:1px solid rgba(227,70,75,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
+          <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.6rem;">
+            <div style="width:1.6rem;height:1.6rem;border-radius:50%;background:rgba(227,70,75,0.8);color:#fff;font-size:0.7rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Remove Barriers to Value Realization</div>
+          </div>
+          <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.55;margin:0;">Low reimbursement, fragmented data, and systemic payer barriers suppress care — despite the 2008 Mental Health Parity Act.</p>
+        </div>
+
+        <div style="background:rgba(227,70,75,0.15);border:1px solid rgba(227,70,75,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
+          <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.6rem;">
+            <div style="width:1.6rem;height:1.6rem;border-radius:50%;background:rgba(227,70,75,0.8);color:#fff;font-size:0.7rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Address Clinician Challenges</div>
+          </div>
+          <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.55;margin:0;">High caseloads, low reimbursement, evolving best practices, and systemic bias prevent clinicians from delivering their best care.</p>
+        </div>
+
+        <div style="background:rgba(227,70,75,0.15);border:1px solid rgba(227,70,75,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
+          <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.6rem;">
+            <div style="width:1.6rem;height:1.6rem;border-radius:50%;background:rgba(227,70,75,0.8);color:#fff;font-size:0.7rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Match Individual Need with the Right Care</div>
+          </div>
+          <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.55;margin:0;">8–10 years average delay from symptom onset to first treatment. Co-morbidity, misdiagnosis, and access gaps compound the problem.</p>
+        </div>
+
+        <!-- Row 2 -->
+        <div style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
+          <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.6rem;">
+            <div style="width:1.6rem;height:1.6rem;border-radius:50%;background:rgba(108,184,227,0.85);color:#fff;font-size:0.7rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Shift from Reactive to Proactive</div>
+          </div>
+          <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.55;margin:0;">56% of adults with mental illness receive no treatment. Predictive tools and proactive outreach are nearly nonexistent.</p>
+        </div>
+
+        <!-- Center callout -->
+        <div style="background:rgba(247,244,232,0.05);border:1px solid rgba(247,244,232,0.1);border-radius:8px;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:center;text-align:center;">
+          <div>
+            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(247,244,232,0.4);margin-bottom:0.5rem;">Key Finding</div>
+            <div style="font-size:0.88rem;font-weight:700;color:rgba(247,244,232,0.8);line-height:1.5;">Problems are complex<br>and interconnected</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
+          <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.6rem;">
+            <div style="width:1.6rem;height:1.6rem;border-radius:50%;background:rgba(108,184,227,0.85);color:#fff;font-size:0.7rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">5</div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Prevent Conditions Before They Start</div>
+          </div>
+          <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.55;margin:0;">Many adult Behavioral Health conditions link to Adverse Childhood Experiences. Prevention is deprioritized despite a clear long-term ROI.</p>
+        </div>
+
+        <!-- Row 3 — full width -->
+        <div style="grid-column:1 / -1;background:rgba(247,244,232,0.07);border:1px solid rgba(247,244,232,0.12);border-radius:8px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+          <div style="width:1.6rem;height:1.6rem;border-radius:50%;background:rgba(247,244,232,0.2);color:var(--cream);font-size:0.7rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">6</div>
+          <div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--cream);margin-bottom:0.25rem;">Address Stigma &amp; Cultural Challenges</div>
+            <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.55;margin:0;">Stigma is a barrier to seeking care, a barrier within clinical environments, and compounded by social determinants of health — including housing, food insecurity, and economic instability.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- OPPORTUNITIES -->
+  <div class="dark-section">
+    <div class="dark-section-inner">
+      <p class="section-label">Innovation Opportunities</p>
+      <h2 class="section-heading">Prioritizing for impact and feasibility</h2>
+      <div class="case-body">
+        <p>After synthesizing research across problem areas, the team identified and prioritized a set of innovation opportunities mapped across impact and effort. Priority opportunities were developed with full summaries, competitive landscape analysis, and recommended next steps for scoping and implementation.</p>
+      </div>
+      <div class="opp-grid" style="margin-top:2rem;">
+        <div class="opp-card">
+          <h4>Clinicians as Whole-Health Practitioners</h4>
+          <p>Expand the role of non-Behavioral Health specialists to "whole-health practitioners" — enabling all clinicians to confidently engage patients about behavioral and physical health wellness without adding administrative burden.</p>
+        </div>
+        <div class="opp-card">
+          <h4>Communities as Caregivers</h4>
+          <p>Leverage community momentum — schools, employers, families, nonprofits — as a first line of defense for early identification, support, and stigma reduction at scale.</p>
+        </div>
+        <div class="opp-card">
+          <h4>Flipping the Risk Problem</h4>
+          <p>Reframe the investment risk of Behavioral Health care by exploring new payer/provider business models that allow realization of the longer-term value of Behavioral Health outcomes.</p>
+        </div>
+        <div class="opp-card">
+          <h4>Use Data for Insights &amp; Action</h4>
+          <p>Intentionally design a data collection and analytics program to identify at-risk individuals, measure Behavioral Health intervention outcomes, and drive proactive care.</p>
+        </div>
+        <div class="opp-card">
+          <h4>Open Behavioral Health Resources for All</h4>
+          <p>Accelerate virtual, peer-to-peer, and community access models — reaching the 60%+ of counties with no psychiatrist and the 94M Americans waiting more than a week for mental health services.</p>
+        </div>
+        <div class="opp-card">
+          <h4>Respond to COVID-19 Behavioral Health Needs</h4>
+          <p>Address the wave of emerging and exacerbated Behavioral Health conditions from the pandemic — isolation, grief, trauma, and fear — before they become high-cost, chronic conditions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPPORTUNITY MATRIX DIAGRAM -->
+  <div style="max-width:1100px;margin:0 auto 5rem;padding:0 4rem;">
+    <div style="background:var(--bh-light);border-radius:12px;padding:3rem;">
+
+      <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.5rem;text-align:center;">Prioritization Framework</p>
+      <p style="font-size:1.1rem;font-weight:700;color:var(--bh-teal);text-align:center;margin-bottom:0.5rem;">Opportunities Mapped by Impact &amp; Effort</p>
+      <p style="font-size:0.82rem;color:var(--bh-teal);text-align:center;margin-bottom:2.5rem;max-width:560px;margin-left:auto;margin-right:auto;">Shorter-term wins versus longer-term strategic investments — prioritized to guide where Highmark should act first.</p>
+
+      <!-- 2x2 matrix grid -->
+      <div style="display:grid;grid-template-columns:2rem 1fr 1fr;grid-template-rows:1fr 1fr 2rem;gap:0.75rem;min-height:420px;">
+
+        <!-- Y-axis label -->
+        <div style="grid-row:1/3;grid-column:1;display:flex;align-items:center;justify-content:center;">
+          <div style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--bh-teal);">Impact</div>
+        </div>
+
+        <!-- High impact / Lower effort -->
+        <div style="grid-row:1;grid-column:2;background:rgba(53,178,90,0.08);border:1px solid rgba(53,178,90,0.2);border-radius:8px;padding:1.5rem;position:relative;">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-green);margin-bottom:1rem;">High Impact · Near-Term</div>
+          <div style="display:flex;flex-direction:column;gap:0.6rem;">
+            <div style="background:white;border-radius:6px;padding:0.75rem 1rem;box-shadow:0 1px 4px rgba(32,81,97,0.08);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.2rem;">Clinicians as Whole-Health Practitioners</div>
+              <div style="font-size:0.7rem;color:var(--bh-teal);">Enable all clinicians to address Behavioral Health needs without added burden</div>
+            </div>
+            <div style="background:white;border-radius:6px;padding:0.75rem 1rem;box-shadow:0 1px 4px rgba(32,81,97,0.08);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.2rem;">Communities as Caregivers</div>
+              <div style="font-size:0.7rem;color:var(--bh-teal);">Schools, employers &amp; families as the first line of support</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- High impact / Higher effort -->
+        <div style="grid-row:1;grid-column:3;background:rgba(108,184,227,0.08);border:1px solid rgba(108,184,227,0.2);border-radius:8px;padding:1.5rem;">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-blue);margin-bottom:1rem;">High Impact · Longer-Term</div>
+          <div style="display:flex;flex-direction:column;gap:0.6rem;">
+            <div style="background:white;border-radius:6px;padding:0.75rem 1rem;box-shadow:0 1px 4px rgba(32,81,97,0.08);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.2rem;">Flipping the Risk Problem</div>
+              <div style="font-size:0.7rem;color:var(--bh-teal);">New payer/provider models that realize long-term Behavioral Health value</div>
+            </div>
+            <div style="background:white;border-radius:6px;padding:0.75rem 1rem;box-shadow:0 1px 4px rgba(32,81,97,0.08);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.2rem;">Use Data for Insights &amp; Action</div>
+              <div style="font-size:0.7rem;color:var(--bh-teal);">Predictive analytics to identify risk and drive proactive care</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lower impact / Lower effort -->
+        <div style="grid-row:2;grid-column:2;background:rgba(32,81,97,0.04);border:1px solid rgba(32,81,97,0.18);border-radius:8px;padding:1.5rem;">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-teal);opacity:0.7;margin-bottom:1rem;">Moderate Impact · Near-Term</div>
+          <div style="display:flex;flex-direction:column;gap:0.6rem;">
+            <div style="background:white;border-radius:6px;padding:0.75rem 1rem;box-shadow:0 1px 4px rgba(32,81,97,0.06);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.2rem;">Respond to COVID-19 Behavioral Health Needs</div>
+              <div style="font-size:0.7rem;color:var(--bh-teal);">Address pandemic-driven isolation, grief, and trauma</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lower impact / Higher effort -->
+        <div style="grid-row:2;grid-column:3;background:rgba(32,81,97,0.04);border:1px solid rgba(32,81,97,0.18);border-radius:8px;padding:1.5rem;">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-teal);opacity:0.7;margin-bottom:1rem;">Moderate Impact · Longer-Term</div>
+          <div style="display:flex;flex-direction:column;gap:0.6rem;">
+            <div style="background:white;border-radius:6px;padding:0.75rem 1rem;box-shadow:0 1px 4px rgba(32,81,97,0.06);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.2rem;">Open Behavioral Health Resources for All</div>
+              <div style="font-size:0.7rem;color:var(--bh-teal);">Virtual &amp; peer models for the 60%+ of counties with no psychiatrist</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- X-axis label -->
+        <div style="grid-row:3;grid-column:2/4;display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--bh-teal);">Effort / Time Horizon →</div>
+        </div>
+
+      </div>
+
+      <!-- Legend -->
+      <div style="display:flex;gap:2rem;justify-content:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(32,81,97,0.18);">
+        <div style="display:flex;align-items:center;gap:0.5rem;"><div style="width:12px;height:12px;border-radius:2px;background:rgba(53,178,90,0.15);border:1px solid rgba(53,178,90,0.3);"></div><span style="font-size:0.72rem;color:var(--bh-teal);">Near-term priority</span></div>
+        <div style="display:flex;align-items:center;gap:0.5rem;"><div style="width:12px;height:12px;border-radius:2px;background:rgba(108,184,227,0.12);border:1px solid rgba(108,184,227,0.25);"></div><span style="font-size:0.72rem;color:var(--bh-teal);">Longer-term investment</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CARE JOURNEY DIAGRAM -->
+  <div style="max-width:1100px;margin:0 auto 5rem;padding:0 4rem;">
+    <div style="background:var(--bh-teal);border-radius:12px;padding:3rem;overflow:hidden;">
+
+      <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:0.5rem;text-align:center;">Transformational Innovation</p>
+      <p style="font-size:1.1rem;font-weight:700;color:var(--cream);text-align:center;margin-bottom:0.5rem;">The Behavioral Health Care Journey We're Designing For</p>
+      <p style="font-size:0.82rem;color:rgba(247,244,232,0.55);text-align:center;margin-bottom:2.5rem;max-width:560px;margin-left:auto;margin-right:auto;">A transformational approach means shifting from reactive, crisis-driven care to a full-spectrum journey — from staying well through sustained recovery.</p>
+
+      <!-- 5-stage journey -->
+      <div style="position:relative;">
+
+        <!-- Connecting gradient bar -->
+        <div style="position:absolute;top:2rem;left:calc(10% + 1rem);right:calc(10% + 1rem);height:3px;background:linear-gradient(to right, rgba(108,184,227,0.8), rgba(53,178,90,0.6), rgba(155,212,183,0.5), rgba(53,178,90,0.6), rgba(32,81,97,0.7));z-index:0;border-radius:2px;"></div>
+
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;position:relative;z-index:1;">
+
+          <!-- Stage 1: Prevention -->
+          <div style="text-align:center;">
+            <div style="width:4rem;height:4rem;border-radius:50%;background:rgba(108,184,227,0.8);border:2px solid rgba(108,184,227,0.4);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-weight:800;font-size:0.85rem;color:var(--cream);">1</div>
+            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-blue);margin-bottom:0.4rem;">Prevention</div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--cream);margin-bottom:0.5rem;">Living with Intent to Stay Well</div>
+            <p style="font-size:0.72rem;color:rgba(247,244,232,0.55);line-height:1.5;margin:0;">Building habits, community, and conditions that support mental wellness before a crisis occurs.</p>
+          </div>
+
+          <!-- Stage 2: Recognition -->
+          <div style="text-align:center;">
+            <div style="width:4rem;height:4rem;border-radius:50%;background:rgba(53,178,90,0.5);border:2px solid rgba(53,178,90,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-weight:800;font-size:0.85rem;color:var(--cream);">2</div>
+            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.4rem;">Recognition</div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--cream);margin-bottom:0.5rem;">Becoming Aware of the Need for Care</div>
+            <p style="font-size:0.72rem;color:rgba(247,244,232,0.55);line-height:1.5;margin:0;">Identifying when something is wrong — through self-awareness, clinical screening, or community support.</p>
+          </div>
+
+          <!-- Stage 3: Activation -->
+          <div style="text-align:center;">
+            <div style="width:4rem;height:4rem;border-radius:50%;background:rgba(155,212,183,0.4);border:2px solid rgba(155,212,183,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-weight:800;font-size:0.85rem;color:var(--cream);">3</div>
+            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:0.4rem;">Activation</div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--cream);margin-bottom:0.5rem;">Seeking &amp; Pursuing Care</div>
+            <p style="font-size:0.72rem;color:rgba(247,244,232,0.55);line-height:1.5;margin:0;">Navigating access — overcoming stigma, cost, and availability barriers to get matched with the right care.</p>
+          </div>
+
+          <!-- Stage 4: Treatment -->
+          <div style="text-align:center;">
+            <div style="width:4rem;height:4rem;border-radius:50%;background:rgba(53,178,90,0.7);border:2px solid rgba(53,178,90,0.4);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-weight:800;font-size:0.85rem;color:var(--cream);">4</div>
+            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.4rem;">Treatment</div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--cream);margin-bottom:0.5rem;">Participating in Care</div>
+            <p style="font-size:0.72rem;color:rgba(247,244,232,0.55);line-height:1.5;margin:0;">Receiving evidence-based interventions, therapy, or medication — with continuity and appropriate clinical support.</p>
+          </div>
+
+          <!-- Stage 5: Management -->
+          <div style="text-align:center;">
+            <div style="width:4rem;height:4rem;border-radius:50%;background:rgba(32,81,97,0.8);border:2px solid rgba(247,244,232,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-weight:800;font-size:0.85rem;color:var(--cream);">5</div>
+            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.4rem;">Management</div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--cream);margin-bottom:0.5rem;">Managing Ongoing Wellness &amp; Recovery</div>
+            <p style="font-size:0.72rem;color:rgba(247,244,232,0.55);line-height:1.5;margin:0;">Sustaining recovery through ongoing check-ins, relapse prevention, and integrated whole-health support.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Current state callout -->
+      <div style="margin-top:2.5rem;padding:1.25rem 1.5rem;background:rgba(227,70,75,0.12);border:1px solid rgba(227,70,75,0.25);border-radius:8px;display:flex;align-items:center;gap:1rem;">
+        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(227,70,75,0.9);flex-shrink:0;">Current gap</div>
+        <div style="width:1px;height:1.5rem;background:rgba(247,244,232,0.15);flex-shrink:0;"></div>
+        <p style="font-size:0.8rem;color:rgba(247,244,232,0.65);line-height:1.6;margin:0;">Today, the system is concentrated in stages 4–5 (treatment and management). The innovation opportunity is in stages 1–3 — prevention, early recognition, and seamless activation — where intervention can prevent escalation to crisis care.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- IMPACT -->
+  <section class="case-section">
+    <p class="section-label">Scale of the Problem</p>
+    <h2 class="section-heading">Why the urgency is now</h2>
+    <div class="case-body">
+      <p>The behavioral health epidemic was already acute before COVID-19 — and the pandemic dramatically accelerated it. The combination of increased need, structural underinvestment, and a fragmented care system creates both urgency and genuine opportunity for a health organization positioned to lead.</p>
+    </div>
+    <div class="outcomes-row">
+      <div class="outcome-card">
+        <div class="outcome-num">56%</div>
+        <div class="outcome-label">of adults with mental illness receive no treatment</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">8–10</div>
+        <div class="outcome-label">Years average delay between symptom onset and first treatment</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">$16.8B</div>
+        <div class="outcome-label">Lost annually in employee productivity due to mental health conditions</div>
+      </div>
+    </div>
+    <div class="callout">"Be the catalyst in re-thinking the industry approach to behavioral health by convening innovators to identify more effective solutions and address systemic barriers to care and maintenance."<br><span style="font-size:0.85rem;font-style:normal;color:var(--bh-teal);margin-top:0.5rem;display:block;">— Highmark Health Behavioral Health Vision Statement</span></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- PHASE 2: SCOPING & CONCEPT DEVELOPMENT                       -->
+  <!-- ============================================================ -->
+
+  <section class="case-section">
+    <p class="section-label">Phase 2</p>
+    <h2 class="section-heading">From problem space to solution concepts</h2>
+    <div class="case-body">
+      <p>With the strategic framework established and two innovation pillars selected by senior leadership — Maintain Behavioral Health and Optimize Capacity — the work moved into Phase 2: scoping the best opportunities Highmark could pursue and designing concrete, scored solution concepts for leadership alignment and funding approval.</p>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <p class="section-label">Phase 2 Research</p>
+    <h2 class="section-heading">30+ interviews, 6 expert conversations, and 80+ ideation participants</h2>
+    <div class="case-body">
+      <p>Phase 2 engaged in deep research — 30+ clinician interviews across AHN and partner organizations, 30+ customer interviews and concept tests, 6 conversations with external experts including Forrester analysts, startups, and national advocacy groups, and 6 collaborative ideation sessions with 80+ cross-enterprise and external participants.</p>
+      <p>Starting from six prioritized opportunity areas, the team generated 12 solution concepts, scored each against impact, difficulty, and scalability, and narrowed to the five highest-potential concepts to present for leadership alignment and funding approval.</p>
+    </div>
+  </section>
+
+  <!-- OPPORTUNITY AREAS DIAGRAM -->
+  <div style="max-width:1100px;margin:0 auto 5rem;padding:0 4rem;">
+    <div style="background:var(--bh-teal);border-radius:12px;padding:3rem;">
+
+      <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:0.5rem;text-align:center;">Six Prioritized Opportunity Areas</p>
+      <p style="font-size:1.1rem;font-weight:700;color:var(--cream);text-align:center;margin-bottom:0.5rem;">Maintain Behavioral Health &amp; Optimize Capacity</p>
+      <p style="font-size:0.82rem;color:rgba(247,244,232,0.55);text-align:center;margin-bottom:2.5rem;max-width:580px;margin-left:auto;margin-right:auto;">The two executive-prioritized strategic pillars from Phase 1 translated into six concrete innovation opportunity areas for Phase 2.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+        <div>
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:1rem;text-align:center;padding-bottom:0.75rem;border-bottom:1px solid rgba(247,244,232,0.12);">Maintain Behavioral Health</div>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div style="background:rgba(53,178,90,0.15);border:1px solid rgba(53,178,90,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
+              <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;"><div style="width:1.5rem;height:1.5rem;border-radius:50%;background:rgba(53,178,90,0.8);color:#fff;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Prevent &amp; Intervene Early</div></div>
+              <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.5;margin:0;">Create awareness and activate mental resilience self-care in at-risk populations before conditions become acute.</p>
+            </div>
+            <div style="background:rgba(53,178,90,0.15);border:1px solid rgba(53,178,90,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
+              <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;"><div style="width:1.5rem;height:1.5rem;border-radius:50%;background:rgba(53,178,90,0.8);color:#fff;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Identify Behavioral Health Needs &amp; Activate Care</div></div>
+              <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.5;margin:0;">Bring new approaches to identifying behavioral health needs and connecting people to the right care, earlier.</p>
+            </div>
+            <div style="background:rgba(53,178,90,0.15);border:1px solid rgba(53,178,90,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
+              <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;"><div style="width:1.5rem;height:1.5rem;border-radius:50%;background:rgba(53,178,90,0.8);color:#fff;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Align Need with the Right Level of Care</div></div>
+              <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.5;margin:0;">Match individuals with the appropriate care setting and level of intensity throughout their care journey.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(155,212,183,0.7);margin-bottom:1rem;text-align:center;padding-bottom:0.75rem;border-bottom:1px solid rgba(247,244,232,0.12);">Optimize Capacity</div>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
+              <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;"><div style="width:1.5rem;height:1.5rem;border-radius:50%;background:rgba(108,184,227,0.85);color:#fff;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Activate the Caregiver Community</div></div>
+              <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.5;margin:0;">Resource the entire caregiver community — families, peers, community organizations — to achieve greater scale.</p>
+            </div>
+            <div style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
+              <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;"><div style="width:1.5rem;height:1.5rem;border-radius:50%;background:rgba(108,184,227,0.85);color:#fff;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">5</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Lead in Behavioral Health Clinical Insights</div></div>
+              <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.5;margin:0;">Be a leader in Behavioral Health data analytics and clinical research to generate best practices and drive evidence-based care.</p>
+            </div>
+            <div style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
+              <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;"><div style="width:1.5rem;height:1.5rem;border-radius:50%;background:rgba(108,184,227,0.85);color:#fff;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">6</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Equitable, Culturally Competent Access</div></div>
+              <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.5;margin:0;">Address underserved populations and provide equitable access to culturally competent care across the network.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCORING SECTION -->
+  <section class="case-section">
+    <p class="section-label">Prioritization</p>
+    <h2 class="section-heading">12 concepts scored and narrowed to five</h2>
+    <div class="case-body">
+      <p>Starting from the six opportunity areas, the team generated 12 solution concepts through collaborative ideation sessions. Each concept was scored by the clinical team across five measures — reach, expected outcome, time/effort to build, cost to launch, and scalability — and normalized to a 1–10 scale.</p>
+    </div>
+  </section>
+
+  <!-- SCORING DIAGRAM -->
+  <div style="max-width:1100px;margin:0 auto 5rem;padding:0 4rem;">
+    <div style="background:var(--bh-light);border-radius:12px;padding:3rem;">
+
+      <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.5rem;text-align:center;">Scoring Framework</p>
+      <p style="font-size:1.1rem;font-weight:700;color:var(--bh-teal);text-align:center;margin-bottom:2rem;">3 Components · 5 Measures</p>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:2.5rem;">
+        <div style="background:white;border-radius:8px;padding:1.5rem;box-shadow:0 2px 8px rgba(32,81,97,0.07);">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.5rem;">Impact</div>
+          <div style="font-size:0.9rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.75rem;">Reach + Outcome</div>
+          <p style="font-size:0.78rem;color:var(--bh-teal);line-height:1.6;margin:0;">The number of people the solution can reach × the scope of outcome it's expected to achieve.</p>
+        </div>
+        <div style="background:white;border-radius:8px;padding:1.5rem;box-shadow:0 2px 8px rgba(32,81,97,0.07);">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--bh-blue);margin-bottom:0.5rem;">Difficulty</div>
+          <div style="font-size:0.9rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.75rem;">Time/Effort + Cost</div>
+          <p style="font-size:0.78rem;color:var(--bh-teal);line-height:1.6;margin:0;">The time and effort needed to build and launch × the cost required to get to market.</p>
+        </div>
+        <div style="background:white;border-radius:8px;padding:1.5rem;box-shadow:0 2px 8px rgba(32,81,97,0.07);">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--bh-teal);margin-bottom:0.5rem;">Scalability</div>
+          <div style="font-size:0.9rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.75rem;">Scale Potential</div>
+          <p style="font-size:0.78rem;color:var(--bh-teal);line-height:1.6;margin:0;">The ability of the solution to scale beyond Allegheny Health Network to other Blues plans and partners.</p>
+        </div>
+      </div>
+
+      <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--bh-teal);margin-bottom:1rem;text-align:center;">Top 5 Scoring Concepts</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0.75rem;">
+        <div style="background:var(--bh-teal);border-radius:8px;padding:1.25rem;text-align:center;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;margin-bottom:0.3rem;">9.49</div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.4rem;">#1</div><div style="font-size:0.75rem;font-weight:700;color:var(--cream);line-height:1.4;">Peer Support — Anywhere</div></div>
+        <div style="background:var(--bh-teal);border-radius:8px;padding:1.25rem;text-align:center;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;margin-bottom:0.3rem;">9.09</div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.4rem;">#2</div><div style="font-size:0.75rem;font-weight:700;color:var(--cream);line-height:1.4;">Perpetual Screening</div></div>
+        <div style="background:var(--bh-teal);border-radius:8px;padding:1.25rem;text-align:center;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;margin-bottom:0.3rem;">8.89</div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.4rem;">#3</div><div style="font-size:0.75rem;font-weight:700;color:var(--cream);line-height:1.4;">Navigational Pathways</div></div>
+        <div style="background:var(--bh-teal);border-radius:8px;padding:1.25rem;text-align:center;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;margin-bottom:0.3rem;">8.73</div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.4rem;">#4</div><div style="font-size:0.75rem;font-weight:700;color:var(--cream);line-height:1.4;">Behavioral Health Care Hub</div></div>
+        <div style="background:var(--bh-teal);border-radius:8px;padding:1.25rem;text-align:center;"><div style="font-size:1.4rem;font-weight:800;color:var(--bh-mint);letter-spacing:-0.03em;margin-bottom:0.3rem;">8.73</div><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,244,232,0.5);margin-bottom:0.4rem;">#5</div><div style="font-size:0.75rem;font-weight:700;color:var(--cream);line-height:1.4;">Culturally Competent Care</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Behavioral Health HUB ECOSYSTEM -->
+  <section class="case-section">
+    <p class="section-label">Foundational Concept</p>
+    <h2 class="section-heading">The Behavioral Health Care Hub as a platform, not a product</h2>
+    <div class="case-body">
+      <p>The cornerstone of the solution concepts is the Behavioral Health Hub — a consolidation and curation point for behavioral health solutions, built on the Living Health Platform and integrated seamlessly into the broader customer and clinician experience. The design intent was explicit: this is not a standalone app.</p>
+      <p>The Behavioral Health Hub isn't the Highmark app. It isn't Highmark.com or MyStrength or the EMR or Virtual Care. It connects and integrates with all of these to create a single, simple access point for people seeking Behavioral Health care and resources — and a launching point for the four other concepts to plug into.</p>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM DIAGRAM -->
+  <div style="max-width:1100px;margin:0 auto 5rem;padding:0 4rem;">
+    <div style="background:var(--bh-teal);border-radius:12px;padding:3rem;">
+      <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:0.5rem;text-align:center;">Behavioral Health Care Ecosystem</p>
+      <p style="font-size:1.1rem;font-weight:700;color:var(--cream);text-align:center;margin-bottom:0.5rem;">Five Concepts as an Integrated Platform</p>
+      <p style="font-size:0.82rem;color:rgba(247,244,232,0.55);text-align:center;margin-bottom:2.5rem;max-width:560px;margin-left:auto;margin-right:auto;">The four satellite concepts deliver through and alongside the Behavioral Health Care Hub — creating an ecosystem with impact across five of the six opportunity areas.</p>
+      <div style="display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:1rem;align-items:center;">
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <div style="background:rgba(53,178,90,0.15);border:1px solid rgba(53,178,90,0.3);border-radius:8px;padding:1.25rem;"><div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.4rem;">Concept #2</div><div style="font-size:0.85rem;font-weight:700;color:var(--cream);margin-bottom:0.3rem;">Perpetual Screening</div><p style="font-size:0.72rem;color:rgba(247,244,232,0.6);margin:0;line-height:1.5;">Ubiquitous, simplified self-screening across the clinical footprint — delivered via the Hub.</p></div>
+          <div style="background:rgba(53,178,90,0.15);border:1px solid rgba(53,178,90,0.3);border-radius:8px;padding:1.25rem;"><div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.4rem;">Concept #3</div><div style="font-size:0.85rem;font-weight:700;color:var(--cream);margin-bottom:0.3rem;">Peer Support — Anywhere</div><p style="font-size:0.72rem;color:rgba(247,244,232,0.6);margin:0;line-height:1.5;">Offline and online peer connection, coordinated through the Hub's community layer.</p></div>
+        </div>
+        <div style="background:rgba(155,212,183,0.12);border:2px solid rgba(155,212,183,0.35);border-radius:12px;padding:2rem;text-align:center;">
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:0.6rem;">Foundation · Score 8.73</div>
+          <div style="font-size:1.15rem;font-weight:800;color:var(--cream);margin-bottom:0.75rem;">Behavioral Health Care Hub</div>
+          <p style="font-size:0.78rem;color:rgba(247,244,232,0.7);line-height:1.6;margin-bottom:1rem;">Streamline care activation through transparent, simple information and tools. A single access point for all Behavioral Health care, resources, and solutions.</p>
+          <div style="display:flex;flex-direction:column;gap:0.4rem;text-align:left;">
+            <div style="font-size:0.7rem;color:rgba(247,244,232,0.55);display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:var(--bh-mint);flex-shrink:0;">→</span>Provider search &amp; scheduling</div>
+            <div style="font-size:0.7rem;color:rgba(247,244,232,0.55);display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:var(--bh-mint);flex-shrink:0;">→</span>Curated wellness resources &amp; tools</div>
+            <div style="font-size:0.7rem;color:rgba(247,244,232,0.55);display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:var(--bh-mint);flex-shrink:0;">→</span>Real-time telehealth access</div>
+            <div style="font-size:0.7rem;color:rgba(247,244,232,0.55);display:flex;gap:0.5rem;align-items:flex-start;"><span style="color:var(--bh-mint);flex-shrink:0;">→</span>Actionable care plans &amp; next steps</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <div style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1.25rem;"><div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-blue);margin-bottom:0.4rem;">Concept #4</div><div style="font-size:0.85rem;font-weight:700;color:var(--cream);margin-bottom:0.3rem;">Navigational Pathways</div><p style="font-size:0.72rem;color:rgba(247,244,232,0.6);margin:0;line-height:1.5;">A cross-system digital "Sherpa" for clear, actionable next steps across the care continuum.</p></div>
+          <div style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1.25rem;"><div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-blue);margin-bottom:0.4rem;">Concept #5</div><div style="font-size:0.85rem;font-weight:700;color:var(--cream);margin-bottom:0.3rem;">Culturally Competent Care</div><p style="font-size:0.72rem;color:rgba(247,244,232,0.6);margin:0;line-height:1.5;">Diversify the clinical pipeline and elevate cultural competency across the AHN network.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCEPT DEEP DIVES -->
+  <div class="dark-section">
+    <div class="dark-section-inner">
+      <p class="section-label">Concept Deep-Dives</p>
+      <h2 class="section-heading">What each concept addresses and how it creates value</h2>
+      <div class="opp-grid">
+        <div class="opp-card">
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;"><h4>Behavioral Health Care Hub</h4><span style="font-size:0.7rem;font-weight:700;color:var(--bh-mint);background:rgba(155,212,183,0.2);padding:0.15rem 0.5rem;border-radius:2rem;">Score 8.73</span></div>
+          <p>A digital resource hub making Behavioral Health care access simple and non-intimidating — consolidating provider scheduling, wellness tools, peer groups, and real-time telehealth in one experience. Nationally scalable with a first-mover commercialization opportunity for provider partners and other Blues plans. Investment: $$.</p>
+        </div>
+        <div class="opp-card">
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;"><h4>Perpetual Screening</h4><span style="font-size:0.7rem;font-weight:700;color:var(--bh-mint);background:rgba(155,212,183,0.2);padding:0.15rem 0.5rem;border-radius:2rem;">Score 9.09</span></div>
+          <p>Simplified, staged screening tools deployed across the entire clinical footprint — enabling non-Behavioral Health clinicians to recognize onset, and patients to self-screen privately at home via SMS or the Behavioral Health Hub. Becomes the scalable structure for early intervention. Investment: $$.</p>
+        </div>
+        <div class="opp-card">
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;"><h4>Peer Support — Anywhere</h4><span style="font-size:0.7rem;font-weight:700;color:var(--bh-mint);background:rgba(155,212,183,0.2);padding:0.15rem 0.5rem;border-radius:2rem;">Score 9.49</span></div>
+          <p>The highest-scoring concept. An offline/online platform connecting individuals with peers who share similar experiences — with peer counselors as champions who bridge support and clinical care. A low-cost, highly effective mode of care with national scaling potential via partners. Investment: $$$.</p>
+        </div>
+        <div class="opp-card">
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;"><h4>Navigational Pathways</h4><span style="font-size:0.7rem;font-weight:700;color:var(--bh-mint);background:rgba(155,212,183,0.2);padding:0.15rem 0.5rem;border-radius:2rem;">Score 8.89</span></div>
+          <p>A cross-system digital "Sherpa" educating patients, caregivers, and providers along the care continuum — with Behavioral Health-specific discharge plans, care pathway management, and condition management tools. Empowers non-Behavioral Health clinicians to propose care options confidently. Investment: $$$.</p>
+        </div>
+        <div class="opp-card" style="grid-column:1/-1;display:grid;grid-template-columns:280px 1fr;gap:1.5rem;align-items:start;">
+                    <div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;"><h4>Culturally Competent Care</h4><span style="font-size:0.7rem;font-weight:700;color:var(--bh-mint);background:rgba(155,212,183,0.2);padding:0.15rem 0.5rem;border-radius:2rem;">Score 8.73</span></div>
+            <p>Addressing the low efficacy of Behavioral Health care for African-American and other underserved populations through educational content, clinician certifications in race-based therapeutic approaches, and a longitudinal AHN Behavioral Health workforce diversification plan. The lowest-cost concept ($) with potential to improve care equity across the entire network.</p>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem;">
+        <img src="behavioral health/BH images/bh-concept-1.png" alt="Behavioral Health Care Hub" style="width:100%;border-radius:8px;display:block;">
+        <img src="behavioral health/BH images/bh-concept-2.png" alt="Perpetual Screening" style="width:100%;border-radius:8px;display:block;">
+        <img src="behavioral health/BH images/bh-concept-3.png" alt="Peer Support" style="width:100%;border-radius:8px;display:block;">
+        <img src="behavioral health/BH images/bh-concept-4.png" alt="Navigational Pathways" style="width:100%;border-radius:8px;display:block;">
+        <img src="behavioral health/BH images/bh-concept-5.png" alt="Culturally Competent Care" style="width:100%;border-radius:8px;display:block;">
+      </div>
+    </div>
+  </div>
+
+  <!-- ROADMAP DIAGRAM -->
+  <div style="max-width:1100px;margin:0 auto 5rem;padding:0 4rem;">
+    <div style="background:var(--bh-light);border-radius:12px;padding:3rem;">
+      <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.5rem;text-align:center;">Preliminary Ecosystem Roadmap</p>
+      <p style="font-size:1.1rem;font-weight:700;color:var(--bh-teal);text-align:center;margin-bottom:0.5rem;">Proposed Staging of Design &amp; Development</p>
+      <p style="font-size:0.82rem;color:var(--bh-teal);text-align:center;margin-bottom:2.5rem;max-width:560px;margin-left:auto;margin-right:auto;">The Behavioral Health Care Hub leads the roadmap as the foundation — other concepts integrate on top as they're developed and launched.</p>
+      <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;margin-bottom:1rem;">
+        <div></div>
+        <div style="text-align:center;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-green);padding:0.5rem;background:rgba(53,178,90,0.08);border-radius:4px;">0–6 Months</div>
+        <div style="text-align:center;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-blue);padding:0.5rem;background:rgba(108,184,227,0.08);border-radius:4px;">6–12 Months</div>
+        <div style="text-align:center;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-teal);padding:0.5rem;background:rgba(108,184,227,0.08);border-radius:4px;">12–24 Months</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;align-items:start;">
+          <div style="font-size:0.8rem;font-weight:700;color:var(--bh-teal);padding-top:0.75rem;">Behavioral Health Care Hub</div>
+          <div style="background:rgba(53,178,90,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Design &amp; prototype hub MVP · Integrate existing Behavioral Health resources · Plan marketing for customers &amp; clinicians</div>
+          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Develop &amp; launch hub MVP · Integrate enhanced Behavioral Health clinician profiles · Build same-day Behavioral Health help model</div>
+          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Integrate ecosystem features as they roll out · Leverage partnerships to build &amp; release new functionality</div>
+        </div>
+        <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;align-items:start;">
+          <div style="font-size:0.8rem;font-weight:700;color:var(--bh-teal);padding-top:0.75rem;">Perpetual Screening</div>
+          <div style="background:rgba(53,178,90,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Research partners &amp; rollout options · Design &amp; prototype MVP · Usability testing</div>
+          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Create operational &amp; marketing plans · Develop &amp; launch MVP across AHN</div>
+          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Enhance feature set with additional rollouts</div>
+        </div>
+        <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;align-items:start;">
+          <div style="font-size:0.8rem;font-weight:700;color:var(--bh-teal);padding-top:0.75rem;">Peer Support</div>
+          <div style="background:rgba(53,178,90,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Discuss potential partners · Low-fidelity pilot for learning</div>
+          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Staff peer community organizer · Develop &amp; launch MVP</div>
+          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Build pathways for complex cases · Refine and scale</div>
+        </div>
+        <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;align-items:start;">
+          <div style="font-size:0.8rem;font-weight:700;color:var(--bh-teal);padding-top:0.75rem;">Culturally Competent Care</div>
+          <div style="background:rgba(53,178,90,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Expand D&amp;I working group · Research clinician training needs</div>
+          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Develop training for AHN clinicians · Pilot with subset · Begin workforce diversity plan</div>
+          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Launch broader training · Consider integration into existing platforms</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 OUTCOMES -->
+  <section class="case-section">
+    <p class="section-label">Phase 2 Outcomes</p>
+    <h2 class="section-heading">Five concepts ready for investment and ownership</h2>
+    <div class="case-body">
+      <p>The five concepts were presented to leadership for syndication, stakeholder feedback, and funding approval — with a clear path to integrate prioritized solutions into the Living Health solution design process or trigger Innovation Phase 3 for detailed design and testing.</p>
+    </div>
+    <div class="outcomes-row">
+      <div class="outcome-card">
+        <div class="outcome-num">30+</div>
+        <div class="outcome-label">Clinician and customer interviews informing concept design</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">80+</div>
+        <div class="outcome-label">Cross-enterprise and external participants across 6 ideation sessions</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">12→5</div>
+        <div class="outcome-label">Concepts generated, scored, and narrowed to top five for leadership review</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="case-footer">
+    <h3>Want to talk through this work?</h3>
+    <p>I'm happy to walk through the research, framework, and recommendations in more detail.</p>
+    <a href="mailto:egatts@gmail.com" class="btn btn-berry">Get in Touch</a>
+    <a href="portfolio.html" class="btn btn-outline-light">← Back to Portfolio</a>
+  </footer>
+
+</body>
+</html>

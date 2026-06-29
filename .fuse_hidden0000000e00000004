@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Erica Gatts — Designer</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Palette extracted from photo */
+      --cream: #F7F4E8;        /* wall behind you — main background */
+      --cream-alt: #EEE8D8;    /* slightly deeper linen — alt sections */
+      --charcoal: #1A1614;     /* your hair & cardigan — primary text */
+      --berry: #C83A58;        /* your lip color — primary accent */
+      --olive-gold: #786428;   /* the lamp base — secondary accent */
+      --warm-peach: #E0B090;   /* your skin tones — warm highlight */
+      --warm-brown: #7A6050;   /* mid-tones from hair highlights */
+
+      /* Legacy aliases */
+      --black: var(--charcoal);
+      --white: var(--cream);
+      --accent: var(--berry);
+      --accent2: var(--olive-gold);
+      --gray: var(--warm-brown);
+      --light-gray: var(--cream-alt);
+      --terracotta: var(--berry);
+      --mustard: var(--olive-gold);
+      --teal: var(--olive-gold);
+      --warm-gray: var(--warm-brown);
+      --sage: var(--olive-gold);
+      --cool-gray: var(--warm-brown);
+
+      --font-display: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: var(--font-display);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 4rem;
+      background: rgba(247,244,232,0.93);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(26,22,20,0.08);
+    }
+
+    .nav-logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+    }
+
+    .nav-logo span { color: var(--terracotta); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    nav ul li a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      transition: color 0.2s;
+    }
+
+    nav ul li a:hover { color: var(--charcoal); }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 4rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 75% 20%, rgba(200,58,88,0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 10% 75%, rgba(120,100,40,0.09) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 35% at 50% 50%, rgba(224,176,144,0.08) 0%, transparent 70%);
+    }
+
+    .hero-counter {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: clamp(3.5rem, 9vw, 9rem);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      position: relative;
+      z-index: 1;
+      color: var(--charcoal);
+    }
+
+    .hero-title .line2 {
+      display: block;
+      color: var(--berry);
+    }
+
+    .hero-sub {
+      margin-top: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-sub p {
+      max-width: 380px;
+      color: var(--warm-gray);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 2rem;
+      background: var(--warm-gray);
+      color: var(--cream);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn:hover { background: #a02e46; transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--charcoal);
+      color: var(--charcoal);
+    }
+
+    .btn-outline:hover { background: var(--charcoal); color: var(--cream); }
+
+    /* ── Section Base ── */
+    section { padding: 7rem 4rem; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 3.5rem;
+      color: var(--charcoal);
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: rgba(26,22,20,0.1);
+      margin: 0 4rem;
+    }
+
+    /* ── About ── */
+    #about { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+
+    .about-image {
+      aspect-ratio: 4/5;
+      background: var(--cream-alt);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(200,58,88,0.08), transparent 60%);
+    }
+
+    .about-image .placeholder-icon {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: rgba(26,22,20,0.35);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .about-image .placeholder-icon svg { opacity: 0.4; }
+
+    .about-accent-bar {
+      width: 48px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--terracotta), var(--mustard));
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      color: var(--warm-gray);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--terracotta), var(--mustard));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--warm-gray);
+      letter-spacing: 0.05em;
+      margin-top: 0.3rem;
+    }
+
+    /* ── Projects ── */
+    #projects { background: var(--cream-alt); }
+
+    .projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3.5rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(26,22,20,0.12); }
+
+    .project-card:hover .card-overlay { opacity: 1; }
+
+    .project-card.featured {
+      grid-column: span 2;
+    }
+
+    .card-thumb {
+      aspect-ratio: 16/10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-thumb-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Card thumbnails — from photo palette */
+    .card-thumb-1 { background: linear-gradient(135deg, #5a1425 0%, #c83a58 100%); }  /* berry */
+    .card-thumb-2 { background: linear-gradient(135deg, #3d3010 0%, #786428 100%); }  /* olive gold */
+    .card-thumb-3 { background: linear-gradient(135deg, #7a3820 0%, #e0b090 100%); }  /* warm peach */
+    .card-thumb-4 { background: linear-gradient(135deg, #1a1614 0%, #7a6050 100%); }  /* charcoal to brown */
+
+    .thumb-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.5;
+    }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(200,58,88,0.90);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .card-overlay span {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+
+    .card-body { padding: 1.5rem; }
+
+    .card-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+      color: var(--charcoal);
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--warm-gray);
+      line-height: 1.6;
+    }
+
+    /* ── Skills ── */
+    #skills { background: var(--cream); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(26,22,20,0.1);
+    }
+
+    .skill-item {
+      background: var(--cream);
+      padding: 2.5rem;
+      transition: background 0.2s;
+    }
+
+    .skill-item:hover { background: var(--cream-alt); }
+
+    .skill-number {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+    }
+
+    .skill-name {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+      color: var(--charcoal);
+    }
+
+    .skill-desc {
+      font-size: 0.85rem;
+      color: var(--warm-gray);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-bar-bg {
+      height: 3px;
+      background: rgba(26,22,20,0.12);
+      width: 100%;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--terracotta), var(--mustard));
+      transition: width 1s ease;
+    }
+
+    .skill-tools {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tool-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border: 1px solid rgba(26,22,20,0.2);
+      color: var(--warm-gray);
+    }
+
+    /* ── Contact ── */
+    #contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+      background: var(--cream-alt);
+    }
+
+    .contact-info h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      color: var(--charcoal);
+    }
+
+    .contact-info p {
+      color: var(--warm-gray);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--warm-gray);
+      transition: color 0.2s;
+    }
+
+    .contact-link:hover { color: var(--charcoal); }
+
+    .contact-link .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--terracotta);
+      flex-shrink: 0;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .form-group label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: var(--cream);
+      border: 1px solid rgba(26,22,20,0.18);
+      color: var(--charcoal);
+      padding: 0.85rem 1rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--terracotta); }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(26,22,20,0.3); }
+
+    /* ── Footer ── */
+    footer {
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(26,22,20,0.1);
+      background: var(--cream-alt);
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--warm-gray);
+    }
+
+    .footer-socials { display: flex; gap: 1.5rem; }
+
+    .footer-socials a {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      transition: color 0.2s;
+    }
+
+    .footer-socials a:hover { color: var(--charcoal); }
+
+    /* ── Scroll hint ── */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 1;
+    }
+
+    .scroll-hint span {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      writing-mode: vertical-rl;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--terracotta), transparent);
+      animation: scrollDown 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scrollDown {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ── Resume Modal ── */
+    .resume-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: var(--cream);
+      overflow-y: auto;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(24px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .resume-modal.open {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+
+    .resume-modal-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 5rem 4rem 6rem;
+    }
+
+    .resume-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 3.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid var(--charcoal);
+    }
+
+    .resume-modal-header h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--charcoal);
+    }
+
+    .resume-modal-header h1 span {
+      display: block;
+      color: var(--berry);
+    }
+
+    .resume-modal-header p {
+      font-size: 0.85rem;
+      color: var(--warm-gray);
+      margin-top: 0.5rem;
+    }
+
+    .resume-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-shrink: 0;
+      margin-top: 0.4rem;
+    }
+
+    .resume-close, .resume-download {
+      background: none;
+      border: 2px solid var(--charcoal);
+      color: var(--charcoal);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .resume-close:hover { background: var(--charcoal); color: var(--cream); }
+
+    .resume-download {
+      background: var(--berry);
+      border-color: var(--berry);
+      color: white;
+    }
+
+    .resume-download:hover { background: #a02e46; border-color: #a02e46; }
+
+    @media print {
+      body > *:not(#resumeModal) { display: none !important; }
+      #resumeModal {
+        position: static !important;
+        opacity: 1 !important;
+        transform: none !important;
+        overflow: visible !important;
+      }
+      .resume-actions { display: none !important; }
+      .resume-modal-inner { padding: 2rem !important; }
+      .resume-sidebar { position: static !important; }
+    }
+
+    .resume-body {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .resume-section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--berry);
+      margin-bottom: 1.5rem;
+    }
+
+    .resume-job {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(26,22,20,0.1);
+    }
+
+    .resume-job:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .resume-job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.2rem;
+      flex-wrap: wrap;
+    }
+
+    .resume-job-title {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--charcoal);
+    }
+
+    .resume-job-dates {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--berry);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .resume-job-company {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--warm-brown);
+      margin-bottom: 0.75rem;
+    }
+
+    .resume-job ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .resume-job ul li {
+      font-size: 0.88rem;
+      color: var(--warm-gray);
+      line-height: 1.65;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .resume-job ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--berry);
+      font-size: 0.7rem;
+      top: 0.2rem;
+    }
+
+    .resume-sidebar { position: sticky; top: 2rem; }
+
+    .resume-sidebar-block { margin-bottom: 2.5rem; }
+
+    .resume-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .resume-tool-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.65rem;
+      border: 1px solid rgba(26,22,20,0.2);
+      color: var(--warm-gray);
+    }
+
+    .resume-edu-item { margin-bottom: 1.5rem; }
+
+    .resume-edu-item h4 {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      margin-bottom: 0.2rem;
+    }
+
+    .resume-edu-item p {
+      font-size: 0.8rem;
+      color: var(--warm-gray);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .resume-modal-inner { padding: 4rem 2rem; }
+      .resume-body { grid-template-columns: 1fr; }
+      .resume-sidebar { position: static; }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      nav, section, .divider { padding-left: 2rem; padding-right: 2rem; }
+      #hero { padding-left: 2rem; padding-right: 2rem; }
+      footer { padding: 2rem; }
+      #about { grid-template-columns: 1fr; }
+      #contact { grid-template-columns: 1fr; gap: 3rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-column: span 1; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-sub { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Erica<span>.</span></div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" onclick="openResume(); return false;" style="color:var(--berry); font-weight:700;">Résumé</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-counter">Portfolio</div>
+    <h1 class="hero-title">
+      Erica<br>
+      <span class="line2">Gatts</span>
+    </h1>
+    <div class="hero-sub">
+      <p>Simplifying Healthcare Complexity Through Empathy-Driven Design</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="#projects" class="btn">View Work →</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-image">
+      <img src="erica-photo.jpg" alt="Erica Gatts" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+      <div class="placeholder-icon" style="display:none">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+        <span>Your photo here</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <p class="section-label">About Me</p>
+      <div class="about-accent-bar"></div>
+      <p>I am a human-centered product designer with 14 years of experience leading UX design, research, and design strategy for healthcare platforms and complex enterprise software. I believe that great healthcare design starts with empathy—truly listening to clinicians, patients, and caregivers to understand not just what they do, but what they carry. That understanding is what transforms a functional interface into one that earns trust at critical moments. I drive research-led design that simplifies complexity, reduces cognitive load, and delivers experiences that feel effortless in environments where nothing else does. My mission is to design products that empower people to live their best, healthiest lives.</p>
+      <div class="about-stats">
+        <div>
+          <div class="stat-number">14+</div>
+          <div class="stat-label">Years experience</div>
+        </div>
+        <div>
+          <div class="stat-number">7</div>
+          <div class="stat-label">Healthcare platforms</div>
+        </div>
+        <div>
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Clinician & patient interviews</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="projects-header">
+      <div>
+        <p class="section-label">Selected Work</p>
+        <h2 class="section-title" style="margin-bottom:0">Projects</h2>
+      </div>
+      <a href="#" class="btn btn-outline" style="font-size:0.8rem">All Work →</a>
+    </div>
+
+    <div class="projects-grid">
+      <a href="genomic-testing-portal.html" class="project-card featured" style="cursor:pointer;display:block;text-decoration:none;color:inherit;">
+        <div class="card-thumb" style="aspect-ratio:16/10; padding:0; background:#1a1614; position:relative; overflow:hidden;">
+          <img src="slides/slide-1.png" alt="Genomic Testing Portal preview" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;"/>
+          <div style="position:absolute;inset:0;background:rgba(26,22,20,0.3);display:flex;align-items:center;justify-content:center;">
+            <div style="padding:0.5rem 1.25rem;border-radius:2rem;background:rgba(247,244,232,0.92);font-size:0.78rem;font-weight:700;letter-spacing:0.06em;color:#1A1614;">View Case Study →</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Product Design</div>
+          <div class="card-title">Genomic Testing Portal</div>
+          <div class="card-desc">End-to-end portal design for clinicians ordering and reviewing genomic tests.</div>
+        </div>
+      </a>
+
+  <!-- PROJECT LIGHTBOX -->
+  <div id="projectLightbox" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(26,22,20,0.92);align-items:center;justify-content:center;padding:1.5rem;" onclick="closeProjectLightbox(event)">
+    <div style="position:relative;width:100%;max-width:1100px;aspect-ratio:16/10;background:#000;border-radius:8px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.7);" onclick="event.stopPropagation()">
+      <iframe id="phoenixFrame" src="" style="border:none;width:100%;height:100%;display:block;"></iframe>
+      <button onclick="closeProjectLightbox()" style="position:absolute;top:0.75rem;right:0.75rem;background:rgba(26,22,20,0.7);color:#F7F4E8;border:none;width:2.2rem;height:2.2rem;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">✕</button>
+    </div>
+  </div>
+
+      <a href="oncology-reporting.html" class="project-card" style="display:block;text-decoration:none;color:inherit;cursor:pointer;">
+        <div class="card-thumb card-thumb-2">
+          <svg class="thumb-pattern" viewBox="0 0 300 375" xmlns="http://www.w3.org/2000/svg">
+            <rect x="60" y="40" width="180" height="295" rx="16" fill="none" stroke="rgba(245,240,232,0.35)" stroke-width="1"/>
+            <rect x="90" y="70" width="120" height="80" rx="8" fill="rgba(245,240,232,0.08)"/>
+            <line x1="90" y1="170" x2="210" y2="170" stroke="rgba(245,240,232,0.12)"/>
+            <line x1="90" y1="190" x2="180" y2="190" stroke="rgba(245,240,232,0.08)"/>
+            <circle cx="150" cy="110" r="28" fill="none" stroke="rgba(245,240,232,0.15)" stroke-width="1"/>
+          </svg>
+          <div class="card-overlay"><span>View Case Study →</span></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Product Design</div>
+          <div class="card-title">Oncology Reporting</div>
+          <div class="card-desc">Transforming a static genomic testing PDF into a real-time results portal for oncologists.</div>
+        </div>
+      </a>
+
+      <a href="medicare-differentiation.html" class="project-card" style="display:block;text-decoration:none;color:inherit;cursor:pointer;">
+        <div class="card-thumb card-thumb-3">
+          <svg class="thumb-pattern" viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="260" height="148" rx="4" fill="none" stroke="rgba(245,240,232,0.25)" stroke-width="1"/>
+            <rect x="40" y="40" width="100" height="60" rx="3" fill="rgba(245,240,232,0.08)"/>
+            <rect x="160" y="40" width="100" height="60" rx="3" fill="rgba(245,240,232,0.08)"/>
+            <rect x="40" y="115" width="220" height="30" rx="3" fill="rgba(245,240,232,0.05)"/>
+            <line x1="40" y1="30" x2="120" y2="30" stroke="rgba(245,240,232,0.15)" stroke-width="1"/>
+          </svg>
+          <div class="card-overlay"><span>View Case Study →</span></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Design Strategy</div>
+          <div class="card-title">Medicare Differentiation</div>
+          <div class="card-desc">Research-led innovation that increased pre-Medicare member engagement by 15%.</div>
+        </div>
+      </a>
+
+      <a href="behavioral-health-strategy.html" class="project-card" style="display:block;text-decoration:none;color:inherit;cursor:pointer;">
+        <div class="card-thumb card-thumb-4">
+          <svg class="thumb-pattern" viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg">
+            <text x="150" y="85" text-anchor="middle" font-size="62" font-weight="900" fill="rgba(245,240,232,0.18)" font-family="sans-serif">Aa</text>
+            <line x1="40" y1="120" x2="260" y2="120" stroke="rgba(245,240,232,0.2)" stroke-width="1.5"/>
+            <text x="150" y="150" text-anchor="middle" font-size="11" fill="rgba(245,240,232,0.15)" font-family="sans-serif" letter-spacing="7">TYPEFACE</text>
+          </svg>
+          <div class="card-overlay"><span>View Case Study →</span></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Design Strategy</div>
+          <div class="card-title">Behavioral Health Strategy</div>
+          <div class="card-desc">Design strategy for expanding behavioral health access across a major health system.</div>
+        </div>
+      </a>
+
+      <a href="behavioral-health-phase2.html" class="project-card" style="display:block;text-decoration:none;color:inherit;cursor:pointer;">
+        <div class="card-thumb card-thumb-4">
+          <svg class="thumb-pattern" viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="150" cy="90" r="50" fill="none" stroke="rgba(245,240,232,0.22)" stroke-width="1.5"/>
+            <circle cx="80" cy="70" r="22" fill="none" stroke="rgba(245,240,232,0.18)" stroke-width="1"/>
+            <circle cx="220" cy="70" r="22" fill="none" stroke="rgba(245,240,232,0.18)" stroke-width="1"/>
+            <circle cx="80" cy="120" r="22" fill="none" stroke="rgba(245,240,232,0.18)" stroke-width="1"/>
+            <circle cx="220" cy="120" r="22" fill="none" stroke="rgba(245,240,232,0.18)" stroke-width="1"/>
+            <line x1="100" y1="70" x2="128" y2="80" stroke="rgba(245,240,232,0.12)" stroke-width="1"/>
+            <line x1="200" y1="70" x2="172" y2="80" stroke="rgba(245,240,232,0.12)" stroke-width="1"/>
+            <line x1="100" y1="120" x2="128" y2="110" stroke="rgba(245,240,232,0.12)" stroke-width="1"/>
+            <line x1="200" y1="120" x2="172" y2="110" stroke="rgba(245,240,232,0.12)" stroke-width="1"/>
+          </svg>
+          <div class="card-overlay"><span>View Case Study →</span></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Design Strategy</div>
+          <div class="card-title">BH Innovation: Phase 2</div>
+          <div class="card-desc">From problem space to 5 scored solution concepts — ideation, concept design, and ecosystem roadmap for Highmark's BH platform.</div>
+        </div>
+      </a>
+
+      <a href="behavioral-health-opportunities.html" class="project-card" style="display:block;text-decoration:none;color:inherit;cursor:pointer;">
+        <div class="card-thumb card-thumb-1">
+          <svg class="thumb-pattern" viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="30" width="120" height="60" rx="3" fill="none" stroke="rgba(245,240,232,0.25)" stroke-width="1.2"/>
+            <rect x="160" y="30" width="120" height="60" rx="3" fill="none" stroke="rgba(245,240,232,0.2)" stroke-width="1.2"/>
+            <rect x="20" y="105" width="120" height="60" rx="3" fill="none" stroke="rgba(245,240,232,0.15)" stroke-width="1.2"/>
+            <rect x="160" y="105" width="120" height="60" rx="3" fill="none" stroke="rgba(245,240,232,0.15)" stroke-width="1.2"/>
+            <line x1="140" y1="60" x2="160" y2="60" stroke="rgba(245,240,232,0.15)" stroke-width="1"/>
+            <line x1="150" y1="90" x2="150" y2="105" stroke="rgba(245,240,232,0.12)" stroke-width="1"/>
+          </svg>
+          <div class="card-overlay"><span>View Case Study →</span></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Design Strategy</div>
+          <div class="card-title">Behavioral Health Opportunities</div>
+          <div class="card-desc">Deep-dive opportunity framework mapping 14 innovations across impact and effort for Highmark's BH strategy.</div>
+        </div>
+      </a>
+
+      <a href="radiology-suite.html" class="project-card" style="display:block;text-decoration:none;color:inherit;cursor:pointer;">
+        <div class="card-thumb card-thumb-2">
+          <svg class="thumb-pattern" viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="260" height="148" rx="4" fill="none" stroke="rgba(245,240,232,0.25)" stroke-width="1"/>
+            <circle cx="150" cy="80" r="40" fill="none" stroke="rgba(245,240,232,0.2)" stroke-width="1"/>
+            <line x1="60" y1="140" x2="240" y2="140" stroke="rgba(245,240,232,0.15)" stroke-width="1"/>
+            <line x1="60" y1="155" x2="180" y2="155" stroke="rgba(245,240,232,0.1)" stroke-width="1"/>
+          </svg>
+          <div class="card-overlay"><span>View Case Study →</span></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Product Design</div>
+          <div class="card-title">Radiology Suite</div>
+          <div class="card-desc">Bringing smart protocoling to GE's radiology software across the UPMC hospital footprint.</div>
+        </div>
+      </a>
+      <div class="project-card">
+        <div class="card-thumb card-thumb-3">
+          <svg class="thumb-pattern" viewBox="0 0 300 188" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="150" cy="70" r="28" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5"/>
+            <circle cx="95" cy="130" r="20" fill="none" stroke="rgba(245,240,232,0.2)" stroke-width="1"/>
+            <circle cx="205" cy="130" r="20" fill="none" stroke="rgba(245,240,232,0.2)" stroke-width="1"/>
+            <line x1="150" y1="98" x2="95" y2="110" stroke="rgba(245,240,232,0.2)" stroke-width="1"/>
+            <line x1="150" y1="98" x2="205" y2="110" stroke="rgba(245,240,232,0.2)" stroke-width="1"/>
+            <line x1="40" y1="165" x2="120" y2="165" stroke="rgba(245,240,232,0.1)" stroke-width="1"/>
+            <line x1="140" y1="165" x2="260" y2="165" stroke="rgba(245,240,232,0.07)" stroke-width="1"/>
+          </svg>
+          <div class="card-overlay"><span>View Project →</span></div>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Leadership</div>
+          <div class="card-title">Building an Enterprise UX Team</div>
+          <div class="card-desc">How I built and scaled a high-performing UX team inside a large healthcare organization.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">What I Do</p>
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <div class="skill-number">01</div>
+        <div class="skill-name">User Experience Design</div>
+        <div class="skill-desc">Designing interfaces that are intuitive, accessible, and beautiful — from wireframes to polished prototypes.</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div>
+        <div class="skill-tools">
+          <span class="tool-tag">Figma</span>
+          <span class="tool-tag">Prototyping</span>
+          <span class="tool-tag">User Research</span>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-number">02</div>
+        <div class="skill-name">Design Strategy</div>
+        <div class="skill-desc">Building visual systems from the ground up — logos, typography, color, and brand guidelines that scale.</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div>
+        <div class="skill-tools">
+          <span class="tool-tag">Illustrator</span>
+          <span class="tool-tag">Figma</span>
+          <span class="tool-tag">Brand Strategy</span>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-number">03</div>
+        <div class="skill-name">Design Research</div>
+        <div class="skill-desc">Uncovering user needs through qualitative and quantitative methods — from interviews and usability testing to synthesis and insight generation.</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:88%"></div></div>
+        <div class="skill-tools">
+          <span class="tool-tag">Usability Testing</span>
+          <span class="tool-tag">Interviews</span>
+          <span class="tool-tag">Synthesis</span>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-number">04</div>
+        <div class="skill-name">Art Direction</div>
+        <div class="skill-desc">Guiding visual storytelling across campaigns, editorials, and digital experiences with a clear creative vision.</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:88%"></div></div>
+        <div class="skill-tools">
+          <span class="tool-tag">Photoshop</span>
+          <span class="tool-tag">Lightroom</span>
+          <span class="tool-tag">InDesign</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-info">
+      <p class="section-label">Get in Touch</p>
+      <h2>Let's make something great.</h2>
+      <p>Have a project in mind, or just want to say hello? I'd love to hear from you.</p>
+      <div class="contact-links">
+        <a href="mailto:egatts@gmail.com" class="contact-link">
+          <div class="dot"></div>
+          egatts@gmail.com
+        </a>
+        <a href="#" class="contact-link">
+          <div class="dot"></div>
+          LinkedIn — Erica Gatts
+        </a>
+        <a href="#" class="contact-link">
+          <div class="dot"></div>
+          Dribbble — @ericagatts
+        </a>
+        <a href="#" class="contact-link">
+          <div class="dot"></div>
+          Instagram — @ericagatts
+        </a>
+      </div>
+    </div>
+    <div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" placeholder="Project brief, collaboration, etc." />
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="5" placeholder="Tell me about your project..."></textarea>
+        </div>
+        <button type="submit" class="btn" style="align-self:flex-start">Send Message →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Erica Gatts. All rights reserved.</p>
+    <div class="footer-socials">
+      <a href="#">Dribbble</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+  </footer>
+
+  <!-- RESUME MODAL -->
+  <div class="resume-modal" id="resumeModal">
+    <div class="resume-modal-inner">
+      <div class="resume-modal-header">
+        <div>
+          <h1>Erica <span>Gatts</span></h1>
+          <p>Human-Centered Product Designer &amp; Strategist &nbsp;·&nbsp; egatts@gmail.com</p>
+        </div>
+        <div class="resume-actions">
+          <button class="resume-download" onclick="window.print()">↓ Download PDF</button>
+          <button class="resume-close" onclick="closeResume()">✕ Close</button>
+        </div>
+      </div>
+
+      <div class="resume-body">
+        <!-- LEFT: EXPERIENCE -->
+        <div>
+          <p class="resume-section-label">Experience</p>
+
+          <div class="resume-job">
+            <div class="resume-job-header">
+              <div class="resume-job-title">Principal Designer</div>
+              <div class="resume-job-dates">Dec 2021 — Present</div>
+            </div>
+            <div class="resume-job-company">Foundation Medicine &nbsp;·&nbsp; Boston, MA</div>
+            <ul>
+              <li>Lead a cross-functional design team creating patient- and clinician-facing experiences that translate comprehensive genomic profiling into actionable clinical insights.</li>
+              <li>Set UX strategy and product design for diagnostic reports, clinician portals, and clinical decision support—improving clarity of clinical interpretation and usability across care teams.</li>
+              <li>Implement research-driven design processes and metrics to evaluate comprehension, adoption, and satisfaction, enabling data-informed product decisions.</li>
+              <li>Improved oncologist comprehension of precision oncology treatment options by 25% in a study on clinical decision making driven by Foundation Medicine's online results reporting.</li>
+            </ul>
+          </div>
+
+          <div class="resume-job">
+            <div class="resume-job-header">
+              <div class="resume-job-title">Lead Design Strategist</div>
+              <div class="resume-job-dates">Jan 2019 — Nov 2021</div>
+            </div>
+            <div class="resume-job-company">Highmark Health &nbsp;·&nbsp; Pittsburgh, PA</div>
+            <ul>
+              <li>Led research and design for enterprise initiatives focused on improving patient and clinical experiences, with emphasis on behavioral health and senior benefits navigation.</li>
+              <li>Researched the factors behind decreasing patient engagement with mental health services, leading to a clinically-tiered strategy for services and outreach implemented across Highmark's footprint.</li>
+              <li>Drove the discovery and conceptualization of a groundbreaking product to simplify Medicare enrollment for seniors, increasing customer conversion rates by 15%.</li>
+            </ul>
+          </div>
+
+          <div class="resume-job">
+            <div class="resume-job-header">
+              <div class="resume-job-title">Senior Experience Designer</div>
+              <div class="resume-job-dates">Feb 2017 — Jan 2019</div>
+            </div>
+            <div class="resume-job-company">PNC Bank &nbsp;·&nbsp; Pittsburgh, PA</div>
+            <ul>
+              <li>Design, research, and strategy for PNC's Innovation Team. Conducted in-depth user research and designed solutions for microbusiness owners, personal lending, and customer relationship building.</li>
+              <li>Led research that culminated in the development and rollout of 2 new banking roles to support microbusiness and home equity lending customers.</li>
+              <li>Increased PNC's Corporate and Institutional Banking's customer outreach from 12% to 32% with an online banker-customer communication tool.</li>
+            </ul>
+          </div>
+
+          <div class="resume-job">
+            <div class="resume-job-header">
+              <div class="resume-job-title">Lead Designer</div>
+              <div class="resume-job-dates">Aug 2014 — Sep 2016</div>
+            </div>
+            <div class="resume-job-company">UPMC Enterprises + GE Healthcare &nbsp;·&nbsp; Pittsburgh, PA</div>
+            <ul>
+              <li>Managed a team of designers to successfully launch GE's radiology software suite across the UPMC hospital footprint.</li>
+              <li>Led design and research for multiple softwares allowing radiologists to view and annotate radiologic images, interpret results, and see incoming exams in context of supporting EMR information.</li>
+              <li>Improved radiology turnaround times by 11% across UPMC's footprint through design-led innovation.</li>
+            </ul>
+          </div>
+
+          <div class="resume-job">
+            <div class="resume-job-header">
+              <div class="resume-job-title">Senior Experience Designer</div>
+              <div class="resume-job-dates">Jul 2013 — Aug 2014</div>
+            </div>
+            <div class="resume-job-company">athenahealth &nbsp;·&nbsp; Watertown, MA</div>
+            <ul>
+              <li>Designer for athenahealth's "Best in KLAS" award-winning patient portal.</li>
+              <li>Led design and research efforts for population health and preventive care initiatives, resulting in increased patient adherence to treatment plans.</li>
+            </ul>
+          </div>
+
+          <div class="resume-job">
+            <div class="resume-job-header">
+              <div class="resume-job-title">Senior Experience Designer</div>
+              <div class="resume-job-dates">May 2011 — Jul 2013</div>
+            </div>
+            <div class="resume-job-company">Autodesk &nbsp;·&nbsp; Waltham, MA</div>
+            <ul>
+              <li>Designed user-centered tools and services for Autodesk's building information modeling software, Revit.</li>
+              <li>Led design of multiple features to improve Revit's user experience for architectural and engineering professionals.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- RIGHT: SIDEBAR -->
+        <div class="resume-sidebar">
+          <div class="resume-sidebar-block">
+            <p class="resume-section-label">Education</p>
+            <div class="resume-edu-item">
+              <h4>Master of Design</h4>
+              <p>Communication Planning &amp; Information Design<br>Carnegie Mellon University, 2012</p>
+            </div>
+            <div class="resume-edu-item">
+              <h4>Bachelor of Architecture</h4>
+              <p>Woodbury University, 2004</p>
+            </div>
+          </div>
+
+          <div class="resume-sidebar-block">
+            <p class="resume-section-label">Tools</p>
+            <div class="resume-tools">
+              <span class="resume-tool-tag">Figma</span>
+              <span class="resume-tool-tag">Sketch</span>
+              <span class="resume-tool-tag">Power BI</span>
+              <span class="resume-tool-tag">Adobe CC</span>
+              <span class="resume-tool-tag">Miro</span>
+              <span class="resume-tool-tag">CoPilot</span>
+              <span class="resume-tool-tag">Claude</span>
+              <span class="resume-tool-tag">MS Office</span>
+              <span class="resume-tool-tag">Mural</span>
+              <span class="resume-tool-tag">UserTesting</span>
+              <span class="resume-tool-tag">Qualtrics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'Sent ✓';
+      btn.style.background = '#786428';
+      setTimeout(() => {
+        btn.textContent = 'Send Message →';
+        btn.style.background = '';
+        e.target.reset();
+      }, 3000);
+    }
+
+    // Animate skill bars on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+            bar.style.width = bar.style.width; // trigger reflow
+          });
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('#skills').forEach(el => observer.observe(el));
+
+    function openProjectLightbox() {
+      const lb = document.getElementById('projectLightbox');
+      document.getElementById('phoenixFrame').src = 'Project Phoenix/index.html';
+      lb.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeProjectLightbox(e) {
+      if (e && e.target !== document.getElementById('projectLightbox')) return;
+      document.getElementById('projectLightbox').style.display = 'none';
+      document.getElementById('phoenixFrame').src = '';
+      document.body.style.overflow = '';
+    }
+
+    function nextSlide(id) {
+      const ss = document.getElementById(id);
+      const slides = ss.querySelectorAll('.slide');
+      let current = [...slides].findIndex(s => s.style.opacity === '1' || s.classList.contains('active'));
+      if (current < 0) current = 0;
+      slides[current].style.opacity = '0';
+      slides[current].classList.remove('active');
+      const next = (current + 1) % slides.length;
+      slides[next].style.opacity = '1';
+      slides[next].classList.add('active');
+      const counter = document.getElementById(id + '-counter');
+      if (counter) counter.textContent = (next + 1) + ' / ' + slides.length;
+    }
+    function prevSlide(id) {
+      const ss = document.getElementById(id);
+      const slides = ss.querySelectorAll('.slide');
+      let current = [...slides].findIndex(s => s.style.opacity === '1' || s.classList.contains('active'));
+      if (current < 0) current = 0;
+      slides[current].style.opacity = '0';
+      slides[current].classList.remove('active');
+      const prev = (current - 1 + slides.length) % slides.length;
+      slides[prev].style.opacity = '1';
+      slides[prev].classList.add('active');
+      const counter = document.getElementById(id + '-counter');
+      if (counter) counter.textContent = (prev + 1) + ' / ' + slides.length;
+    }
+
+    function openResume() {
+      const modal = document.getElementById('resumeModal');
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      modal.scrollTop = 0;
+    }
+
+    function closeResume() {
+      document.getElementById('resumeModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeResume();
+    });
+  </script>
+
+</body>
+</html>

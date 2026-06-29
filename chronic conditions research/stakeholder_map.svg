@@ -1,0 +1,139 @@
+<svg viewBox="0 0 1100 1020" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Inter','Helvetica Neue',sans-serif;">
+<rect width="1100" height="1020" fill="#f4fbf7" rx="10"/>
+<circle cx="550" cy="468" r="332" fill="rgba(31,160,94,0.04)"/>
+<circle cx="550" cy="468" r="225" fill="rgba(31,160,94,0.06)"/>
+<circle cx="550" cy="468" r="130" fill="rgba(212,176,80,0.07)"/>
+<circle cx="550" cy="468" r="130" fill="none" stroke="#003d3d" stroke-width="0.7" stroke-dasharray="4 6" opacity="0.45"/>
+<circle cx="550" cy="468" r="225" fill="none" stroke="#003d3d" stroke-width="0.7" stroke-dasharray="4 6" opacity="0.45"/>
+<circle cx="550" cy="468" r="332" fill="none" stroke="#003d3d" stroke-width="0.7" stroke-dasharray="4 6" opacity="0.45"/>
+<text x="550" y="386" font-size="9" fill="#003d3d" text-anchor="middle" opacity="0.5" font-weight="600" letter-spacing="0.1em">MOST FREQUENT INTERACTION</text>
+<text x="550" y="261" font-size="9" fill="#003d3d" text-anchor="middle" opacity="0.5" font-weight="600" letter-spacing="0.1em">CORE CARE</text>
+<text x="550" y="154" font-size="9" fill="#003d3d" text-anchor="middle" opacity="0.5" font-weight="600" letter-spacing="0.1em">HIGH ACUITY CARE</text>
+<line x1="550" y1="468" x2="489.0" y2="353.2" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="607.0" y2="351.2" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="673.6" y2="427.8" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="670.5" y2="516.7" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="514.2" y2="593.0" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="441.0" y2="538.8" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="669.2" y2="658.8" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="585.2" y2="690.2" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="499.4" y2="687.2" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="424.2" y2="654.5" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="329.9" y2="514.8" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="327.2" y2="436.7" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="351.3" y2="362.4" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="411.5" y2="290.7" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="607.7" y2="141.0" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="716.0" y2="180.5" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="804.3" y2="254.6" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="857.8" y2="343.6" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="881.8" y2="456.4" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="865.8" y2="570.6" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="818.6" y2="663.1" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="749.8" y2="733.1" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="679.7" y2="773.6" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="596.2" y2="796.8" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="469.7" y2="790.1" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="374.1" y2="749.6" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="295.7" y2="681.4" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="238.0" y2="581.6" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="218.0" y2="468.0" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="238.0" y2="354.4" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<line x1="550" y1="468" x2="307.2" y2="241.6" stroke="#003d3d" stroke-width="0.8" opacity="0.65"/>
+<circle cx="489.0" cy="353.2" r="13" fill="#d4b050" />
+<circle cx="607.0" cy="351.2" r="13" fill="#d4b050" />
+<circle cx="673.6" cy="427.8" r="13" fill="#5ba4cf" />
+<circle cx="670.5" cy="516.7" r="13" fill="#d4b050" />
+<circle cx="514.2" cy="593.0" r="13" fill="#d4b050" />
+<circle cx="441.0" cy="538.8" r="13" fill="#b0c4b8" />
+<circle cx="669.2" cy="658.8" r="13" fill="#1fa05e" />
+<circle cx="585.2" cy="690.2" r="13" fill="#1fa05e" />
+<circle cx="499.4" cy="687.2" r="13" fill="#1fa05e" />
+<circle cx="424.2" cy="654.5" r="13" fill="#1fa05e" />
+<circle cx="329.9" cy="514.8" r="13" fill="#b0c4b8" />
+<circle cx="327.2" cy="436.7" r="13" fill="#1fa05e" />
+<circle cx="351.3" cy="362.4" r="13" fill="#1fa05e" />
+<circle cx="411.5" cy="290.7" r="13" fill="#1fa05e" />
+<circle cx="607.7" cy="141.0" r="13" fill="#7dd8a0" />
+<circle cx="716.0" cy="180.5" r="13" fill="#7dd8a0" />
+<circle cx="804.3" cy="254.6" r="13" fill="#7dd8a0" />
+<circle cx="857.8" cy="343.6" r="13" fill="#7dd8a0" />
+<circle cx="881.8" cy="456.4" r="13" fill="#7dd8a0" />
+<circle cx="865.8" cy="570.6" r="13" fill="#7dd8a0" />
+<circle cx="818.6" cy="663.1" r="13" fill="#7dd8a0" />
+<circle cx="749.8" cy="733.1" r="13" fill="#7dd8a0" />
+<circle cx="679.7" cy="773.6" r="13" fill="#1fa05e" />
+<circle cx="596.2" cy="796.8" r="13" fill="#1fa05e" />
+<circle cx="469.7" cy="790.1" r="13" fill="#b0c4b8" />
+<circle cx="374.1" cy="749.6" r="13" fill="#b0c4b8" />
+<circle cx="295.7" cy="681.4" r="13" fill="#1fa05e" />
+<circle cx="238.0" cy="581.6" r="13" fill="#1fa05e" />
+<circle cx="218.0" cy="468.0" r="13" fill="#1fa05e" />
+<circle cx="238.0" cy="354.4" r="13" fill="#1fa05e" />
+<circle cx="307.2" cy="241.6" r="13" fill="#1fa05e" />
+<text x="508.0" y="346.7" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">family and</text>
+<text x="508.0" y="359.7" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">friends</text>
+<text x="626.0" y="344.7" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">community</text>
+<text x="626.0" y="357.7" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">resources</text>
+<text x="692.6" y="421.3" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">customer</text>
+<text x="692.6" y="434.3" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">service</text>
+<text x="651.5" y="516.7" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">employer</text>
+<text x="495.2" y="593.0" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">peers</text>
+<text x="422.0" y="532.3" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">digital tools</text>
+<text x="422.0" y="545.3" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">/ vendor</text>
+<text x="650.2" y="652.3" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">AHN case</text>
+<text x="650.2" y="665.3" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">management</text>
+<text x="566.2" y="683.7" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">in-Patient</text>
+<text x="566.2" y="696.7" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">Rehab</text>
+<text x="480.4" y="680.7" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">other</text>
+<text x="480.4" y="693.7" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">specialist</text>
+<text x="405.2" y="654.5" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">PCP</text>
+<text x="310.9" y="514.8" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">DME</text>
+<text x="346.2" y="436.7" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">Pharmacist</text>
+<text x="370.3" y="355.9" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">Physical / Occ</text>
+<text x="370.3" y="368.9" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">Therapy</text>
+<text x="430.5" y="290.7" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">Cardiologist</text>
+<text x="626.7" y="134.5" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">Healthcare</text>
+<text x="626.7" y="147.5" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">at Home</text>
+<text x="735.0" y="174.0" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">Home and Community</text>
+<text x="735.0" y="187.0" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">Services</text>
+<text x="823.3" y="248.1" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">Exercise</text>
+<text x="823.3" y="261.1" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">Physiologist</text>
+<text x="876.8" y="343.6" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">Dietician</text>
+<text x="862.8" y="449.9" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">health and wellness</text>
+<text x="862.8" y="462.9" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">coaching</text>
+<text x="846.8" y="564.1" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">assisted</text>
+<text x="846.8" y="577.1" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">living</text>
+<text x="799.6" y="656.6" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">HHK case</text>
+<text x="799.6" y="669.6" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">management</text>
+<text x="730.8" y="726.6" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">Hospice and</text>
+<text x="730.8" y="739.6" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">Palliative</text>
+<text x="660.7" y="767.1" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">Chronic Care</text>
+<text x="660.7" y="780.1" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">Specialty Centers</text>
+<text x="577.2" y="796.8" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">Pulmonologist</text>
+<text x="450.7" y="790.1" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">LTACH</text>
+<text x="355.1" y="743.1" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">SNF /</text>
+<text x="355.1" y="756.1" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">Partnered</text>
+<text x="276.7" y="674.9" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">Transitional</text>
+<text x="276.7" y="687.9" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">Care Mgmt</text>
+<text x="219.0" y="581.6" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">Urgent Care</text>
+<text x="199.0" y="468.0" font-size="11" fill="#003d3d" text-anchor="end" dominant-baseline="middle">Emergency</text>
+<text x="257.0" y="354.4" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">Hospital</text>
+<text x="326.2" y="241.6" font-size="11" fill="#003d3d" text-anchor="start" dominant-baseline="middle">Cardiac Rehab</text>
+<circle cx="550" cy="468" r="42" fill="#d4b050" stroke="#003d3d" stroke-width="1.2"/>
+<text x="550" y="461" font-size="13" font-weight="700" fill="#003d3d" text-anchor="middle" dominant-baseline="middle">CHF</text>
+<text x="550" y="477" font-size="13" font-weight="700" fill="#003d3d" text-anchor="middle" dominant-baseline="middle">patient</text>
+<line x1="30" y1="918" x2="1070" y2="918" stroke="#003d3d" stroke-width="0.5" opacity="0.15"/>
+<circle cx="48" cy="950" r="8" fill="#d4b050"/>
+<text x="62" y="950" font-size="11" fill="#003d3d" dominant-baseline="middle">patients, members, community</text>
+<circle cx="388" cy="950" r="8" fill="#1fa05e"/>
+<text x="402" y="950" font-size="11" fill="#003d3d" dominant-baseline="middle">Allegheny Health Network</text>
+<circle cx="728" cy="950" r="8" fill="#7dd8a0"/>
+<text x="742" y="950" font-size="11" fill="#003d3d" dominant-baseline="middle">Highmark Health + Subsidiaries</text>
+<circle cx="48" cy="976" r="8" fill="#5ba4cf"/>
+<text x="62" y="976" font-size="11" fill="#003d3d" dominant-baseline="middle">Highmark Inc.</text>
+<circle cx="388" cy="976" r="8" fill="#b0c4b8"/>
+<text x="402" y="976" font-size="11" fill="#003d3d" dominant-baseline="middle">external resources</text>
+<circle cx="728" cy="976" r="8" fill="none" stroke="#003d3d" stroke-width="1.2"/>
+<text x="742" y="976" font-size="11" fill="#003d3d" dominant-baseline="middle">sites of care (used as necessary)</text>
+</svg>

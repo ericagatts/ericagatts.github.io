@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Genomic Testing Portal — Erica Gatts</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F7F4E8;
+      --cream-alt: #EEE8D8;
+      --charcoal: #1A1614;
+      --berry: #C83A58;
+      --olive-gold: #786428;
+      --warm-peach: #E0B090;
+      --warm-brown: #7A6050;
+      --font-display: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: var(--font-display);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 4rem;
+      background: rgba(247,244,232,0.93);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(26,22,20,0.08);
+    }
+
+    .nav-logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span { color: var(--berry); }
+
+    nav ul { list-style: none; display: flex; gap: 2.5rem; }
+    nav ul li a {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      opacity: 0.65;
+      transition: opacity 0.2s;
+    }
+    nav ul li a:hover { opacity: 1; }
+
+    /* ── Hero ── */
+    .case-hero {
+      padding: 10rem 4rem 5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm-brown);
+      margin-bottom: 2.5rem;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 1; }
+
+    .case-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--berry);
+      background: rgba(200,58,88,0.1);
+      padding: 0.3rem 0.75rem;
+      border-radius: 2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .case-title {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .case-subtitle {
+      font-size: 1.15rem;
+      color: var(--warm-brown);
+      max-width: 680px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .case-meta {
+      display: flex;
+      gap: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(26,22,20,0.1);
+    }
+
+    .meta-item label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm-brown);
+      margin-bottom: 0.3rem;
+    }
+
+    .meta-item span {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    /* ── Cover image ── */
+    .cover-image {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto 5rem;
+      padding: 0 4rem;
+    }
+
+    .cover-image img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+      box-shadow: 0 20px 60px rgba(26,22,20,0.15);
+    }
+
+    /* ── Sections ── */
+    .case-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 4rem 5rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--berry);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-heading {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .case-body {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--charcoal);
+    }
+
+    .case-body p { margin-bottom: 1.25rem; }
+    .case-body p:last-child { margin-bottom: 0; }
+
+    /* ── Slide image ── */
+    .slide-image {
+      width: 100%;
+      border-radius: 6px;
+      display: block;
+      margin: 2.5rem 0;
+      box-shadow: 0 8px 32px rgba(26,22,20,0.12);
+    }
+
+    .image-caption {
+      font-size: 0.8rem;
+      color: var(--warm-brown);
+      text-align: center;
+      margin-top: -1.5rem;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    /* ── Two-col image grid ── */
+    .image-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    .image-grid-2 img {
+      width: 100%;
+      border-radius: 6px;
+      display: block;
+      box-shadow: 0 6px 20px rgba(26,22,20,0.1);
+    }
+
+    /* ── Callout / quote box ── */
+    .callout {
+      background: var(--cream-alt);
+      border-left: 3px solid var(--berry);
+      padding: 1.5rem 2rem;
+      border-radius: 0 6px 6px 0;
+      margin: 2.5rem 0;
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--charcoal);
+    }
+
+    /* ── Challenge / opportunity pills ── */
+    .pill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .pill {
+      background: var(--cream-alt);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .pill-icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pill h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .pill p {
+      font-size: 0.82rem;
+      color: var(--warm-brown);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ── Process steps ── */
+    .process-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin: 2rem 0 3rem;
+      border: 1px solid rgba(247,244,232,0.25);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .process-step {
+      padding: 1.5rem;
+      border-right: 1px solid rgba(247,244,232,0.25);
+    }
+    .process-step:last-child { border-right: none; }
+
+    .step-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(247,244,232,0.6);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-name {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-items {
+      font-size: 0.78rem;
+      color: rgba(247,244,232,0.72);
+      line-height: 1.7;
+    }
+
+    /* ── Outcome stats ── */
+    .outcomes-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .outcome-card {
+      background: var(--charcoal);
+      color: var(--cream);
+      border-radius: 8px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .outcome-num {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--warm-peach);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .outcome-label {
+      font-size: 0.82rem;
+      line-height: 1.4;
+      opacity: 0.8;
+    }
+
+    /* ── Full-width dark section ── */
+    .dark-section {
+      background: #E3464B;
+      color: var(--cream);
+      padding: 5rem 4rem;
+      margin: 5rem 0;
+    }
+
+    .dark-section .section-label { color: rgba(247,244,232,0.75); }
+    .dark-section .section-heading { color: var(--cream); }
+    .dark-section .case-body { color: rgba(247,244,232,0.88); }
+
+    .dark-section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ── UI Slideshow ── */
+    .ui-slideshow-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 4rem 5rem;
+    }
+
+    .ui-slideshow {
+      position: relative;
+      background: #1a1614;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 16/10;
+    }
+
+    .ui-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .ui-slide.active { opacity: 1; }
+
+    .slide-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(26,22,20,0.6);
+      color: #F7F4E8;
+      border: none;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .slide-btn:hover { background: rgba(200,58,88,0.85); }
+    .slide-btn.prev { left: 1rem; }
+    .slide-btn.next { right: 1rem; }
+
+    .slide-counter {
+      position: absolute;
+      bottom: 0.75rem;
+      right: 1rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: rgba(247,244,232,0.7);
+      z-index: 2;
+    }
+
+    .slide-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(26,22,20,0.2);
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+    .dot.active { background: var(--berry); }
+
+    .slide-labels {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.6rem;
+      min-height: 1.2rem;
+    }
+
+    .slide-label-text {
+      font-size: 0.78rem;
+      color: var(--warm-brown);
+      font-weight: 500;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(26,22,20,0.1), transparent);
+      margin: 0 auto 5rem;
+      max-width: 900px;
+    }
+
+    /* ── Footer ── */
+    .case-footer {
+      background: var(--charcoal);
+      color: var(--cream);
+      padding: 4rem;
+      text-align: center;
+    }
+
+    .case-footer h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+
+    .case-footer p {
+      opacity: 0.65;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+
+    .btn-berry {
+      background: var(--berry);
+      color: var(--cream);
+    }
+    .btn-berry:hover { background: #a02e46; }
+
+    .btn-outline-light {
+      border: 1.5px solid rgba(247,244,232,0.4);
+      color: var(--cream);
+      margin-left: 1rem;
+    }
+    .btn-outline-light:hover { border-color: var(--cream); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      nav ul { gap: 1.25rem; }
+      .case-hero, .case-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .cover-image, .ui-slideshow-wrap { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .dark-section { padding: 3rem 1.5rem; }
+      .case-meta { flex-wrap: wrap; gap: 1.5rem; }
+      .process-row { grid-template-columns: 1fr 1fr; }
+      .outcomes-row { grid-template-columns: 1fr; }
+      .image-grid-2 { grid-template-columns: 1fr; }
+      .case-footer { padding: 3rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="portfolio.html" class="nav-logo" style="display:flex;align-items:center;gap:0.45rem;text-decoration:none;color:inherit;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>Home</a>
+    <ul>
+      <li><a href="portfolio.html#projects">Work</a></li>
+      <li><a href="portfolio.html#about">About</a></li>
+      <li><a href="portfolio.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="case-hero">
+    <a href="portfolio.html" class="back-link">← Back to Work</a>
+    <div class="case-tag">Product Design · Case Study</div>
+    <h1 class="case-title">Genomic Testing Portal</h1>
+    <p class="case-subtitle">Reinventing the genomic test ordering experience for oncologists — moving from fragmented, paper-heavy workflows to a modern, patient-centric platform built on Salesforce.</p>
+    <div class="case-meta">
+      <div class="meta-item">
+        <label>Company</label>
+        <span>Foundation Medicine</span>
+      </div>
+      <div class="meta-item">
+        <label>Role</label>
+        <span>Lead Product Designer</span>
+      </div>
+      <div class="meta-item">
+        <label>Year</label>
+        <span>2025</span>
+      </div>
+      <div class="meta-item">
+        <label>Platform</label>
+        <span>Salesforce / Web</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIGMA PROTOTYPE -->
+  <div class="cover-image">
+    <div style="aspect-ratio:16/10; border-radius:8px; overflow:hidden; box-shadow:0 20px 60px rgba(26,22,20,0.15); background:#1a1614;">
+      <iframe
+        style="border:none; width:100%; height:100%; display:block;"
+        src="https://embed.figma.com/proto/M9J3032wstYkgXJMVpJnB6/%F0%9F%93%B1-Mobile-Design-Prototype--SLDS-XS---Copy-?node-id=3-16437&p=f&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=3%3A16437&embed-host=share"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <!-- BACKGROUND -->
+  <section class="case-section">
+    <p class="section-label">Background</p>
+    <h2 class="section-heading">Genomic testing at the intersection of oncology and data</h2>
+    <div class="case-body">
+      <p>Foundation Medicine provides physicians a suite of genomic profiling tests and clinical reporting services designed to identify a cancer patient's biomarkers and unique genetic signatures. Genomic testing supports oncologists' clinical decision making — providing them critical information to select treatment pathways, precision oncology therapies, and clinical trials most appropriate for their patients' individual needs.</p>
+    </div>
+    <img src="slides/story-how-it-works-transparent.png" alt="How genomic testing works" class="slide-image" />
+    <p class="image-caption">The end-to-end genomic testing journey, from diagnosis through clinical reporting.</p>
+    <div class="case-body">
+      <p>A patient newly diagnosed with cancer meets with their oncologist, who recommends comprehensive genomic testing. The oncologist orders the appropriate Foundation Medicine tests — either online or via paper form. The specimen is processed, sequenced, and analyzed, and a detailed genomic report is delivered back to the oncologist to inform the next step of their patient's cancer care.</p>
+    </div>
+  </section>
+
+  <div class="divider" style="max-width:1100px;margin:0 auto 5rem;padding:0 4rem;"></div>
+
+  <!-- PROJECT OVERVIEW -->
+  <section class="case-section">
+    <p class="section-label">The Project</p>
+    <h2 class="section-heading">Project Phoenix — reimagining the ordering experience</h2>
+    <div class="case-body">
+      <p>As part of an organization-wide mandate to migrate Foundation Medicine's products, data, and front-end systems to the Salesforce platform, the Product Design team was tasked with redesigning the comprehensive genomic test ordering portal and test results platform from the ground up.</p>
+      <p>The design strategy was focused on elevating Foundation Medicine's genomic testing experience to support a robust, patient-centric experience for oncologists — simplifying complex clinical workflows while delivering measurable improvements in order completion rates and clinician satisfaction.</p>
+    </div>
+  </section>
+
+  <!-- CHALLENGES -->
+  <section class="case-section">
+    <p class="section-label">Challenges</p>
+    <h2 class="section-heading">A system under pressure to evolve</h2>
+    <div class="pill-grid">
+      <div class="pill">
+        <div class="pill-icon">🏗️</div>
+        <h4>Platform Migration</h4>
+        <p>All products moving onto Salesforce; existing UI needed to be rebuilt from scratch.</p>
+      </div>
+      <div class="pill">
+        <div class="pill-icon">🧬</div>
+        <h4>Data Re-architecture</h4>
+        <p>Genomic data being restructured to ensure scalability and long-term delivery of clinical insights.</p>
+      </div>
+      <div class="pill">
+        <div class="pill-icon">🔗</div>
+        <h4>Systems Integration</h4>
+        <p>Backend systems and UI needed to be fully integrated for the first time.</p>
+      </div>
+      <div class="pill">
+        <div class="pill-icon">⚠️</div>
+        <h4>Broken Experience</h4>
+        <p>Current ordering experience was not meeting customer needs; high drop-off and paper fallback rates.</p>
+      </div>
+      <div class="pill">
+        <div class="pill-icon">📈</div>
+        <h4>Competitive Pressure</h4>
+        <p>Competitors offering more tests and better digital experiences — urgency to modernize.</p>
+      </div>
+      <div class="pill">
+        <div class="pill-icon">🤝</div>
+        <h4>Unmet User Needs</h4>
+        <p>Genomic test ordering spans oncology and pathology teams, but the platform offered no support for that collaboration — leading to user frustration and unmet needs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <div class="dark-section">
+    <div class="dark-section-inner">
+      <p class="section-label">Design Approach</p>
+      <h2 class="section-heading">A research-led, iterative design process</h2>
+      <div class="process-row">
+        <div class="process-step">
+          <div class="step-num">01 — Discover</div>
+          <div class="step-name">What are the problems?</div>
+          <div class="step-items">User Research<br>Competitive Analysis<br>Stakeholder Interviews<br>Data Analysis<br>Contextual Inquiry</div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">02 — Define</div>
+          <div class="step-name">Frame the opportunity</div>
+          <div class="step-items">Core Problem Definition<br>Goals & Objectives<br>Ordering Archetypes<br>How Might We…<br>End-to-End Journey</div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">03 — Develop</div>
+          <div class="step-name">What are the solutions?</div>
+          <div class="step-items">User Flows<br>Prototypes<br>Design Sprints<br>User Testing<br>Iteration</div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">04 — Deliver</div>
+          <div class="step-name">Ship it</div>
+          <div class="step-items">Final Design Mocks<br>Design Handoff<br>Accessibility Review<br>QA<br>Launch Plan</div>
+        </div>
+      </div>
+      <div class="case-body">
+        <p>Forging partnerships across the organization was critical — requirements, scope, and MVP were developed collaboratively with engineering, clinical, and business stakeholders. Prioritization was continuous and deliberate, knowing which pieces could be compromised versus negotiated at every stage.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- UI SCREENS -->
+  <div class="ui-slideshow-wrap">
+    <p class="section-label" style="text-align:center;margin-bottom:0.5rem;">Final Designs</p>
+    <h2 class="section-heading" style="text-align:center;margin-bottom:2rem;">The redesigned portal</h2>
+    <div class="ui-slideshow" id="cs-slideshow">
+      <img class="ui-slide active" src="slides/slide-1.png" alt="Dashboard" />
+      <img class="ui-slide" src="slides/slide-2.png" alt="Orders with Filters" />
+      <img class="ui-slide" src="slides/slide-3.png" alt="Patient Deep Dive" />
+      <img class="ui-slide" src="slides/slide-4.png" alt="Patient Detail" />
+      <img class="ui-slide" src="slides/slide-5.png" alt="Order Summary" />
+      <img class="ui-slide" src="slides/slide-6.png" alt="Start an Order" />
+      <img class="ui-slide" src="slides/slide-7.png" alt="Order Confirmation" />
+      <img class="ui-slide" src="slides/slide-8.png" alt="Diagnosis — Optional Fields" />
+      <button class="slide-btn prev" onclick="csSlide(-1)">‹</button>
+      <button class="slide-btn next" onclick="csSlide(1)">›</button>
+      <div class="slide-counter" id="cs-counter">1 / 8</div>
+    </div>
+    <div class="slide-dots" id="cs-dots">
+      <button class="dot active" onclick="csGoTo(0)"></button>
+      <button class="dot" onclick="csGoTo(1)"></button>
+      <button class="dot" onclick="csGoTo(2)"></button>
+      <button class="dot" onclick="csGoTo(3)"></button>
+      <button class="dot" onclick="csGoTo(4)"></button>
+      <button class="dot" onclick="csGoTo(5)"></button>
+      <button class="dot" onclick="csGoTo(6)"></button>
+      <button class="dot" onclick="csGoTo(7)"></button>
+    </div>
+    <div class="slide-labels">
+      <span class="slide-label-text" id="cs-label">Dashboard</span>
+    </div>
+  </div>
+
+  <!-- CALLOUT -->
+  <section class="case-section">
+    <div class="callout">
+      "The design strategy was focused on elevating Foundation Medicine's genomic testing experience to support a robust, patient-centric experience for oncologists — simplifying complexity to deliver meaningful experiences for the people who need them most."
+    </div>
+  </section>
+
+  <!-- LESSONS LEARNED -->
+  <section class="case-section">
+    <p class="section-label">Reflections</p>
+    <h2 class="section-heading">Lessons learned</h2>
+    <img src="slides/story-lessons-learned-1.png" alt="Lessons learned" class="slide-image" />
+    <div class="case-body">
+      <p>Forging partnerships across the organization proved to be the single most critical factor for success. Complex enterprise design doesn't succeed in isolation — it requires deep collaboration across clinical, engineering, and business teams from day one.</p>
+      <p>Collaborative development of requirements, scope, and MVP ensured alignment and prevented costly rework downstream. Knowing which pieces could be compromised versus negotiated — and communicating that clearly — kept the team moving. Above all: prioritize, reprioritize, and prioritize again.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="case-footer">
+    <h3>Want to talk through this work?</h3>
+    <p>I'm happy to walk through the research, process, and decisions in more detail.</p>
+    <a href="mailto:egatts@gmail.com" class="btn btn-berry">Get in Touch</a>
+    <a href="portfolio.html" class="btn btn-outline-light">← Back to Portfolio</a>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('#cs-slideshow .ui-slide');
+    const dots = document.querySelectorAll('#cs-dots .dot');
+    const labels = ['Dashboard', 'Orders with Filters', 'Patient Deep Dive', 'Patient Detail', 'Order Summary', 'Start an Order', 'Order Confirmation', 'Diagnosis'];
+    let current = 0;
+
+    function csGoTo(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      document.getElementById('cs-counter').textContent = (current + 1) + ' / ' + slides.length;
+      document.getElementById('cs-label').textContent = labels[current];
+    }
+
+    function csSlide(dir) { csGoTo(current + dir); }
+  </script>
+
+</body>
+</html>

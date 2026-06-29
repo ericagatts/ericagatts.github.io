@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radiology Suite — Erica Gatts</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F4E8; --cream-alt: #EEE8D8; --charcoal: #1A1614;
+      --berry: #C83A58; --olive-gold: #786428; --warm-peach: #E0B090;
+      --warm-brown: #7A6050; --font-display: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--charcoal); font-family: var(--font-display); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: rgba(247,244,232,0.93); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,22,20,0.08); }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--berry); }
+    nav ul { list-style: none; display: flex; gap: 2.5rem; }
+    nav ul li a { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.65; transition: opacity 0.2s; }
+    nav ul li a:hover { opacity: 1; }
+    .case-hero { padding: 10rem 4rem 5rem; max-width: 900px; margin: 0 auto; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-brown); margin-bottom: 2.5rem; opacity: 0.7; transition: opacity 0.2s; }
+    .back-link:hover { opacity: 1; }
+    .case-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--berry); background: rgba(200,58,88,0.1); padding: 0.3rem 0.75rem; border-radius: 2rem; margin-bottom: 1.25rem; }
+    .case-title { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; }
+    .case-subtitle { font-size: 1.15rem; color: var(--warm-brown); max-width: 680px; margin-bottom: 2.5rem; line-height: 1.7; }
+    .case-meta { display: flex; gap: 3rem; padding-top: 2rem; border-top: 1px solid rgba(26,22,20,0.1); flex-wrap: wrap; }
+    .meta-item label { display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm-brown); margin-bottom: 0.3rem; }
+    .meta-item span { font-size: 0.95rem; font-weight: 600; }
+    .case-section { max-width: 900px; margin: 0 auto; padding: 0 4rem 5rem; }
+    .section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--berry); margin-bottom: 0.75rem; }
+    .section-heading { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.5rem; }
+    .case-body { font-size: 1rem; line-height: 1.8; }
+    .case-body p { margin-bottom: 1.25rem; }
+    .case-body p:last-child { margin-bottom: 0; }
+    .callout { background: var(--cream-alt); border-left: 3px solid var(--berry); padding: 1.5rem 2rem; border-radius: 0 6px 6px 0; margin: 2.5rem 0; font-size: 1.05rem; font-style: italic; line-height: 1.7; }
+    .pill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 2rem 0; }
+    .pill { background: var(--cream-alt); border-radius: 8px; padding: 1.25rem 1.5rem; }
+    .pill-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .pill h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .pill p { font-size: 0.82rem; color: var(--warm-brown); line-height: 1.5; margin: 0; }
+    .dark-section { background: #E3464B; color: var(--cream); padding: 5rem 4rem; margin: 5rem 0; }
+    .dark-section .section-label { color: rgba(247,244,232,0.75); }
+    .dark-section .section-heading { color: var(--cream); }
+    .dark-section .case-body { color: rgba(247,244,232,0.88); }
+    .dark-section-inner { max-width: 900px; margin: 0 auto; }
+    .outcomes-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0; }
+    .outcome-card { background: var(--charcoal); color: var(--cream); border-radius: 8px; padding: 2rem 1.5rem; text-align: center; }
+    .outcome-num { font-size: 2.8rem; font-weight: 800; letter-spacing: -0.04em; color: var(--warm-peach); line-height: 1; margin-bottom: 0.5rem; }
+    .outcome-label { font-size: 0.82rem; line-height: 1.4; opacity: 0.8; }
+    .divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, rgba(26,22,20,0.1), transparent); margin: 0 auto 5rem; max-width: 900px; }
+    .case-footer { background: var(--charcoal); color: var(--cream); padding: 4rem; text-align: center; }
+    .case-footer h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.75rem; }
+    .case-footer p { opacity: 0.65; margin-bottom: 2rem; }
+    .btn { display: inline-block; padding: 0.85rem 2rem; border-radius: 4px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.2s; }
+    .btn-berry { background: var(--berry); color: var(--cream); }
+    .btn-berry:hover { background: #a02e46; }
+    .btn-outline-light { border: 1.5px solid rgba(247,244,232,0.4); color: var(--cream); margin-left: 1rem; }
+    .btn-outline-light:hover { border-color: var(--cream); }
+    @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .case-hero, .case-section { padding-left: 1.5rem; padding-right: 1.5rem; } .dark-section { padding: 3rem 1.5rem; } .outcomes-row { grid-template-columns: 1fr; } .case-footer { padding: 3rem 1.5rem; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="portfolio.html" class="nav-logo" style="display:flex;align-items:center;gap:0.45rem;text-decoration:none;color:inherit;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>Home</a>
+    <ul>
+      <li><a href="portfolio.html#projects">Work</a></li>
+      <li><a href="portfolio.html#about">About</a></li>
+      <li><a href="portfolio.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="case-hero">
+    <a href="portfolio.html" class="back-link">← Back to Work</a>
+    <div class="case-tag">Product Design · Enterprise UX</div>
+    <h1 class="case-title">Radiology Suite</h1>
+    <p class="case-subtitle">Bringing smart protocoling to GE's radiology software — replacing a fragmented, paper-based workflow with an integrated, in-app experience that lets radiologists do their most critical work in one place.</p>
+    <div class="case-meta">
+      <div class="meta-item"><label>Company</label><span>GE Healthcare · UPMC Enterprises</span></div>
+      <div class="meta-item"><label>Role</label><span>Lead Product Designer</span></div>
+      <div class="meta-item"><label>Platform</label><span>Workflow Manager (Desktop)</span></div>
+      <div class="meta-item"><label>Scope</label><span>Research · Design · Pilot</span></div>
+    </div>
+  </div>
+
+  <section class="case-section">
+    <p class="section-label">The Work</p>
+    <h2 class="section-heading">Protocoling: a critical workflow that had never been digitized</h2>
+    <div class="case-body">
+      <p>Protocoling is the process by which radiologists review a patient's clinical information and create specific instructions — or protocols — for how an imaging exam should be performed. It is one of the most essential ways radiologists ensure best possible care for patients and prevent unnecessary imaging and radiation exposure.</p>
+      <p>Until 2015, this workflow had never been available in GE's radiologist-facing applications. Radiologists had to log into multiple hospital systems, review a patient's scheduled exams, and then use paper forms to complete the protocoling step. My role was to bring this into GE's Workflow Manager application — end to end, from discovery through pilot.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="case-section">
+    <p class="section-label">Research</p>
+    <h2 class="section-heading">Multi-stakeholder research across complex clinical workflows</h2>
+    <div class="case-body">
+      <p>I conducted in-depth interviews and contextual inquiries with radiologists, technologists, and clinical staff across UPMC and New York Presbyterian Hospital to understand how protocoling actually works — the tools used, the decisions made, the friction points, and the stakes involved. Protocoling directly influences which imaging exam is performed and can shape health outcomes and critical diagnoses.</p>
+    </div>
+    <div class="pill-grid">
+      <div class="pill">
+        <div class="pill-icon">🗂️</div>
+        <h4>Fragmented Context</h4>
+        <p>Radiologists logged into multiple hospital systems to gather the clinical context they needed before protocoling.</p>
+      </div>
+      <div class="pill">
+        <div class="pill-icon">📝</div>
+        <h4>Paper-Based Protocols</h4>
+        <p>The actual protocol was written on paper forms — disconnected from the digital systems tracking the patient's exam.</p>
+      </div>
+      <div class="pill">
+        <div class="pill-icon">⏱️</div>
+        <h4>Time-Critical Decisions</h4>
+        <p>Protocoling delays affect scheduling and patient throughput across the entire radiology department.</p>
+      </div>
+      <div class="pill">
+        <div class="pill-icon">👥</div>
+        <h4>Multi-Stakeholder Workflow</h4>
+        <p>Radiologists, technologists, and ordering physicians each play a role — and need visibility into the same protocol.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="dark-section">
+    <div class="dark-section-inner">
+      <p class="section-label">Design & Testing</p>
+      <h2 class="section-heading">Iterating through two rounds of testing</h2>
+      <div class="case-body">
+        <p>I developed conceptual designs for protocoling in Workflow Manager and tested them with radiologists at UPMC and stakeholders at New York Presbyterian. The designs were well received — particularly the ability to build worklists for exams to be protocoled, access in-app clinical context, and search, edit, and comment on protocols without leaving the diagnostic application.</p>
+        <p>After protocoling was prioritized for development in summer 2016, I ran a second round of testing on refined designs. Radiologists responded positively to the core workflow — but flagged that a set of status icons (recommended by product management for parity with a legacy GE app) was confusing and visually noisy. Those were removed and replaced with a simpler, cleaner approach in the final implementation designs.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="case-section">
+    <p class="section-label">Outcome</p>
+    <h2 class="section-heading">From paper forms to native radiology workflow</h2>
+    <div class="case-body">
+      <p>The final designs — incorporating iterative feedback from two rounds of testing — were handed off to engineering and entered development. The feature was piloted across multiple radiology departments and tested for regulatory compliance, marking the first time a native protocoling workflow had been available in GE's radiologist-facing application suite.</p>
+    </div>
+    <div class="outcomes-row">
+      <div class="outcome-card">
+        <div class="outcome-num">1st</div>
+        <div class="outcome-label">Native protocoling workflow in GE's radiology application</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">2</div>
+        <div class="outcome-label">Rounds of user testing across UPMC and NY Presbyterian</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">0</div>
+        <div class="outcome-label">Paper forms — workflow fully digitized within Workflow Manager</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="case-footer">
+    <h3>Want to talk through this work?</h3>
+    <p>I'm happy to walk through the research, process, and decisions in more detail.</p>
+    <a href="mailto:egatts@gmail.com" class="btn btn-berry">Get in Touch</a>
+    <a href="portfolio.html" class="btn btn-outline-light">← Back to Portfolio</a>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Behavioral Health Opportunities — Erica Gatts</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F4E8; --cream-alt: #EEE8D8; --charcoal: #1A1614;
+      --berry: #C83A58; --olive-gold: #786428; --warm-peach: #E0B090;
+      --warm-brown: #7A6050; --font-display: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--charcoal); font-family: var(--font-display); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: rgba(247,244,232,0.93); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,22,20,0.08); }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--berry); }
+    nav ul { list-style: none; display: flex; gap: 2.5rem; }
+    nav ul li a { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.65; transition: opacity 0.2s; }
+    nav ul li a:hover { opacity: 1; }
+    .case-hero { padding: 10rem 4rem 5rem; max-width: 900px; margin: 0 auto; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-brown); margin-bottom: 2.5rem; opacity: 0.7; transition: opacity 0.2s; }
+    .back-link:hover { opacity: 1; }
+    .case-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--berry); background: rgba(200,58,88,0.1); padding: 0.3rem 0.75rem; border-radius: 2rem; margin-bottom: 1.25rem; }
+    .case-title { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; }
+    .case-subtitle { font-size: 1.15rem; color: var(--warm-brown); max-width: 680px; margin-bottom: 2.5rem; line-height: 1.7; }
+    .case-meta { display: flex; gap: 3rem; padding-top: 2rem; border-top: 1px solid rgba(26,22,20,0.1); flex-wrap: wrap; }
+    .meta-item label { display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm-brown); margin-bottom: 0.3rem; }
+    .meta-item span { font-size: 0.95rem; font-weight: 600; }
+    .case-section { max-width: 900px; margin: 0 auto; padding: 0 4rem 5rem; }
+    .section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--berry); margin-bottom: 0.75rem; }
+    .section-heading { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.5rem; }
+    .case-body { font-size: 1rem; line-height: 1.8; }
+    .case-body p { margin-bottom: 1.25rem; }
+    .case-body p:last-child { margin-bottom: 0; }
+    .callout { background: var(--cream-alt); border-left: 3px solid var(--berry); padding: 1.5rem 2rem; border-radius: 0 6px 6px 0; margin: 2.5rem 0; font-size: 1.05rem; font-style: italic; line-height: 1.7; }
+    .pill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 2rem 0; }
+    .pill { background: var(--cream-alt); border-radius: 8px; padding: 1.25rem 1.5rem; }
+    .pill h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .pill p { font-size: 0.82rem; color: var(--warm-brown); line-height: 1.5; margin: 0; }
+    .dark-section { background: #E3464B; color: var(--cream); padding: 5rem 4rem; margin: 5rem 0; }
+    .dark-section .section-label { color: rgba(247,244,232,0.75); }
+    .dark-section .section-heading { color: var(--cream); }
+    .dark-section .case-body { color: rgba(247,244,232,0.88); }
+    .dark-section-inner { max-width: 900px; margin: 0 auto; }
+    .opp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin: 2rem 0; }
+    .opp-card { background: rgba(247,244,232,0.12); border-radius: 8px; padding: 1.5rem; }
+    .opp-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--cream); margin-bottom: 0.5rem; }
+    .opp-card p { font-size: 0.82rem; color: rgba(247,244,232,0.75); line-height: 1.6; margin: 0; }
+    .outcomes-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0; }
+    .outcome-card { background: var(--charcoal); color: var(--cream); border-radius: 8px; padding: 2rem 1.5rem; text-align: center; }
+    .outcome-num { font-size: 2.8rem; font-weight: 800; letter-spacing: -0.04em; color: var(--warm-peach); line-height: 1; margin-bottom: 0.5rem; }
+    .outcome-label { font-size: 0.82rem; line-height: 1.4; opacity: 0.8; }
+    .divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, rgba(26,22,20,0.1), transparent); margin: 0 auto 5rem; max-width: 900px; }
+    .case-footer { background: var(--charcoal); color: var(--cream); padding: 4rem; text-align: center; }
+    .case-footer h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.75rem; }
+    .case-footer p { opacity: 0.65; margin-bottom: 2rem; }
+    .btn { display: inline-block; padding: 0.85rem 2rem; border-radius: 4px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.2s; }
+    .btn-berry { background: var(--berry); color: var(--cream); }
+    .btn-berry:hover { background: #a02e46; }
+    .btn-outline-light { border: 1.5px solid rgba(247,244,232,0.4); color: var(--cream); margin-left: 1rem; }
+    .btn-outline-light:hover { border-color: var(--cream); }
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .case-hero, .case-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .dark-section { padding: 3rem 1.5rem; }
+      .opp-grid { grid-template-columns: 1fr; }
+      .outcomes-row { grid-template-columns: 1fr; }
+      .case-footer { padding: 3rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="portfolio.html" class="nav-logo">Erica<span>.</span></a>
+    <ul>
+      <li><a href="portfolio.html#projects">Work</a></li>
+      <li><a href="portfolio.html#about">About</a></li>
+      <li><a href="portfolio.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="case-hero">
+    <a href="portfolio.html" class="back-link">← Back to Work</a>
+    <div class="case-tag">Design Strategy · Innovation</div>
+    <h1 class="case-title">Behavioral Health Opportunity Framework</h1>
+    <p class="case-subtitle">A deep-dive into the innovation opportunities that emerged from Highmark Health's behavioral health research — defining where to invest, what to build, and how to lead the industry toward a new model of care.</p>
+    <div class="case-meta">
+      <div class="meta-item"><label>Company</label><span>Highmark Health</span></div>
+      <div class="meta-item"><label>Role</label><span>Healthcare Innovator · Design Strategy Lead</span></div>
+      <div class="meta-item"><label>Date</label><span>April 2020</span></div>
+      <div class="meta-item"><label>Scope</label><span>Opportunity Mapping · Strategic Framework</span></div>
+    </div>
+  </div>
+
+  <!-- MEMBER DATA STATS DIAGRAM -->
+  <div style="max-width:1100px;margin:0 auto 5rem;padding:0 4rem;">
+    <div style="background:var(--charcoal);border-radius:12px;padding:3rem;">
+
+      <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--warm-peach);margin-bottom:0.5rem;text-align:center;">The Scale of the Problem</p>
+      <p style="font-size:1.1rem;font-weight:700;color:var(--cream);text-align:center;margin-bottom:0.5rem;">Behavioral Health &amp; Highmark Members</p>
+      <p style="font-size:0.82rem;color:rgba(247,244,232,0.55);text-align:center;margin-bottom:2.5rem;max-width:560px;margin-left:auto;margin-right:auto;">Costs for our members meet or exceed national averages for prevalence and cost. The data makes the urgency undeniable.</p>
+
+      <!-- National stats row -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem;">
+        <div style="background:rgba(200,58,88,0.15);border:1px solid rgba(200,58,88,0.3);border-radius:8px;padding:1.5rem;text-align:center;">
+          <div style="font-size:2.2rem;font-weight:800;color:var(--warm-peach);letter-spacing:-0.04em;line-height:1;margin-bottom:0.4rem;">56%</div>
+          <div style="font-size:0.75rem;color:rgba(247,244,232,0.65);line-height:1.4;">of adults with BH conditions don't receive adequate treatment</div>
+        </div>
+        <div style="background:rgba(200,58,88,0.15);border:1px solid rgba(200,58,88,0.3);border-radius:8px;padding:1.5rem;text-align:center;">
+          <div style="font-size:2.2rem;font-weight:800;color:var(--warm-peach);letter-spacing:-0.04em;line-height:1;margin-bottom:0.4rem;">2.5×</div>
+          <div style="font-size:0.75rem;color:rgba(247,244,232,0.65);line-height:1.4;">higher costs for those with a mental health disorder under commercial insurance</div>
+        </div>
+        <div style="background:rgba(120,100,40,0.15);border:1px solid rgba(120,100,40,0.3);border-radius:8px;padding:1.5rem;text-align:center;">
+          <div style="font-size:2.2rem;font-weight:800;color:var(--warm-peach);letter-spacing:-0.04em;line-height:1;margin-bottom:0.4rem;">68%</div>
+          <div style="font-size:0.75rem;color:rgba(247,244,232,0.65);line-height:1.4;">of adults with BH disorders also have chronic physical conditions</div>
+        </div>
+        <div style="background:rgba(120,100,40,0.15);border:1px solid rgba(120,100,40,0.3);border-radius:8px;padding:1.5rem;text-align:center;">
+          <div style="font-size:2.2rem;font-weight:800;color:var(--warm-peach);letter-spacing:-0.04em;line-height:1;margin-bottom:0.4rem;">$48B</div>
+          <div style="font-size:0.75rem;color:rgba(247,244,232,0.65);line-height:1.4;">could be saved annually through BH integration across commercial, Medicare &amp; Medicaid</div>
+        </div>
+      </div>
+
+      <!-- Highmark member cost breakdown -->
+      <div style="background:rgba(247,244,232,0.05);border:1px solid rgba(247,244,232,0.1);border-radius:8px;padding:1.75rem;">
+        <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(247,244,232,0.4);margin-bottom:1.25rem;">Highmark Member PMPM Costs — 3.8M members across MA, ACA, Commercial &amp; Medicaid</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
+          <div style="text-align:center;">
+            <div style="height:4px;background:rgba(247,244,232,0.15);border-radius:2px;margin-bottom:0.75rem;position:relative;">
+              <div style="position:absolute;left:0;top:0;height:100%;width:33%;background:rgba(247,244,232,0.3);border-radius:2px;"></div>
+            </div>
+            <div style="font-size:1.6rem;font-weight:800;color:rgba(247,244,232,0.5);letter-spacing:-0.03em;margin-bottom:0.25rem;">$392</div>
+            <div style="font-size:0.72rem;color:rgba(247,244,232,0.4);">No BH / No CC</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="height:4px;background:rgba(247,244,232,0.15);border-radius:2px;margin-bottom:0.75rem;position:relative;">
+              <div style="position:absolute;left:0;top:0;height:100%;width:58%;background:rgba(224,176,144,0.5);border-radius:2px;"></div>
+            </div>
+            <div style="font-size:1.6rem;font-weight:800;color:var(--warm-peach);letter-spacing:-0.03em;margin-bottom:0.25rem;">$697</div>
+            <div style="font-size:0.72rem;color:rgba(247,244,232,0.4);">CC Only</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="height:4px;background:rgba(247,244,232,0.15);border-radius:2px;margin-bottom:0.75rem;position:relative;">
+              <div style="position:absolute;left:0;top:0;height:100%;width:79%;background:rgba(200,58,88,0.6);border-radius:2px;"></div>
+            </div>
+            <div style="font-size:1.6rem;font-weight:800;color:var(--berry);letter-spacing:-0.03em;margin-bottom:0.25rem;">$945</div>
+            <div style="font-size:0.72rem;color:rgba(247,244,232,0.4);">BH Only</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="height:4px;background:rgba(247,244,232,0.15);border-radius:2px;margin-bottom:0.75rem;position:relative;">
+              <div style="position:absolute;left:0;top:0;height:100%;width:100%;background:rgba(200,58,88,0.9);border-radius:2px;"></div>
+            </div>
+            <div style="font-size:1.6rem;font-weight:800;color:rgba(200,58,88,0.9);letter-spacing:-0.03em;margin-bottom:0.25rem;">$1,190</div>
+            <div style="font-size:0.72rem;color:rgba(247,244,232,0.4);">BH + CC (Comorbid)</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section class="case-section">
+    <p class="section-label">The Work</p>
+    <h2 class="section-heading">Turning research into a prioritized investment framework</h2>
+    <div class="case-body">
+      <p>This presentation represents the second phase of Highmark's behavioral health innovation initiative — moving from problem definition to opportunity prioritization. After extensive research with patients, clinicians, providers, and payers, the team identified and developed a set of specific, actionable opportunities Highmark could pursue to address systemic barriers to BH care.</p>
+      <p>Each opportunity was mapped against impact and effort, supported by competitive landscape analysis, framed with "How Might We" questions, and scoped with priority recommendations for next steps and ownership. The work was designed to directly inform Highmark's long-term BH investment strategy.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EVIDENCE OF VALUE DIAGRAM -->
+  <div style="max-width:1100px;margin:0 auto 5rem;padding:0 4rem;">
+    <div style="background:var(--cream-alt);border-radius:12px;padding:3rem;">
+
+      <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--berry);margin-bottom:0.5rem;text-align:center;">The Case for Investment</p>
+      <p style="font-size:1.1rem;font-weight:700;color:var(--charcoal);text-align:center;margin-bottom:0.5rem;">Evidence of Value</p>
+      <p style="font-size:0.82rem;color:var(--warm-brown);text-align:center;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto;">Improved BH integration creates measurable value across three interconnected dimensions.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:2rem;">
+
+        <div style="background:white;border-radius:8px;padding:1.75rem;box-shadow:0 2px 12px rgba(26,22,20,0.07);">
+          <div style="width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(200,58,88,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <div style="font-size:1.1rem;">📈</div>
+          </div>
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--berry);margin-bottom:0.4rem;">Dimension 1</div>
+          <div style="font-size:0.95rem;font-weight:700;color:var(--charcoal);margin-bottom:0.75rem;">Improving Quality &amp; Outcomes</div>
+          <p style="font-size:0.78rem;color:var(--warm-brown);line-height:1.6;margin:0;">A 2012 analysis of nearly 80 research trials found patients with depression and anxiety had significantly better outcomes under a collaborative care model than standard primary care — with benefits in medication use, quality of life, and patient satisfaction.</p>
+        </div>
+
+        <div style="background:white;border-radius:8px;padding:1.75rem;box-shadow:0 2px 12px rgba(26,22,20,0.07);">
+          <div style="width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(120,100,40,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <div style="font-size:1.1rem;">🏥</div>
+          </div>
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--olive-gold);margin-bottom:0.4rem;">Dimension 2</div>
+          <div style="font-size:0.95rem;font-weight:700;color:var(--charcoal);margin-bottom:0.75rem;">Reducing Utilization of Acute Services</div>
+          <p style="font-size:0.78rem;color:var(--warm-brown);line-height:1.6;margin:0;">Robert Young Center implemented PCMHs integrating BH into primary care — reducing ED visits by 46%, psychiatric admissions by 50%, and medical admissions for BH-diagnosed patients by nearly 17%.</p>
+        </div>
+
+        <div style="background:white;border-radius:8px;padding:1.75rem;box-shadow:0 2px 12px rgba(26,22,20,0.07);">
+          <div style="width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(122,96,80,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <div style="font-size:1.1rem;">💰</div>
+          </div>
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-brown);margin-bottom:0.4rem;">Dimension 3</div>
+          <div style="font-size:0.95rem;font-weight:700;color:var(--charcoal);margin-bottom:0.75rem;">Reducing Overall Costs</div>
+          <p style="font-size:0.78rem;color:var(--warm-brown);line-height:1.6;margin:0;">Intermountain Healthcare's 10-year study of integrated team-based BH/PH care demonstrated key cost reductions. If adopted nationally, it's estimated the US would save at least $4 billion a year in healthcare costs.</p>
+        </div>
+
+      </div>
+
+      <!-- COVID urgency callout -->
+      <div style="background:rgba(227,70,75,0.08);border:1px solid rgba(227,70,75,0.2);border-radius:8px;padding:1.5rem 2rem;display:flex;gap:1.25rem;align-items:flex-start;">
+        <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--berry);white-space:nowrap;padding-top:0.15rem;">COVID-19 Impact</div>
+        <div style="width:1px;background:rgba(200,58,88,0.2);align-self:stretch;flex-shrink:0;"></div>
+        <blockquote style="font-size:0.82rem;color:var(--warm-brown);line-height:1.7;font-style:italic;margin:0;">"If 2007 was the year of the iPhone, it may be that in 2020 the world of healthcare, including mental health care, goes virtual." — Giuseppe Raviola, MD, MPH, Harvard Medical School</blockquote>
+      </div>
+
+    </div>
+  </div>
+
+  <section class="case-section" style="padding-top:0;">
+    <p class="section-label">Strategic Context</p>
+    <h2 class="section-heading">The urgency is now</h2>
+    <div class="case-body">
+      <p>Without the right action, Highmark risks missing out on short and long-term outcome improvements, medical cost savings, and differentiating market value. The pandemic dramatically accelerated the urgency — driving greater need for proactive intervention, increased access, and flexible BH resources across the enterprise.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EXPANDED OPPORTUNITY MATRIX -->
+  <div style="max-width:1100px;margin:0 auto 5rem;padding:0 4rem;">
+    <div style="background:var(--cream-alt);border-radius:12px;padding:3rem;">
+
+      <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--berry);margin-bottom:0.5rem;text-align:center;">Prioritization Framework</p>
+      <p style="font-size:1.1rem;font-weight:700;color:var(--charcoal);text-align:center;margin-bottom:0.5rem;">14 Opportunities — Mapped by Impact &amp; Effort</p>
+      <p style="font-size:0.82rem;color:var(--warm-brown);text-align:center;margin-bottom:2.5rem;max-width:560px;margin-left:auto;margin-right:auto;">A comprehensive view of where Highmark can act — from immediate COVID-19 response to longer-term systemic transformation.</p>
+
+      <div style="display:grid;grid-template-columns:2rem 1fr 1fr;grid-template-rows:auto auto 2rem;gap:1rem;">
+
+        <!-- Y axis -->
+        <div style="grid-row:1/3;grid-column:1;display:flex;align-items:center;justify-content:center;">
+          <div style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--warm-brown);">Impact ↑</div>
+        </div>
+
+        <!-- High impact / Near-term -->
+        <div style="grid-row:1;grid-column:2;background:rgba(200,58,88,0.08);border:1px solid rgba(200,58,88,0.2);border-radius:8px;padding:1.5rem;">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--berry);margin-bottom:1rem;">High Impact · Near-Term</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="background:white;border-radius:6px;padding:0.65rem 1rem;box-shadow:0 1px 4px rgba(26,22,20,0.07);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--charcoal);">COVID-19 BH Need Response</div>
+            </div>
+            <div style="background:white;border-radius:6px;padding:0.65rem 1rem;box-shadow:0 1px 4px rgba(26,22,20,0.07);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--charcoal);">Non-Clinical Support Network</div>
+            </div>
+            <div style="background:white;border-radius:6px;padding:0.65rem 1rem;box-shadow:0 1px 4px rgba(26,22,20,0.07);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--charcoal);">Resiliency and Wellness</div>
+            </div>
+            <div style="background:white;border-radius:6px;padding:0.65rem 1rem;box-shadow:0 1px 4px rgba(26,22,20,0.07);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--charcoal);">Refocus Clinicians on Whole-Health</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- High impact / Longer-term -->
+        <div style="grid-row:1;grid-column:3;background:rgba(120,100,40,0.08);border:1px solid rgba(120,100,40,0.2);border-radius:8px;padding:1.5rem;">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--olive-gold);margin-bottom:1rem;">High Impact · Longer-Term</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="background:white;border-radius:6px;padding:0.65rem 1rem;box-shadow:0 1px 4px rgba(26,22,20,0.07);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--charcoal);">Realign Org for Whole-Health</div>
+            </div>
+            <div style="background:white;border-radius:6px;padding:0.65rem 1rem;box-shadow:0 1px 4px rgba(26,22,20,0.07);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--charcoal);">Reimbursement &amp; Care Model</div>
+            </div>
+            <div style="background:white;border-radius:6px;padding:0.65rem 1rem;box-shadow:0 1px 4px rgba(26,22,20,0.07);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--charcoal);">Use Data for Insights &amp; Action</div>
+            </div>
+            <div style="background:white;border-radius:6px;padding:0.65rem 1rem;box-shadow:0 1px 4px rgba(26,22,20,0.07);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--charcoal);">Holistic Outcome Assessment</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Moderate / Near-term -->
+        <div style="grid-row:2;grid-column:2;background:rgba(26,22,20,0.04);border:1px solid rgba(26,22,20,0.1);border-radius:8px;padding:1.5rem;">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-brown);opacity:0.7;margin-bottom:1rem;">Moderate Impact · Near-Term</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="background:white;border-radius:6px;padding:0.65rem 1rem;box-shadow:0 1px 4px rgba(26,22,20,0.05);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--charcoal);">SDOH and Stigma</div>
+            </div>
+            <div style="background:white;border-radius:6px;padding:0.65rem 1rem;box-shadow:0 1px 4px rgba(26,22,20,0.05);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--charcoal);">Open Resources for All</div>
+            </div>
+            <div style="background:white;border-radius:6px;padding:0.65rem 1rem;box-shadow:0 1px 4px rgba(26,22,20,0.05);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--charcoal);">Identify and Prevent</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Moderate / Longer-term -->
+        <div style="grid-row:2;grid-column:3;background:rgba(26,22,20,0.04);border:1px solid rgba(26,22,20,0.1);border-radius:8px;padding:1.5rem;">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-brown);opacity:0.7;margin-bottom:1rem;">Moderate Impact · Longer-Term</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="background:white;border-radius:6px;padding:0.65rem 1rem;box-shadow:0 1px 4px rgba(26,22,20,0.05);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--charcoal);">Identify and Improve</div>
+            </div>
+            <div style="background:white;border-radius:6px;padding:0.65rem 1rem;box-shadow:0 1px 4px rgba(26,22,20,0.05);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--charcoal);">BH Clinical Best-Practice</div>
+            </div>
+            <div style="background:white;border-radius:6px;padding:0.65rem 1rem;box-shadow:0 1px 4px rgba(26,22,20,0.05);">
+              <div style="font-size:0.78rem;font-weight:700;color:var(--charcoal);">BH Clinical Talent Development</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- X axis -->
+        <div style="grid-row:3;grid-column:2/4;display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--warm-brown);">Effort / Time Horizon →</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OPPORTUNITY DEEP DIVES -->
+  <div class="dark-section">
+    <div class="dark-section-inner">
+      <p class="section-label">Opportunity Deep-Dives</p>
+      <h2 class="section-heading">Priority opportunities with "How Might We" framing</h2>
+      <div class="case-body" style="margin-bottom:2rem;">
+        <p>Each priority opportunity was developed with critical problems, competitive landscape analysis, and specific "How Might We" questions to guide solution development and ownership.</p>
+      </div>
+
+      <div class="opp-grid">
+
+        <div class="opp-card">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-peach);margin-bottom:0.4rem;">Opportunity 1</div>
+          <h4>Realign &amp; Champion for Whole-Health</h4>
+          <p>Be industry leaders in integrating behavioral and physical care as an organizational mandate. Help everyone understand the value of BH treatment, break down systemic barriers, and credential a robust in-network access model to meet real demand.</p>
+        </div>
+
+        <div class="opp-card">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-peach);margin-bottom:0.4rem;">Opportunity 2</div>
+          <h4>Use Data for Insights &amp; Action</h4>
+          <p>Intentionally design a data collection and analytics program to understand BH impact, identify at-risk individuals, and articulate the value of BH care. Explore behavioral biomarkers and leverage new data liquidity requirements to build real clinical predictive modeling.</p>
+        </div>
+
+        <div class="opp-card">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-peach);margin-bottom:0.4rem;">Opportunity 3</div>
+          <h4>Use Holistic Outcome Assessments</h4>
+          <p>Replace subjective GAF scores with multi-faceted outcome frameworks (WHODAS 2.0, HoNOS) that account for complex cases and measure progress toward shared clinician and patient goals. You can't reimburse based on outcomes without fairly measuring them first.</p>
+        </div>
+
+        <div class="opp-card">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-peach);margin-bottom:0.4rem;">Opportunity 4</div>
+          <h4>Develop Reimbursement &amp; Care Models</h4>
+          <p>Align incentives through value-based care models that let clinicians deliver best-care and remain financially viable. Expand Integrated Cost Codes into virtual settings, influence negotiation of BH reimbursement rates, and remove structural barriers to in-network care.</p>
+        </div>
+
+        <div class="opp-card">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-peach);margin-bottom:0.4rem;">Opportunity 5</div>
+          <h4>Remove Barriers to Value Realization</h4>
+          <p>Address the trifecta blocking BH investment — Proof, Payment, and Perception. Develop objective data to demonstrate financial ROI, push for consistent adoption of evidence-based practices, and break down prior-auth, med-necessity, and NQTL barriers that suppress access.</p>
+        </div>
+
+        <div class="opp-card">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-peach);margin-bottom:0.4rem;">Opportunity 6</div>
+          <h4>Respond to COVID-19 BH Needs</h4>
+          <p>Address the emerging wave of isolation, grief, trauma, and fear before conditions become high-cost chronic conditions. Leverage virtual care models, psychosocial support infrastructure, and proactive outreach to the un- and under-treated population most at risk.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- HMW FRAMING -->
+  <section class="case-section">
+    <p class="section-label">Design Framing</p>
+    <h2 class="section-heading">How Might We questions that drove concept development</h2>
+    <div class="case-body">
+      <p>Each opportunity area was broken down into specific "How Might We" questions — the bridge between systemic problems and actionable innovation concepts. These questions were used to guide ideation, stakeholder alignment, and solution scoping across the enterprise.</p>
+    </div>
+    <div class="pill-grid">
+      <div class="pill">
+        <h4>Change Clinical Awareness</h4>
+        <p>How might we change clinical education so physicians of all types see BH as central to health and feel empowered to engage patients about it?</p>
+      </div>
+      <div class="pill">
+        <h4>Leverage Data</h4>
+        <p>How might we use data to identify at-risk individuals and populations so we can intervene before BH problems progress?</p>
+      </div>
+      <div class="pill">
+        <h4>Reimagine Measurement</h4>
+        <p>How might we establish a BH outcome-assessment that uses multi-faceted criteria and measures progress toward shared clinician and patient goals?</p>
+      </div>
+      <div class="pill">
+        <h4>Fix Incentives</h4>
+        <p>How might we create a care model so attractive that it entices clinicians currently operating cash-only to accept insurance for BH encounters?</p>
+      </div>
+      <div class="pill">
+        <h4>Reduce Stigma at Scale</h4>
+        <p>How might we leverage schools, employers, and communities as a first line of defense for early identification, support, and stigma reduction?</p>
+      </div>
+      <div class="pill">
+        <h4>Expand Access</h4>
+        <p>How might we scale BH resources to the 60%+ of counties with no psychiatrist and the 94M Americans waiting more than a week for mental health services?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="case-section" style="padding-top:0;">
+    <p class="section-label">Scale of the Problem</p>
+    <h2 class="section-heading">Why the investment case is clear</h2>
+    <div class="case-body">
+      <p>The BH epidemic was already acute and underinvestated before COVID-19. The data make the case plainly: comorbidity drives cost, undertreated conditions become acute and expensive, and the structural barriers that perpetuate this cycle are surmountable with the right organizational will and design.</p>
+    </div>
+    <div class="outcomes-row">
+      <div class="outcome-card">
+        <div class="outcome-num">26%</div>
+        <div class="outcome-label">of Highmark members have both a BH condition and one or more chronic conditions</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">200M</div>
+        <div class="outcome-label">Workdays lost annually due to mental health conditions — $16.8B in employee productivity</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">$4B+</div>
+        <div class="outcome-label">Estimated annual US savings if Intermountain's integrated BH/PH model were adopted nationally</div>
+      </div>
+    </div>
+    <div class="callout">"In our Living Health business model, the curated design of individualized and long-term plans for health is the aim. Without a significant refocus on BH, we will miss an essential component in that whole-health approach."<br><span style="font-size:0.85rem;font-style:normal;color:var(--warm-brown);margin-top:0.5rem;display:block;">— Highmark Health BH Innovation Initiative</span></div>
+  </section>
+
+  <footer class="case-footer">
+    <h3>Want to talk through this work?</h3>
+    <p>I'm happy to walk through the research, opportunities, and strategic recommendations in more detail.</p>
+    <a href="mailto:egatts@gmail.com" class="btn btn-berry">Get in Touch</a>
+    <a href="portfolio.html" class="btn btn-outline-light">← Back to Portfolio</a>
+  </footer>
+
+</body>
+</html>

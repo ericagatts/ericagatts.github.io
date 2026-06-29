@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Congestive Heart Failure Discovery — Erica Gatts</title>
+  <style>
+    :root {
+      --cream: #F7F4E8;
+      --berry: #C83A58;
+      --chf-green:  #1fa05e;   /* medium green — primary accent  */
+      --chf-dark:   #003d3d;   /* deep forest teal — dark bg     */
+      --chf-mint:   #7dd8a0;   /* light mint — highlight on dark */
+      --chf-rose:   #d89090;   /* soft rose — warm accent        */
+      --chf-gold:   #d4b050;   /* warm gold — secondary accent   */
+      --chf-light:  #edf8f2;   /* very light green — light bg    */
+      --page-bg:    #f4fbf7;   /* page background                */
+      --text:       #1a2e2e;   /* deep teal-black — body text    */
+      --font: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      background: var(--page-bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 4rem;
+      background: rgba(244,251,247,0.93);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(31,160,94,0.15);
+    }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--chf-dark); text-decoration: none;
+    }
+    .back-link:hover { color: var(--chf-green); }
+    .nav-right { font-size: 0.78rem; color: rgba(0,61,61,0.45); font-weight: 500; }
+
+    /* ── LAYOUT ── */
+    .section { max-width: 1100px; margin: 0 auto 5rem; padding: 0 4rem; }
+    .section-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--berry); margin-bottom: 0.75rem;
+    }
+    .section-heading {
+      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800;
+      letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.5rem; color: var(--text);
+    }
+    .section-body { font-size: 1rem; color: rgba(26,46,46,0.75); max-width: 740px; line-height: 1.8; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 10rem 4rem 5rem;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .hero-tag {
+      display: inline-flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;
+    }
+    .case-tag {
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--berry);
+      background: rgba(200,58,88,0.08); padding: 0.3rem 0.75rem; border-radius: 2rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900;
+      letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.25rem;
+      color: var(--text);
+    }
+    .hero-sub {
+      font-size: 1.15rem; color: rgba(26,46,46,0.65); max-width: 680px; line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+    .hero-meta {
+      display: flex; gap: 3rem; flex-wrap: wrap;
+      padding-top: 2rem; border-top: 1px solid rgba(31,160,94,0.2);
+    }
+    .meta-item { display: flex; flex-direction: column; gap: 0.25rem; }
+    .meta-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--chf-green); }
+    .meta-value { font-size: 0.92rem; color: var(--text); font-weight: 500; }
+
+    /* ── COVER IMAGE ── */
+    .cover-image { max-width: 1100px; margin: 0 auto 5rem; padding: 0 4rem; }
+    .cover-image img { width: 100%; border-radius: 8px; display: block; box-shadow: 0 20px 60px rgba(0,61,61,0.15); }
+
+    /* ── DIVIDER ── */
+    .divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, rgba(31,160,94,0.2), transparent); margin: 0 auto 5rem; max-width: 900px; }
+
+    /* ── STATS ROW ── */
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+    .stat-card {
+      background: var(--chf-dark); color: var(--cream);
+      border-radius: 8px; padding: 2rem 1.5rem; text-align: center;
+    }
+    .stat-num { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.04em; color: var(--chf-mint); line-height: 1; margin-bottom: 0.5rem; }
+    .stat-label { font-size: 0.8rem; color: rgba(247,244,232,0.65); line-height: 1.4; }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: var(--chf-light); border-left: 3px solid var(--chf-green);
+      padding: 1.5rem 2rem; border-radius: 0 6px 6px 0;
+      margin: 2.5rem 0; font-size: 1.05rem; font-style: italic; line-height: 1.7; color: var(--text);
+    }
+
+    /* ── DARK SECTION ── */
+    .dark-section {
+      background: var(--chf-dark); color: var(--cream);
+      padding: 5rem 4rem; margin: 5rem 0;
+    }
+    .dark-section .section-heading { color: var(--cream); }
+    .dark-section .section-body { color: rgba(247,244,232,0.7); }
+
+    /* ── TWO-COLUMN DIAGRAM (Progress / What We Did) ── */
+    .progress-grid {
+      display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; max-width: 600px;
+    }
+    .progress-col {
+      border-radius: 10px; overflow: hidden;
+    }
+    .progress-col-header {
+      padding: 1rem 1.5rem; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .progress-col-header.done { background: var(--chf-green); color: #fff; }
+    .progress-col-header.wip  { background: rgba(31,160,94,0.18); color: var(--chf-dark); border: 1px solid rgba(31,160,94,0.3); }
+    .progress-items { padding: 1rem 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; background: rgba(31,160,94,0.06); border: 1px solid rgba(31,160,94,0.15); border-top: none; border-radius: 0 0 10px 10px; }
+    .progress-item {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 0.88rem; color: var(--text); line-height: 1.5;
+    }
+    .progress-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 0.45em; }
+    .progress-dot.done { background: var(--chf-green); }
+    .progress-dot.wip  { background: var(--chf-gold); }
+
+    /* ── PATIENT JOURNEY SWIMLANE ── */
+    .journey-wrap { margin-top: 2rem; overflow-x: auto; }
+    .journey-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    .journey-table th {
+      background: var(--chf-dark); color: var(--chf-mint);
+      padding: 0.75rem 1rem; text-align: left; font-size: 0.7rem;
+      letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700;
+    }
+    .journey-table td {
+      padding: 0.85rem 1rem; vertical-align: top; border-bottom: 1px solid rgba(31,160,94,0.12);
+      color: var(--text); line-height: 1.5;
+    }
+    .journey-table tr:nth-child(even) td { background: rgba(31,160,94,0.04); }
+    .journey-phase {
+      font-weight: 700; font-size: 0.78rem; color: var(--chf-green);
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .insight-tag {
+      display: inline-block; font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: rgba(31,160,94,0.12); color: var(--chf-dark);
+      border-radius: 2rem; padding: 0.2rem 0.6rem; margin-bottom: 0.35rem;
+    }
+    .insight-tag.gap { background: rgba(212,176,80,0.2); color: #7a6000; }
+
+    /* ── INSIGHT CARDS ── */
+    .insight-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+    .insight-card {
+      background: var(--chf-light); border-radius: 10px;
+      padding: 1.5rem; border: 1px solid rgba(31,160,94,0.2);
+    }
+    .insight-icon {
+      width: 2.5rem; height: 2.5rem; border-radius: 50%;
+      background: var(--chf-green); display: flex; align-items: center;
+      justify-content: center; margin-bottom: 1rem;
+    }
+    .insight-icon svg { width: 1.1rem; height: 1.1rem; }
+    .insight-card h4 { font-size: 0.92rem; font-weight: 700; color: var(--chf-dark); margin-bottom: 0.5rem; line-height: 1.4; }
+    .insight-card p { font-size: 0.82rem; color: rgba(26,46,46,0.7); line-height: 1.6; }
+
+    /* ── HMW GRID ── */
+    .hmw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+    .hmw-col-header {
+      padding: 1rem 1.5rem; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; border-radius: 8px 8px 0 0;
+    }
+    .hmw-col-header.patient  { background: var(--chf-green); color: #fff; }
+    .hmw-col-header.clinician { background: var(--chf-dark); color: var(--chf-mint); }
+    .hmw-items {
+      display: flex; flex-direction: column; gap: 0.75rem;
+      padding: 1.25rem; border: 1px solid rgba(31,160,94,0.2); border-top: none; border-radius: 0 0 8px 8px;
+    }
+    .hmw-item {
+      background: var(--chf-light); border-radius: 6px;
+      padding: 1rem 1.25rem; font-size: 0.88rem; color: var(--text); line-height: 1.55;
+      border-left: 3px solid var(--chf-green);
+    }
+    .hmw-item.clinician { border-left-color: var(--chf-gold); }
+    .hmw-prompt { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--chf-green); margin-bottom: 0.35rem; }
+    .hmw-prompt.clinician { color: var(--chf-dark); }
+
+    /* ── REMOTE MONITORING SPECTRUM ── */
+    .spectrum-wrap { margin-top: 2rem; }
+    .spectrum-bar {
+      height: 12px; border-radius: 6px; margin: 1rem 0 0.5rem;
+      background: linear-gradient(to right, var(--chf-mint), var(--chf-green), var(--chf-dark));
+    }
+    .spectrum-labels { display: flex; justify-content: space-between; font-size: 0.75rem; color: rgba(26,46,46,0.55); margin-bottom: 2rem; }
+    .monitoring-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 1rem; }
+    .monitoring-card {
+      border-radius: 8px; padding: 1.5rem; border: 1px solid rgba(31,160,94,0.2);
+    }
+    .monitoring-card.easy    { background: rgba(125,216,160,0.15); border-color: rgba(125,216,160,0.4); }
+    .monitoring-card.medium  { background: rgba(31,160,94,0.1);  border-color: rgba(31,160,94,0.3); }
+    .monitoring-card.advanced { background: rgba(0,61,61,0.07);   border-color: rgba(0,61,61,0.2); }
+    .monitoring-card h4 { font-size: 0.85rem; font-weight: 700; color: var(--chf-dark); margin-bottom: 0.5rem; }
+    .monitoring-card p  { font-size: 0.8rem; color: rgba(26,46,46,0.7); line-height: 1.55; }
+
+    /* ── NEXT STEPS ── */
+    .next-steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .next-step {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: rgba(31,160,94,0.07); border-radius: 8px; padding: 1.25rem;
+      border: 1px solid rgba(31,160,94,0.15);
+    }
+    .step-num {
+      font-size: 1.4rem; font-weight: 900; color: var(--chf-mint);
+      line-height: 1; flex-shrink: 0; min-width: 2rem;
+    }
+    .step-text { font-size: 0.88rem; color: var(--text); line-height: 1.55; font-weight: 500; }
+
+    /* ── FULL WIDTH IMAGE ── */
+    .full-image { width: 100%; border-radius: 8px; display: block; margin: 2rem 0; box-shadow: 0 8px 32px rgba(0,61,61,0.12); }
+
+    /* ── SLIDE IMAGE ── */
+    .slide-image { width: 100%; border-radius: 6px; display: block; margin: 2rem 0; box-shadow: 0 4px 20px rgba(0,61,61,0.1); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 3rem 4rem;
+      background: var(--chf-dark); color: rgba(247,244,232,0.5);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1.25rem 1.5rem; }
+      .hero, .section, .cover-image, .dark-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .stats-row, .progress-grid, .hmw-grid, .monitoring-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="portfolio.html" class="back-link" style="display:flex;align-items:center;gap:0.45rem;text-decoration:none;color:inherit;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>
+      Home
+    </a>
+    <div class="nav-right">Erica Gatts · Case Study</div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">
+      <span class="case-tag">Design Research</span>
+      <span class="case-tag">Healthcare Innovation</span>
+      <span class="case-tag">Discovery</span>
+    </div>
+    <h1>Congestive Heart<br>Failure Discovery</h1>
+    <p class="hero-sub">A cross-functional design research initiative to identify unmet needs, map the care ecosystem, and surface high-priority opportunities for proactive CHF intervention at Highmark Health.</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Organization</span>
+        <span class="meta-value">Highmark Health</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Role</span>
+        <span class="meta-value">Lead Design Researcher</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Methods</span>
+        <span class="meta-value">Clinician Interviews · Patient Research · Stakeholder Mapping</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Focus Area</span>
+        <span class="meta-value">Chronic Condition Management</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- COVER IMAGE -->
+  <div class="cover-image">
+    <img src="chronic conditions research/CHF_ID_patients.png" alt="Identifying At-Risk Patients"/>
+  </div>
+
+  <!-- SECTION 1: THE PROBLEM -->
+  <div class="section">
+    <p class="section-label">The Challenge</p>
+    <h2 class="section-heading">Heart failure is the #1 cause of hospitalization in Medicare — and most cases go unmanaged.</h2>
+    <p class="section-body">Despite being one of the most costly and prevalent conditions in the United States, heart failure is systematically underidentified and undertreated. The vast majority of interventions happen reactively — after hospitalization — rather than proactively. This project set out to understand why, and where design could help.</p>
+
+    <div class="stats-row" style="margin-top:2.5rem;">
+      <div class="stat-card">
+        <div class="stat-num">6.5M</div>
+        <div class="stat-label">Adults in the United States living with heart failure</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">$30.7B</div>
+        <div class="stat-label">Estimated national costs — projected to rise to $69.7B by 2030</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">10–20%</div>
+        <div class="stat-label">Of patients with severe or advanced heart failure alive after one year</div>
+      </div>
+    </div>
+
+    <div class="callout">"Heart failure contributed to 1 in 8 deaths in 2017 — and remains the #1 cause of hospitalization in the Medicare population."</div>
+
+    <p class="section-body">Within Highmark's own member population, 27,165 distinct members had CHF inpatient stays in a single year. Of those, <strong>76% did not have a primary CHF diagnosis</strong> — meaning the condition was frequently missed or secondary to other acute events. This underdiagnosis creates a critical window for proactive design intervention.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 2: RESEARCH PROGRESS -->
+  <div class="section">
+    <p class="section-label">Research Approach</p>
+    <h2 class="section-heading">A phased discovery process spanning research, synthesis, and opportunity definition.</h2>
+    <p class="section-body">The team conducted multi-modal research across patients, clinicians, payers, and the market — beginning with desk research and progressing into primary qualitative research with clinicians and patients.</p>
+
+    <div class="progress-grid">
+      <div class="progress-col">
+        <div class="progress-col-header done">✓ Completed</div>
+        <div class="progress-items">
+          <div class="progress-item"><div class="progress-dot done"></div>Inventory of existing solutions</div>
+          <div class="progress-item"><div class="progress-dot done"></div>Initial evaluation of current solutions</div>
+          <div class="progress-item"><div class="progress-dot done"></div>Literature review</div>
+          <div class="progress-item"><div class="progress-dot done"></div>Short-term opportunity sizing</div>
+          <div class="progress-item"><div class="progress-dot done"></div>RPM solution landscaping</div>
+          <div class="progress-item"><div class="progress-dot done"></div>Clinician survey — gaining insights on patient needs</div>
+          <div class="progress-item"><div class="progress-dot done"></div>Stakeholder mapping</div>
+          <div class="progress-item"><div class="progress-dot done"></div>High-level risk analysis</div>
+          <div class="progress-item"><div class="progress-dot done"></div>Customer research — Phase 1</div>
+          <div class="progress-item"><div class="progress-dot done"></div>Market landscape</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 3: SOLUTION LANDSCAPE -->
+  <div class="section">
+    <p class="section-label">Ecosystem Assessment</p>
+    <h2 class="section-heading">Most existing solutions are reactive — intervening after hospitalization rather than before.</h2>
+    <p class="section-body">An audit of 25+ current solutions revealed a critical gap: the overwhelming majority of programs and tools activate only after a CHF event. The care journey before diagnosis and before hospitalization remains largely unaddressed.</p>
+
+    <div class="journey-wrap">
+      <table class="journey-table">
+        <thead>
+          <tr>
+            <th>Journey Phase</th>
+            <th>Current Solutions</th>
+            <th>Key Gap</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="journey-phase">Living Life</span><br><span style="font-size:0.75rem;color:rgba(26,46,46,0.5)">Pre-diagnosis</span></td>
+            <td>Healthyway Campaign (OSA), wellness / preventive care, Healthwise, ACSC Heart Failure Toolkit</td>
+            <td><span class="insight-tag gap">Gap</span><br>Almost no proactive identification or engagement before symptoms present</td>
+          </tr>
+          <tr>
+            <td><span class="journey-phase">CHF Diagnosis</span><br><span style="font-size:0.75rem;color:rgba(26,46,46,0.5)">Point of identification</span></td>
+            <td>CCSC Optimization, eConsult, MedBridge, MedRespond</td>
+            <td><span class="insight-tag gap">Gap</span><br>76% of patients have CHF as a secondary diagnosis — often missed</td>
+          </tr>
+          <tr>
+            <td><span class="journey-phase">Outpatient</span><br><span style="font-size:0.75rem;color:rgba(26,46,46,0.5)">Ongoing management</span></td>
+            <td>CardioMEMS, Corvue, Optivol, PairedCare, Health Recovery Solutions, MOVN, MyCare Companion, Cardiac Rehab</td>
+            <td><span class="insight-tag">Fragmented</span><br>Solutions exist but lack a holistic view for patients and clinicians</td>
+          </tr>
+          <tr>
+            <td><span class="journey-phase">Inpatient / ED</span><br><span style="font-size:0.75rem;color:rgba(26,46,46,0.5)">Acute event</span></td>
+            <td>Inpatient CHF Program, Direct admission support, ReDS Vest, HeartCare Program, Advance Heart Failure Unit, CCSC Bridge Clinic</td>
+            <td><span class="insight-tag">Reactive</span><br>Strong solution density here — but focus should shift upstream</td>
+          </tr>
+          <tr>
+            <td><span class="journey-phase">Transitions of Care</span><br><span style="font-size:0.75rem;color:rgba(26,46,46,0.5)">Post-discharge</span></td>
+            <td>TOC/ICT, CarePort, Caring Hearts, HeartCare – SNF, Zoll</td>
+            <td><span class="insight-tag">At Risk</span><br>10% readmission rate at 30 days — high-leverage window</td>
+          </tr>
+          <tr>
+            <td><span class="journey-phase">Maintenance</span><br><span style="font-size:0.75rem;color:rgba(26,46,46,0.5)">Long-term self-management</span></td>
+            <td>Together Blue (preferred meds), HeartCare, remote monitoring tools</td>
+            <td><span class="insight-tag gap">Gap</span><br>Patient motivation and adherence fall sharply without consistent support</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 4: STAKEHOLDER MAP (dark) -->
+  <div class="dark-section">
+    <div style="max-width:1100px;margin:0 auto;padding:0 4rem;">
+      <p class="section-label" style="color:var(--chf-mint);">Stakeholder Mapping</p>
+      <h2 class="section-heading">Understanding the full ecosystem of support around a CHF patient.</h2>
+      <p class="section-body">The stakeholder map captures the complex web of clinical, navigational, informational, logistical, and emotional support that CHF patients rely on — from primary care physicians to community health workers, caregivers, and payers.</p>
+      <div style="margin-top:2rem;border-radius:10px;overflow:hidden;">
+        <img src="chronic conditions research/stakeholder_map.png" alt="CHF Stakeholder Map" style="width:100%;display:block;"/>
+      </div>
+      <p style="font-size:0.78rem;color:rgba(247,244,232,0.4);margin-top:0.5rem;font-style:italic;">Note: This map represents a breadth of potential experiences across the CHF population — not any single patient's journey. It is a living document subject to revision.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 5: PATIENT INSIGHTS -->
+  <div class="section">
+    <p class="section-label">Patient Research</p>
+    <h2 class="section-heading">Insights from patient research</h2>
+    <p class="section-body">Primary research with CHF patients revealed a condition that touches every dimension of daily life — and demands a fundamentally different kind of care model than most chronic conditions.</p>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <div class="insight-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h4>CHF is a lifelong balancing act</h4>
+        <p>Living with CHF is an ongoing journey requiring constant adjustment of diet, medication, activity, and emotional resilience — with little systemic support for long-term self-management.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.8 19.8 0 0 1 1.61 3.4 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <h4>Patients are motivated by normalcy</h4>
+        <p>CHF patients are driven by the desire to live longer and maintain a "normal life" — to do what they want and need to do. Constraints on activity, diet, and lifestyle are both pain points and motivators.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h4>Staying motivated is the hardest part</h4>
+        <p>Maintaining consistent diet and exercise regimens is the single biggest non-emotional challenge of managing CHF — particularly over the long term without behavioral support systems.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        </div>
+        <h4>CHF carries a uniquely heavy emotional burden</h4>
+        <p>Compared to other chronic conditions, CHF places a much heavier emotional toll on patients — often requiring mental health support that the current care system rarely provides proactively.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h4>Physical constraints reshape identity</h4>
+        <p>Limitations on work, activity, and lifestyle aren't just inconveniences — they redefine who patients feel they are. Design solutions must account for the identity dimensions of the condition.</p>
+      </div>
+    </div>
+
+    <!-- PERSONA CAROUSEL -->
+    <div style="margin-top:2.5rem;position:relative;" id="persona-carousel">
+
+      <!-- Nav arrows -->
+      <button onclick="personaNav(-1)" aria-label="Previous" style="position:absolute;left:-20px;top:50%;transform:translateY(-50%);z-index:10;background:var(--chf-dark);border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.18);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7dd8a0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button onclick="personaNav(1)" aria-label="Next" style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);z-index:10;background:var(--chf-dark);border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.18);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7dd8a0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+      <!-- Track -->
+      <div style="overflow:hidden;border-radius:12px;">
+        <div id="persona-track" style="display:flex;transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);">
+
+          <!-- ── CARD 1: Monselle ── -->
+          <div class="persona-slide" style="min-width:100%;background:var(--chf-light);border:1px solid rgba(31,160,94,0.2);border-radius:12px;overflow:hidden;">
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:0;background:var(--chf-dark);">
+              <div style="padding:1.75rem 1.5rem 1.75rem 2rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;border-right:1px solid rgba(125,216,160,0.15);">
+                <div style="width:80px;height:80px;border-radius:50%;border:2px solid var(--chf-mint);overflow:hidden;flex-shrink:0;">
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+<rect width="80" height="80" fill="#edf8f2"/>
+<path d="M0 80 L0 59 Q20 50 40 54 Q60 50 80 59 L80 80Z" fill="#1fa05e"/>
+<path d="M34 56 Q40 63 46 56" fill="none" stroke="#7dd8a0" stroke-width="1" stroke-linecap="round"/>
+<rect x="34" y="49" width="12" height="10" rx="4" fill="#7dd8a0"/>
+<ellipse cx="40" cy="30" rx="18" ry="21" fill="#7dd8a0" stroke="#003d3d" stroke-width="1.2"/>
+<path d="M22 31 Q21 11 40 10 Q59 11 58 31 Q57 17 40 16 Q23 17 22 31Z" fill="#9fbfb0" stroke="#003d3d" stroke-width="1"/>
+<path d="M22 31 Q20 38 22 46" stroke="#9fbfb0" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path d="M58 31 Q60 38 58 46" stroke="#9fbfb0" stroke-width="7" fill="none" stroke-linecap="round"/>
+</svg></div>
+                <div style="text-align:center;">
+                  <div style="font-size:1rem;font-weight:800;color:var(--cream);letter-spacing:-0.01em;">Monselle</div>
+                  <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--chf-mint);margin-top:0.2rem;">Striver</div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:0.25rem;text-align:center;">
+                  <div style="font-size:0.75rem;color:rgba(247,244,232,0.6);">Age <strong style="color:var(--cream);">72</strong></div>
+                  <div style="font-size:0.75rem;color:rgba(247,244,232,0.6);">Severity <strong style="color:var(--cream);">Class 2</strong></div>
+                </div>
+              </div>
+              <div style="padding:1.75rem 2rem;display:flex;align-items:center;">
+                <blockquote style="font-size:1rem;font-style:italic;color:rgba(247,244,232,0.85);line-height:1.65;margin:0;border-left:3px solid var(--chf-mint);padding-left:1.25rem;">"With this condition, my sense of mortality is very front and center. My experience with cancer prepared me for this."</blockquote>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+              <div style="padding:1.5rem 1.75rem;border-right:1px solid rgba(31,160,94,0.15);">
+                <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.85rem;">What matters most</div>
+                <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Being active and not quitting the fight</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Understanding her condition — self-monitors independently</div>
+                </div>
+              </div>
+              <div style="padding:1.5rem 1.75rem;">
+                <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.85rem;">Key takeaways</div>
+                <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Grief is central — learning to adjust emotionally after diagnosis</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Public symptoms cause deep embarrassment</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Patients must learn the "language of their heart"</div>
+                </div>
+              </div>
+            </div>
+            <div style="padding:1.25rem 1.75rem;border-top:1px solid rgba(31,160,94,0.15);background:rgba(31,160,94,0.04);">
+              <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:1rem;">Concept ranking</div>
+              <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                <div style="flex:1;min-width:140px;background:var(--chf-green);color:#fff;border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;opacity:0.8;margin-bottom:0.35rem;">#1 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;">Monitoring &amp; reporting symptoms</div></div>
+                <div style="flex:1;min-width:140px;background:rgba(31,160,94,0.18);border:1px solid rgba(31,160,94,0.3);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.35rem;">#2 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;color:var(--text);">Affordable coverage for CHF</div></div>
+                <div style="flex:1;min-width:140px;background:rgba(31,160,94,0.18);border:1px solid rgba(31,160,94,0.3);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.35rem;">#3 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;color:var(--text);">Emotional support or coaching</div></div>
+                <div style="flex:1;min-width:120px;background:var(--chf-dark);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-mint);margin-bottom:0.35rem;">Wild Card</div><div style="font-size:1rem;font-weight:800;color:var(--chf-mint);letter-spacing:0.05em;">HOPE</div></div>
+              </div>
+            </div>
+            <div style="padding:1.25rem 1.75rem;border-top:1px solid rgba(31,160,94,0.15);">
+              <p style="font-size:0.88rem;font-style:italic;color:rgba(26,46,46,0.65);line-height:1.65;margin:0;">"All heart doctors don't want to answer how long do I have — they always change the subject. I'd feel so much better if they just gave you something."</p>
+            </div>
+          </div>
+
+          <!-- ── CARD 2: Kenneth ── -->
+          <div class="persona-slide" style="min-width:100%;background:var(--chf-light);border:1px solid rgba(31,160,94,0.2);border-radius:12px;overflow:hidden;">
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:0;background:var(--chf-dark);">
+              <div style="padding:1.75rem 1.5rem 1.75rem 2rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;border-right:1px solid rgba(125,216,160,0.15);">
+                <div style="width:80px;height:80px;border-radius:50%;border:2px solid var(--chf-mint);overflow:hidden;flex-shrink:0;">
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+<rect width="80" height="80" fill="#edf8f2"/>
+<path d="M0 80 L0 59 Q20 49 40 53 Q60 49 80 59 L80 80Z" fill="#003d3d"/>
+<path d="M33 55 L37 63 M47 55 L43 63" stroke="#7dd8a0" stroke-width="1.2" stroke-linecap="round"/>
+<rect x="34" y="49" width="12" height="10" rx="4" fill="#7dd8a0"/>
+<ellipse cx="40" cy="30" rx="18" ry="21" fill="#7dd8a0" stroke="#003d3d" stroke-width="1.2"/>
+<path d="M22 30 Q21 22 27 15" stroke="#9fbfb0" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M58 30 Q59 22 53 15" stroke="#9fbfb0" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M33 12 Q40 9 47 12" stroke="#9fbfb0" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg></div>
+                <div style="text-align:center;">
+                  <div style="font-size:1rem;font-weight:800;color:var(--cream);letter-spacing:-0.01em;">Kenneth</div>
+                  <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--chf-mint);margin-top:0.2rem;">Striver</div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:0.25rem;text-align:center;">
+                  <div style="font-size:0.75rem;color:rgba(247,244,232,0.6);">Age <strong style="color:var(--cream);">81</strong></div>
+                  <div style="font-size:0.75rem;color:rgba(247,244,232,0.6);">Severity <strong style="color:var(--cream);">Class 2</strong></div>
+                </div>
+              </div>
+              <div style="padding:1.75rem 2rem;display:flex;align-items:center;">
+                <blockquote style="font-size:1rem;font-style:italic;color:rgba(247,244,232,0.85);line-height:1.65;margin:0;border-left:3px solid var(--chf-mint);padding-left:1.25rem;">"I told my cardiologist, 'No, we're going to do that, because I want to be seen as a person, not a step on a spreadsheet.'"</blockquote>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+              <div style="padding:1.5rem 1.75rem;border-right:1px solid rgba(31,160,94,0.15);">
+                <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.85rem;">What matters most</div>
+                <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Advocating for himself in care decisions</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Maintaining his health to enjoy family life</div>
+                </div>
+              </div>
+              <div style="padding:1.5rem 1.75rem;">
+                <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.85rem;">Key takeaways</div>
+                <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>His cardiologist is "family" — an equal partner in care</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Cardiac rehab's repetition and reinforcement keeps him motivated</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Researches CHF independently to make informed decisions</div>
+                </div>
+              </div>
+            </div>
+            <div style="padding:1.25rem 1.75rem;border-top:1px solid rgba(31,160,94,0.15);background:rgba(31,160,94,0.04);">
+              <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:1rem;">Concept ranking</div>
+              <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                <div style="flex:1;min-width:140px;background:var(--chf-green);color:#fff;border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;opacity:0.8;margin-bottom:0.35rem;">#1 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;">Relationship with my doctor</div></div>
+                <div style="flex:1;min-width:140px;background:rgba(31,160,94,0.18);border:1px solid rgba(31,160,94,0.3);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.35rem;">#2 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;color:var(--text);">Medical team to coordinate my care</div></div>
+                <div style="flex:1;min-width:140px;background:rgba(31,160,94,0.18);border:1px solid rgba(31,160,94,0.3);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.35rem;">#3 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;color:var(--text);">Education on living with CHF</div></div>
+              </div>
+            </div>
+            <div style="padding:1.25rem 1.75rem;border-top:1px solid rgba(31,160,94,0.15);">
+              <p style="font-size:0.88rem;font-style:italic;color:rgba(26,46,46,0.65);line-height:1.65;margin:0;">"I WANT my cardiologist to coordinate everything. I'll always talk to him first to make sure he's aware of what's going on in my life. He wants to know everything, and I want him to."</p>
+            </div>
+          </div>
+
+          <!-- ── CARD 3: Catherine ── -->
+          <div class="persona-slide" style="min-width:100%;background:var(--chf-light);border:1px solid rgba(31,160,94,0.2);border-radius:12px;overflow:hidden;">
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:0;background:var(--chf-dark);">
+              <div style="padding:1.75rem 1.5rem 1.75rem 2rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;border-right:1px solid rgba(125,216,160,0.15);">
+                <div style="width:80px;height:80px;border-radius:50%;border:2px solid var(--chf-mint);overflow:hidden;flex-shrink:0;">
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+<rect width="80" height="80" fill="#edf8f2"/>
+<path d="M21 33 Q18 48 19 63" stroke="#003d3d" stroke-width="12" fill="none" stroke-linecap="round"/>
+<path d="M59 33 Q62 48 61 63" stroke="#003d3d" stroke-width="12" fill="none" stroke-linecap="round"/>
+<path d="M0 80 L0 60 Q20 50 40 54 Q60 50 80 60 L80 80Z" fill="#1fa05e"/>
+<path d="M34 56 Q40 63 46 56" fill="none" stroke="#7dd8a0" stroke-width="1" stroke-linecap="round"/>
+<rect x="34" y="49" width="12" height="10" rx="4" fill="#7dd8a0"/>
+<ellipse cx="40" cy="30" rx="18" ry="21" fill="#7dd8a0" stroke="#003d3d" stroke-width="1.2"/>
+<path d="M22 31 Q21 10 40 9 Q59 10 58 31 Q57 15 40 14 Q23 15 22 31Z" fill="#003d3d"/>
+</svg></div>
+                <div style="text-align:center;">
+                  <div style="font-size:1rem;font-weight:800;color:var(--cream);letter-spacing:-0.01em;">Catherine</div>
+                  <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--chf-mint);margin-top:0.2rem;">Preventer</div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:0.25rem;text-align:center;">
+                  <div style="font-size:0.75rem;color:rgba(247,244,232,0.6);">Age <strong style="color:var(--cream);">59</strong></div>
+                  <div style="font-size:0.75rem;color:rgba(247,244,232,0.6);">Severity <strong style="color:var(--cream);">Class 3</strong></div>
+                </div>
+              </div>
+              <div style="padding:1.75rem 2rem;display:flex;align-items:center;">
+                <blockquote style="font-size:1rem;font-style:italic;color:rgba(247,244,232,0.85);line-height:1.65;margin:0;border-left:3px solid var(--chf-mint);padding-left:1.25rem;">"Motivation is hard to come by. Managing CHF is not fun at all…"</blockquote>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+              <div style="padding:1.5rem 1.75rem;border-right:1px solid rgba(31,160,94,0.15);">
+                <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.85rem;">What matters most</div>
+                <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Access to adequate health insurance</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Family support system</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Having a personable physician</div>
+                </div>
+              </div>
+              <div style="padding:1.5rem 1.75rem;">
+                <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.85rem;">Key takeaways</div>
+                <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Diet is the most challenging aspect of managing CHF</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>CHF is terrifying when it runs in the family</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Understanding her limitations is key to managing the disease</div>
+                </div>
+              </div>
+            </div>
+            <div style="padding:1.25rem 1.75rem;border-top:1px solid rgba(31,160,94,0.15);background:rgba(31,160,94,0.04);">
+              <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:1rem;">Concept ranking</div>
+              <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                <div style="flex:1;min-width:140px;background:var(--chf-green);color:#fff;border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;opacity:0.8;margin-bottom:0.35rem;">#1 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;">Relationship with my doctor</div></div>
+                <div style="flex:1;min-width:140px;background:rgba(31,160,94,0.18);border:1px solid rgba(31,160,94,0.3);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.35rem;">#2 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;color:var(--text);">Medical team to coordinate my care</div></div>
+                <div style="flex:1;min-width:140px;background:rgba(31,160,94,0.18);border:1px solid rgba(31,160,94,0.3);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.35rem;">#3 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;color:var(--text);">Education on living with CHF</div></div>
+                <div style="flex:1;min-width:120px;background:var(--chf-dark);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-mint);margin-bottom:0.35rem;">Wild Card</div><div style="font-size:0.82rem;font-weight:700;color:var(--chf-mint);line-height:1.4;">Transportation to/from appointments</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── CARD 4: Eric ── -->
+          <div class="persona-slide" style="min-width:100%;background:var(--chf-light);border:1px solid rgba(31,160,94,0.2);border-radius:12px;overflow:hidden;">
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:0;background:var(--chf-dark);">
+              <div style="padding:1.75rem 1.5rem 1.75rem 2rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;border-right:1px solid rgba(125,216,160,0.15);">
+                <div style="width:80px;height:80px;border-radius:50%;border:2px solid var(--chf-mint);overflow:hidden;flex-shrink:0;">
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+<rect width="80" height="80" fill="#edf8f2"/>
+<path d="M0 80 L0 59 Q20 49 40 53 Q60 49 80 59 L80 80Z" fill="#003d3d"/>
+<path d="M33 55 L37 63 M47 55 L43 63" stroke="#7dd8a0" stroke-width="1.2" stroke-linecap="round"/>
+<rect x="34" y="49" width="12" height="10" rx="4" fill="#7dd8a0"/>
+<ellipse cx="40" cy="30" rx="18" ry="21" fill="#7dd8a0" stroke="#003d3d" stroke-width="1.2"/>
+<path d="M22 30 Q21 11 40 10 Q59 11 58 30 Q57 16 40 15 Q23 16 22 30Z" fill="#003d3d"/>
+<rect x="26" y="27" width="12" height="8" rx="4" fill="none" stroke="#003d3d" stroke-width="1.2"/>
+<rect x="42" y="27" width="12" height="8" rx="4" fill="none" stroke="#003d3d" stroke-width="1.2"/>
+<line x1="38" y1="31" x2="42" y2="31" stroke="#003d3d" stroke-width="1"/>
+<line x1="22" y1="30" x2="26" y2="30" stroke="#003d3d" stroke-width="1"/>
+<line x1="58" y1="30" x2="54" y2="30" stroke="#003d3d" stroke-width="1"/>
+</svg></div>
+                <div style="text-align:center;">
+                  <div style="font-size:1rem;font-weight:800;color:var(--cream);letter-spacing:-0.01em;">Eric</div>
+                  <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--chf-mint);margin-top:0.2rem;">Striver</div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:0.25rem;text-align:center;">
+                  <div style="font-size:0.75rem;color:rgba(247,244,232,0.6);">Age <strong style="color:var(--cream);">55</strong></div>
+                  <div style="font-size:0.75rem;color:rgba(247,244,232,0.6);">Severity <strong style="color:var(--cream);">Class 3</strong></div>
+                </div>
+              </div>
+              <div style="padding:1.75rem 2rem;display:flex;align-items:center;">
+                <blockquote style="font-size:1rem;font-style:italic;color:rgba(247,244,232,0.85);line-height:1.65;margin:0;border-left:3px solid var(--chf-mint);padding-left:1.25rem;">"My heart would have exploded if I would have stayed home that night."</blockquote>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+              <div style="padding:1.5rem 1.75rem;border-right:1px solid rgba(31,160,94,0.15);">
+                <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.85rem;">What matters most</div>
+                <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Coping with new physical restrictions</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Advocating for himself in the care system</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Dealing with the ongoing fear of CHF</div>
+                </div>
+              </div>
+              <div style="padding:1.5rem 1.75rem;">
+                <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.85rem;">Key takeaways</div>
+                <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>A new open-minded cardiologist changed his outlook entirely</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Diagnosis caused significant stress at work</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Uses blood pressure tracking as a personal benchmark for progress</div>
+                </div>
+              </div>
+            </div>
+            <div style="padding:1.25rem 1.75rem;border-top:1px solid rgba(31,160,94,0.15);background:rgba(31,160,94,0.04);">
+              <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:1rem;">Concept ranking</div>
+              <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                <div style="flex:1;min-width:140px;background:var(--chf-green);color:#fff;border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;opacity:0.8;margin-bottom:0.35rem;">#1 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;">Medical team to coordinate my care</div></div>
+                <div style="flex:1;min-width:140px;background:rgba(31,160,94,0.18);border:1px solid rgba(31,160,94,0.3);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.35rem;">#2 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;color:var(--text);">Relationship with my doctor</div></div>
+                <div style="flex:1;min-width:140px;background:rgba(31,160,94,0.18);border:1px solid rgba(31,160,94,0.3);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.35rem;">#3 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;color:var(--text);">Education on living with CHF</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── CARD 5: Steve ── -->
+          <div class="persona-slide" style="min-width:100%;background:var(--chf-light);border:1px solid rgba(31,160,94,0.2);border-radius:12px;overflow:hidden;">
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:0;background:var(--chf-dark);">
+              <div style="padding:1.75rem 1.5rem 1.75rem 2rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;border-right:1px solid rgba(125,216,160,0.15);">
+                <div style="width:80px;height:80px;border-radius:50%;border:2px solid var(--chf-mint);overflow:hidden;flex-shrink:0;">
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+<rect width="80" height="80" fill="#edf8f2"/>
+<path d="M0 80 L0 59 Q20 50 40 54 Q60 50 80 59 L80 80Z" fill="#1fa05e"/>
+<rect x="34" y="49" width="12" height="10" rx="4" fill="#7dd8a0"/>
+<ellipse cx="40" cy="30" rx="18" ry="21" fill="#7dd8a0" stroke="#003d3d" stroke-width="1.2"/>
+<path d="M22 30 Q21 11 40 10 Q59 11 58 30 Q57 17 40 16 Q23 17 22 30Z" fill="#9fbfb0" stroke="#003d3d" stroke-width="1"/>
+<path d="M22 30 Q20 34 22 40" stroke="#9fbfb0" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M58 30 Q60 34 58 40" stroke="#9fbfb0" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg></div>
+                <div style="text-align:center;">
+                  <div style="font-size:1rem;font-weight:800;color:var(--cream);letter-spacing:-0.01em;">Steve</div>
+                  <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--chf-mint);margin-top:0.2rem;">Striver</div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:0.25rem;text-align:center;">
+                  <div style="font-size:0.75rem;color:rgba(247,244,232,0.6);">Age <strong style="color:var(--cream);">60</strong></div>
+                  <div style="font-size:0.75rem;color:rgba(247,244,232,0.6);">Severity <strong style="color:var(--cream);">Class 1</strong></div>
+                </div>
+              </div>
+              <div style="padding:1.75rem 2rem;display:flex;align-items:center;">
+                <blockquote style="font-size:1rem;font-style:italic;color:rgba(247,244,232,0.85);line-height:1.65;margin:0;border-left:3px solid var(--chf-mint);padding-left:1.25rem;">"I'm motivated by just wanting to stay alive…"</blockquote>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+              <div style="padding:1.5rem 1.75rem;border-right:1px solid rgba(31,160,94,0.15);">
+                <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.85rem;">What matters most</div>
+                <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Staying healthy enough for retirement</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Adjusting to new dietary restrictions</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Managing the logistics of ongoing appointments</div>
+                </div>
+              </div>
+              <div style="padding:1.5rem 1.75rem;">
+                <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.85rem;">Key takeaways</div>
+                <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Consistent daily habits are key to managing the condition</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Motivated by a vision of family time and travel in retirement</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Completely trusts his cardiologist's judgment</div>
+                </div>
+              </div>
+            </div>
+            <div style="padding:1.25rem 1.75rem;border-top:1px solid rgba(31,160,94,0.15);background:rgba(31,160,94,0.04);">
+              <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:1rem;">Concept ranking</div>
+              <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                <div style="flex:1;min-width:140px;background:var(--chf-green);color:#fff;border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;opacity:0.8;margin-bottom:0.35rem;">#1 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;">Medical team to coordinate my care</div></div>
+                <div style="flex:1;min-width:140px;background:rgba(31,160,94,0.18);border:1px solid rgba(31,160,94,0.3);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.35rem;">#2 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;color:var(--text);">Relationship with my doctor</div></div>
+                <div style="flex:1;min-width:140px;background:rgba(31,160,94,0.18);border:1px solid rgba(31,160,94,0.3);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.35rem;">#3 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;color:var(--text);">Affordable coverage for CHF</div></div>
+              </div>
+            </div>
+            <div style="padding:1.25rem 1.75rem;border-top:1px solid rgba(31,160,94,0.15);">
+              <p style="font-size:0.88rem;font-style:italic;color:rgba(26,46,46,0.65);line-height:1.65;margin:0;">"Care coordination means having a team to help him schedule and be reminded — not just treating the disease."</p>
+            </div>
+          </div>
+
+          <!-- ── CARD 6: Naysha ── -->
+          <div class="persona-slide" style="min-width:100%;background:var(--chf-light);border:1px solid rgba(31,160,94,0.2);border-radius:12px;overflow:hidden;">
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:0;background:var(--chf-dark);">
+              <div style="padding:1.75rem 1.5rem 1.75rem 2rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;border-right:1px solid rgba(125,216,160,0.15);">
+                <div style="width:80px;height:80px;border-radius:50%;border:2px solid var(--chf-mint);overflow:hidden;flex-shrink:0;">
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+<rect width="80" height="80" fill="#edf8f2"/>
+<path d="M18 28 Q12 50 15 72" stroke="#003d3d" stroke-width="14" fill="none" stroke-linecap="round"/>
+<path d="M62 28 Q68 50 65 72" stroke="#003d3d" stroke-width="14" fill="none" stroke-linecap="round"/>
+<path d="M0 80 L0 60 Q20 50 40 54 Q60 50 80 60 L80 80Z" fill="#1fa05e"/>
+<path d="M34 56 Q40 63 46 56" fill="none" stroke="#7dd8a0" stroke-width="1" stroke-linecap="round"/>
+<rect x="34" y="49" width="12" height="10" rx="4" fill="#7dd8a0"/>
+<ellipse cx="40" cy="30" rx="18" ry="21" fill="#7dd8a0" stroke="#003d3d" stroke-width="1.2"/>
+<path d="M22 31 Q21 10 40 9 Q59 10 58 31 Q57 15 40 14 Q23 15 22 31Z" fill="#003d3d"/>
+</svg></div>
+                <div style="text-align:center;">
+                  <div style="font-size:1rem;font-weight:800;color:var(--cream);letter-spacing:-0.01em;">Naysha</div>
+                  <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--chf-mint);margin-top:0.2rem;">Sustainer</div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:0.25rem;text-align:center;">
+                  <div style="font-size:0.75rem;color:rgba(247,244,232,0.6);">Age <strong style="color:var(--cream);">26</strong></div>
+                  <div style="font-size:0.75rem;color:rgba(247,244,232,0.6);">Severity <strong style="color:var(--cream);">Class 4</strong></div>
+                </div>
+              </div>
+              <div style="padding:1.75rem 2rem;display:flex;align-items:center;">
+                <blockquote style="font-size:1rem;font-style:italic;color:rgba(247,244,232,0.85);line-height:1.65;margin:0;border-left:3px solid var(--chf-mint);padding-left:1.25rem;">"I have to count my wins. My kids are #1 and pets #2 — they keep me going."</blockquote>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+              <div style="padding:1.5rem 1.75rem;border-right:1px solid rgba(31,160,94,0.15);">
+                <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.85rem;">What matters most</div>
+                <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Providers who are attentive to what's important to her — not just the diagnosis</div>
+                </div>
+              </div>
+              <div style="padding:1.5rem 1.75rem;">
+                <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.85rem;">Key takeaways</div>
+                <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Clinicians minimize her experience because of her young age</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Patients get "strung along" by spread-out visits with no continuity</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Managing multiple chronic conditions simultaneously</div>
+                </div>
+              </div>
+            </div>
+            <div style="padding:1.25rem 1.75rem;border-top:1px solid rgba(31,160,94,0.15);background:rgba(31,160,94,0.04);">
+              <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:1rem;">Concept ranking</div>
+              <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                <div style="flex:1;min-width:130px;background:var(--chf-green);color:#fff;border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;opacity:0.8;margin-bottom:0.35rem;">#1 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;">Monitoring symptoms</div></div>
+                <div style="flex:1;min-width:130px;background:rgba(31,160,94,0.18);border:1px solid rgba(31,160,94,0.3);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.35rem;">#2 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;color:var(--text);">Medical team to coordinate care</div></div>
+                <div style="flex:1;min-width:130px;background:rgba(31,160,94,0.18);border:1px solid rgba(31,160,94,0.3);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.35rem;">#3 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;color:var(--text);">Affordable coverage for CHF</div></div>
+                <div style="flex:1;min-width:120px;background:var(--chf-dark);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-mint);margin-bottom:0.35rem;">Wild Card</div><div style="font-size:0.82rem;font-weight:700;color:var(--chf-mint);line-height:1.4;">Make care contact easier — phone, apps, tele</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── CARD 7: Neshunda ── -->
+          <div class="persona-slide" style="min-width:100%;background:var(--chf-light);border:1px solid rgba(31,160,94,0.2);border-radius:12px;overflow:hidden;">
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:0;background:var(--chf-dark);">
+              <div style="padding:1.75rem 1.5rem 1.75rem 2rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;border-right:1px solid rgba(125,216,160,0.15);">
+                <div style="width:80px;height:80px;border-radius:50%;border:2px solid var(--chf-mint);overflow:hidden;flex-shrink:0;">
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+<rect width="80" height="80" fill="#edf8f2"/>
+<ellipse cx="40" cy="20" rx="24" ry="21" fill="#003d3d"/>
+<path d="M0 80 L0 59 Q20 50 40 54 Q60 50 80 59 L80 80Z" fill="#1fa05e"/>
+<path d="M34 56 Q40 63 46 56" fill="none" stroke="#7dd8a0" stroke-width="1" stroke-linecap="round"/>
+<rect x="34" y="49" width="12" height="10" rx="4" fill="#7dd8a0"/>
+<ellipse cx="40" cy="30" rx="18" ry="21" fill="#7dd8a0" stroke="#003d3d" stroke-width="1.2"/>
+</svg></div>
+                <div style="text-align:center;">
+                  <div style="font-size:1rem;font-weight:800;color:var(--cream);letter-spacing:-0.01em;">Neshunda</div>
+                  <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--chf-mint);margin-top:0.2rem;">Striver</div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:0.25rem;text-align:center;">
+                  <div style="font-size:0.75rem;color:rgba(247,244,232,0.6);">Age <strong style="color:var(--cream);">33</strong></div>
+                  <div style="font-size:0.75rem;color:rgba(247,244,232,0.6);">Severity <strong style="color:var(--cream);">Class 2</strong></div>
+                </div>
+              </div>
+              <div style="padding:1.75rem 2rem;display:flex;align-items:center;">
+                <blockquote style="font-size:1rem;font-style:italic;color:rgba(247,244,232,0.85);line-height:1.65;margin:0;border-left:3px solid var(--chf-mint);padding-left:1.25rem;">"It was on me to make my own decisions about CHF. I made it into a routine."</blockquote>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+              <div style="padding:1.5rem 1.75rem;border-right:1px solid rgba(31,160,94,0.15);">
+                <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.85rem;">What matters most</div>
+                <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Making necessary lifestyle changes</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Carrying the emotional burden of being young with a lifelong disease</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Getting timely, straight information</div>
+                </div>
+              </div>
+              <div style="padding:1.5rem 1.75rem;">
+                <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.85rem;">Key takeaways</div>
+                <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Relies on trusted advocates to navigate the care system</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Hopes to eventually overcome the disease</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Poor experiences getting straight answers from the care team</div>
+                </div>
+              </div>
+            </div>
+            <div style="padding:1.25rem 1.75rem;border-top:1px solid rgba(31,160,94,0.15);background:rgba(31,160,94,0.04);">
+              <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:1rem;">Concept ranking</div>
+              <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                <div style="flex:1;min-width:130px;background:var(--chf-green);color:#fff;border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;opacity:0.8;margin-bottom:0.35rem;">#1 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;">Emotional support or coaching</div></div>
+                <div style="flex:1;min-width:130px;background:rgba(31,160,94,0.18);border:1px solid rgba(31,160,94,0.3);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.35rem;">#2 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;color:var(--text);">Affordable coverage for CHF</div></div>
+                <div style="flex:1;min-width:130px;background:rgba(31,160,94,0.18);border:1px solid rgba(31,160,94,0.3);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.35rem;">#3 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;color:var(--text);">Help making lifestyle changes</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── CARD 8: Jeen ── -->
+          <div class="persona-slide" style="min-width:100%;background:var(--chf-light);border:1px solid rgba(31,160,94,0.2);border-radius:12px;overflow:hidden;">
+            <div style="display:grid;grid-template-columns:auto 1fr;gap:0;background:var(--chf-dark);">
+              <div style="padding:1.75rem 1.5rem 1.75rem 2rem;display:flex;flex-direction:column;align-items:center;gap:0.75rem;border-right:1px solid rgba(125,216,160,0.15);">
+                <div style="width:80px;height:80px;border-radius:50%;border:2px solid var(--chf-mint);overflow:hidden;flex-shrink:0;">
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+<rect width="80" height="80" fill="#edf8f2"/>
+<path d="M0 80 L0 59 Q20 50 40 54 Q60 50 80 59 L80 80Z" fill="#003d3d"/>
+<path d="M33 56 L37 63 M47 56 L43 63" stroke="#7dd8a0" stroke-width="1.2" stroke-linecap="round"/>
+<rect x="34" y="49" width="12" height="10" rx="4" fill="#7dd8a0"/>
+<ellipse cx="40" cy="30" rx="18" ry="21" fill="#7dd8a0" stroke="#003d3d" stroke-width="1.2"/>
+<path d="M22 30 Q21 11 40 10 Q59 11 58 30 Q57 16 40 15 Q23 16 22 30Z" fill="#9fbfb0" stroke="#003d3d" stroke-width="1"/>
+<path d="M22 30 Q20 36 22 44" stroke="#9fbfb0" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path d="M58 30 Q60 36 58 44" stroke="#9fbfb0" stroke-width="7" fill="none" stroke-linecap="round"/>
+<rect x="26" y="27" width="12" height="8" rx="4" fill="none" stroke="#003d3d" stroke-width="1.2"/>
+<rect x="42" y="27" width="12" height="8" rx="4" fill="none" stroke="#003d3d" stroke-width="1.2"/>
+<line x1="38" y1="31" x2="42" y2="31" stroke="#003d3d" stroke-width="1"/>
+<line x1="22" y1="30" x2="26" y2="30" stroke="#003d3d" stroke-width="1"/>
+<line x1="58" y1="30" x2="54" y2="30" stroke="#003d3d" stroke-width="1"/>
+</svg></div>
+                <div style="text-align:center;">
+                  <div style="font-size:1rem;font-weight:800;color:var(--cream);letter-spacing:-0.01em;">Jeen</div>
+                  <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--chf-mint);margin-top:0.2rem;">Responder</div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:0.25rem;text-align:center;">
+                  <div style="font-size:0.75rem;color:rgba(247,244,232,0.6);">Age <strong style="color:var(--cream);">67</strong></div>
+                  <div style="font-size:0.75rem;color:rgba(247,244,232,0.6);">Severity <strong style="color:var(--cream);">Class 4</strong></div>
+                </div>
+              </div>
+              <div style="padding:1.75rem 2rem;display:flex;align-items:center;">
+                <blockquote style="font-size:1rem;font-style:italic;color:rgba(247,244,232,0.85);line-height:1.65;margin:0;border-left:3px solid var(--chf-mint);padding-left:1.25rem;">"I kept pressing to see what was going on — the blood was not pumping. You have to keep asking questions."</blockquote>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+              <div style="padding:1.5rem 1.75rem;border-right:1px solid rgba(31,160,94,0.15);">
+                <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.85rem;">What matters most</div>
+                <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Understanding what's happening in her body</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Being proactive and staying informed</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Self-reliance — being her own advocate</div>
+                </div>
+              </div>
+              <div style="padding:1.5rem 1.75rem;">
+                <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.85rem;">Key takeaways</div>
+                <div style="display:flex;flex-direction:column;gap:0.6rem;">
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Initial symptoms were sudden and frightening</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Lived healthy before diagnosis — feels like "a different person"</div>
+                  <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text);line-height:1.5;"><span style="color:var(--chf-green);flex-shrink:0;font-weight:700;">→</span>Sharing health info with her sister is a key motivator</div>
+                </div>
+              </div>
+            </div>
+            <div style="padding:1.25rem 1.75rem;border-top:1px solid rgba(31,160,94,0.15);background:rgba(31,160,94,0.04);">
+              <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--chf-green);margin-bottom:1rem;">Concept ranking</div>
+              <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                <div style="flex:1;min-width:120px;background:var(--chf-green);color:#fff;border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;opacity:0.8;margin-bottom:0.35rem;">#1 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;">Monitoring symptoms</div></div>
+                <div style="flex:1;min-width:120px;background:rgba(31,160,94,0.18);border:1px solid rgba(31,160,94,0.3);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.35rem;">#2 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;color:var(--text);">Education on living with CHF</div></div>
+                <div style="flex:1;min-width:120px;background:rgba(31,160,94,0.18);border:1px solid rgba(31,160,94,0.3);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-green);margin-bottom:0.35rem;">#3 Priority</div><div style="font-size:0.82rem;font-weight:600;line-height:1.4;color:var(--text);">Medical team to coordinate care</div></div>
+                <div style="flex:1;min-width:110px;background:var(--chf-dark);border-radius:6px;padding:0.85rem 1rem;"><div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--chf-mint);margin-bottom:0.35rem;">Wild Card</div><div style="font-size:0.82rem;font-weight:700;color:var(--chf-mint);line-height:1.4;">More support for daily life</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- end track -->
+      </div><!-- end overflow -->
+
+      <!-- Dot indicators -->
+      <div id="persona-dots" style="display:flex;justify-content:center;gap:0.5rem;margin-top:1.1rem;">
+        <button onclick="personaGoTo(0)" class="pdot active" aria-label="Monselle" style="width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;padding:0;background:var(--chf-green);transition:opacity 0.2s;"></button>
+        <button onclick="personaGoTo(1)" class="pdot" aria-label="Kenneth" style="width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;padding:0;background:var(--chf-green);opacity:0.3;transition:opacity 0.2s;"></button>
+        <button onclick="personaGoTo(2)" class="pdot" aria-label="Catherine" style="width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;padding:0;background:var(--chf-green);opacity:0.3;transition:opacity 0.2s;"></button>
+        <button onclick="personaGoTo(3)" class="pdot" aria-label="Eric" style="width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;padding:0;background:var(--chf-green);opacity:0.3;transition:opacity 0.2s;"></button>
+        <button onclick="personaGoTo(4)" class="pdot" aria-label="Steve" style="width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;padding:0;background:var(--chf-green);opacity:0.3;transition:opacity 0.2s;"></button>
+        <button onclick="personaGoTo(5)" class="pdot" aria-label="Naysha" style="width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;padding:0;background:var(--chf-green);opacity:0.3;transition:opacity 0.2s;"></button>
+        <button onclick="personaGoTo(6)" class="pdot" aria-label="Neshunda" style="width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;padding:0;background:var(--chf-green);opacity:0.3;transition:opacity 0.2s;"></button>
+        <button onclick="personaGoTo(7)" class="pdot" aria-label="Jeen" style="width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;padding:0;background:var(--chf-green);opacity:0.3;transition:opacity 0.2s;"></button>
+      </div>
+
+    </div><!-- end persona-carousel -->
+  </div>
+
+  <script>
+    (function(){
+      var current = 0;
+      var total = 8;
+      function update(){
+        document.getElementById('persona-track').style.transform='translateX(-'+current*100+'%)';
+        var dots=document.querySelectorAll('.pdot');
+        dots.forEach(function(d,i){d.style.opacity=i===current?'1':'0.3';});
+      }
+      window.personaNav=function(dir){
+        current=(current+dir+total)%total;
+        update();
+      };
+      window.personaGoTo=function(i){
+        current=i;
+        update();
+      };
+    })();
+  </script>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 6: CLINICIAN INSIGHTS -->
+  <div class="section">
+    <p class="section-label">Clinician Research</p>
+    <h2 class="section-heading">Insights from clinician research</h2>
+    <p class="section-body">Seventeen clinician interviews — spanning case managers, primary care physicians, cardiologists, and hospitalists — revealed systemic gaps in how the care system is structured to support CHF patients.</p>
+
+    <div class="insight-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+      <div class="insight-card">
+        <div class="insight-icon" style="background:var(--chf-dark);">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#7dd8a0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h4>Social determinants create significant access barriers</h4>
+        <p>Social determinants of health — transportation, food security, housing — can significantly impact whether CHF patients get access to the care they need, often outside the clinical team's visibility.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon" style="background:var(--chf-dark);">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#7dd8a0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h4>Post-discharge experience is the key readmission lever</h4>
+        <p>A successful transition home is directly tied to reducing the risk of readmission. Clinicians cite the first 30 days post-discharge as the highest-risk window — and the hardest to support remotely.</p>
+      </div>
+      <div class="insight-card">
+        <div class="insight-icon" style="background:var(--chf-dark);">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#7dd8a0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h4>Remote monitoring is valuable but difficult to manage</h4>
+        <p>Both providers and patients face real challenges with remote monitoring and CHF home management — from technology activation to alert fatigue and unclear escalation pathways.</p>
+      </div>
+    </div>
+
+    <img src="chronic conditions research/extracted/slide12_img0.png" alt="Clinician Research Insights" class="full-image"/>
+  </div>
+
+  <!-- SECTION 7: HMW (dark) -->
+  <div class="dark-section">
+    <div style="max-width:1100px;margin:0 auto;padding:0 4rem;">
+      <p class="section-label" style="color:var(--chf-mint);">Problems to Solve</p>
+      <h2 class="section-heading">How Might We…</h2>
+      <p class="section-body" style="margin-bottom:2rem;">Research synthesis surfaced critical design challenges across both the patient and clinician experience — translated into "How Might We" questions to guide concept development.</p>
+
+      <div class="hmw-grid">
+        <div>
+          <div class="hmw-col-header patient">Patient Experience</div>
+          <div class="hmw-items">
+            <div class="hmw-item">
+              <div class="hmw-prompt">Lifestyle &amp; Motivation</div>
+              …support CHF patients in staying motivated to make and sustain positive lifestyle changes — diet, exercise, and daily habits?
+            </div>
+            <div class="hmw-item">
+              <div class="hmw-prompt">Affordability</div>
+              …ensure that necessary medications and treatments are affordable and accessible for patients across socioeconomic backgrounds?
+            </div>
+            <div class="hmw-item">
+              <div class="hmw-prompt">Data Sharing</div>
+              …make it easy and valuable for patients to share their biometric data with providers in a way that doesn't feel burdensome?
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="hmw-col-header clinician">Clinician Experience</div>
+          <div class="hmw-items">
+            <div class="hmw-item clinician">
+              <div class="hmw-prompt clinician">Equity in Care</div>
+              …enable clinicians to deliver the best possible care for the patient irrespective of their socio-economic condition or geography?
+            </div>
+            <div class="hmw-item clinician">
+              <div class="hmw-prompt clinician">Early Identification</div>
+              …make it easier for clinicians to identify potential issues or exacerbations in a virtual care setup and minimize the chance of readmission?
+            </div>
+            <div class="hmw-item clinician">
+              <div class="hmw-prompt clinician">Continuum of Care</div>
+              …give clinicians the confidence that their patient is staying connected to the care and support they need along the entire continuum?
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 8: REMOTE MONITORING -->
+  <div class="section">
+    <p class="section-label">Strategic Opportunity</p>
+    <h2 class="section-heading">Tiers of remote patient monitoring for CHF</h2>
+    <p class="section-body">Remote patient monitoring is critical to a CHF solutions strategy. Proactive outreach before exacerbations accelerate can meaningfully reduce hospitalizations, ED visits, and observation stays — but deployment complexity varies widely.</p>
+
+    <div class="spectrum-wrap">
+      <div style="display:flex;justify-content:space-between;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(26,46,46,0.5);margin-bottom:0.4rem;">
+        <span>General Population</span><span>Specific Population</span>
+      </div>
+      <div class="spectrum-bar"></div>
+      <div class="spectrum-labels">
+        <span>Easy to deploy</span><span>Difficult to deploy</span>
+      </div>
+
+      <div class="monitoring-grid">
+        <div class="monitoring-card easy">
+          <h4>Tier 1 · Broad Population</h4>
+          <p>Passive and device-agnostic monitoring suitable for general CHF populations. Easy to activate; lower clinical specificity. Scale is the advantage.</p>
+        </div>
+        <div class="monitoring-card medium">
+          <h4>Tier 2 · Targeted Monitoring</h4>
+          <p>Condition-specific biometric tracking (weight, fluid status, activity). Requires patient activation and care team workflows to act on alerts.</p>
+        </div>
+        <div class="monitoring-card advanced">
+          <h4>Tier 3 · Implantable / Advanced</h4>
+          <p>High-fidelity hemodynamic monitoring (e.g. CardioMEMS). Most clinically precise but limited to specific high-risk populations and complex to deploy.</p>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:2rem;">"How might we manage all this data?" — The most critical design challenge in remote monitoring is not the sensors, but the data infrastructure, alert logic, and care team workflows that make the data actionable.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Erica Gatts. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oncology Reporting — Erica Gatts</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F4E8; --cream-alt: #EEE8D8; --charcoal: #1A1614;
+      --berry: #C83A58; --olive-gold: #786428; --warm-peach: #E0B090;
+      --warm-brown: #7A6050; --font-display: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--charcoal); font-family: var(--font-display); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: rgba(247,244,232,0.93); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,22,20,0.08); }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--berry); }
+    nav ul { list-style: none; display: flex; gap: 2.5rem; }
+    nav ul li a { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.65; transition: opacity 0.2s; }
+    nav ul li a:hover { opacity: 1; }
+    .case-hero { padding: 10rem 4rem 5rem; max-width: 900px; margin: 0 auto; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-brown); margin-bottom: 2.5rem; opacity: 0.7; transition: opacity 0.2s; }
+    .back-link:hover { opacity: 1; }
+    .case-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--berry); background: rgba(200,58,88,0.1); padding: 0.3rem 0.75rem; border-radius: 2rem; margin-bottom: 1.25rem; }
+    .case-title { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; }
+    .case-subtitle { font-size: 1.15rem; color: var(--warm-brown); max-width: 680px; margin-bottom: 2.5rem; line-height: 1.7; }
+    .case-meta { display: flex; gap: 3rem; padding-top: 2rem; border-top: 1px solid rgba(26,22,20,0.1); flex-wrap: wrap; }
+    .meta-item label { display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm-brown); margin-bottom: 0.3rem; }
+    .meta-item span { font-size: 0.95rem; font-weight: 600; }
+    .case-section { max-width: 900px; margin: 0 auto; padding: 0 4rem 5rem; }
+    .section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--berry); margin-bottom: 0.75rem; }
+    .section-heading { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.5rem; }
+    .case-body { font-size: 1rem; line-height: 1.8; }
+    .case-body p { margin-bottom: 1.25rem; }
+    .case-body p:last-child { margin-bottom: 0; }
+    .callout { background: var(--cream-alt); border-left: 3px solid var(--berry); padding: 1.5rem 2rem; border-radius: 0 6px 6px 0; margin: 2.5rem 0; font-size: 1.05rem; font-style: italic; line-height: 1.7; }
+    .pill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 2rem 0; }
+    .pill { background: var(--cream-alt); border-radius: 8px; padding: 1.25rem 1.5rem; }
+    .pill-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .pill h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .pill p { font-size: 0.82rem; color: var(--warm-brown); line-height: 1.5; margin: 0; }
+    .dark-section { background: #E3464B; color: var(--cream); padding: 5rem 4rem; margin: 5rem 0; }
+    .dark-section .section-label { color: rgba(247,244,232,0.75); }
+    .dark-section .section-heading { color: var(--cream); }
+    .dark-section .case-body { color: rgba(247,244,232,0.88); }
+    .dark-section-inner { max-width: 900px; margin: 0 auto; }
+    .outcomes-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0; }
+    .outcome-card { background: var(--charcoal); color: var(--cream); border-radius: 8px; padding: 2rem 1.5rem; text-align: center; }
+    .outcome-num { font-size: 2.8rem; font-weight: 800; letter-spacing: -0.04em; color: var(--warm-peach); line-height: 1; margin-bottom: 0.5rem; }
+    .outcome-label { font-size: 0.82rem; line-height: 1.4; opacity: 0.8; }
+    .divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, rgba(26,22,20,0.1), transparent); margin: 0 auto 5rem; max-width: 900px; }
+    .case-footer { background: var(--charcoal); color: var(--cream); padding: 4rem; text-align: center; }
+    .case-footer h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.75rem; }
+    .case-footer p { opacity: 0.65; margin-bottom: 2rem; }
+    .btn { display: inline-block; padding: 0.85rem 2rem; border-radius: 4px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.2s; }
+    .btn-berry { background: var(--berry); color: var(--cream); }
+    .btn-berry:hover { background: #a02e46; }
+    .btn-outline-light { border: 1.5px solid rgba(247,244,232,0.4); color: var(--cream); margin-left: 1rem; }
+    .btn-outline-light:hover { border-color: var(--cream); }
+    @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .case-hero, .case-section { padding-left: 1.5rem; padding-right: 1.5rem; } .dark-section { padding: 3rem 1.5rem; } .outcomes-row { grid-template-columns: 1fr; } .case-footer { padding: 3rem 1.5rem; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="portfolio.html" class="nav-logo" style="display:flex;align-items:center;gap:0.45rem;text-decoration:none;color:inherit;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>Home</a>
+    <ul>
+      <li><a href="portfolio.html#projects">Work</a></li>
+      <li><a href="portfolio.html#about">About</a></li>
+      <li><a href="portfolio.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="case-hero">
+    <a href="portfolio.html" class="back-link">← Back to Work</a>
+    <div class="case-tag">Product Design · Case Study</div>
+    <h1 class="case-title">Interactive Oncology Reporting</h1>
+    <p class="case-subtitle">Transforming a static, 20-page PDF into a real-time results portal — giving oncologists the right genomic insights, at the right time, to make better treatment decisions for their patients.</p>
+    <div class="case-meta">
+      <div class="meta-item"><label>Company</label><span>Foundation Medicine</span></div>
+      <div class="meta-item"><label>Role</label><span>Lead Product Designer</span></div>
+      <div class="meta-item"><label>Partners</label><span>IDEO</span></div>
+      <div class="meta-item"><label>Platform</label><span>Web · Mobile</span></div>
+    </div>
+  </div>
+
+  <section class="case-section">
+    <p class="section-label">The Challenge</p>
+    <h2 class="section-heading">Communicating complex genetic information to multiple users</h2>
+    <div class="case-body">
+      <p>Foundation Medicine's Comprehensive Genomic Profiling (comprehensive genomic profiling) tests generate rich, complex data about a cancer patient's unique genetic signatures. But delivering those insights through a dense, static PDF report was creating friction for the oncologists, pathologists, patients, and caregivers who needed to act on them.</p>
+      <p>How might we deliver a superior customer experience and transformative patient empowerment through an easy-to-use, integrated, dynamic digital reporting experience — one that ensures patients get the optimal treatment?</p>
+    </div>
+    <div class="callout">"How might we deliver a dynamic digital reporting experience that ensures patients get the optimal treatment?"</div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem;">
+      <div style="background:#F2D4D4;border-radius:8px;padding:2rem 1.75rem;">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--berry);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;margin-bottom:1.25rem;">1</div>
+        <p style="font-size:0.92rem;line-height:1.65;color:var(--charcoal);margin:0;">Identify opportunities to <strong>communicate effectively and succinctly</strong> with oncologists about their patients' comprehensive genomic profiling results.</p>
+      </div>
+      <div style="background:#F2D4D4;border-radius:8px;padding:2rem 1.75rem;">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--berry);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;margin-bottom:1.25rem;">2</div>
+        <p style="font-size:0.92rem;line-height:1.65;color:var(--charcoal);margin:0;">Leverage <strong>interactivity and real-time information sharing</strong> to inform oncologists quickly, using the channels that they prefer.</p>
+      </div>
+      <div style="background:#F2D4D4;border-radius:8px;padding:2rem 1.75rem;">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--berry);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;margin-bottom:1.25rem;">3</div>
+        <p style="font-size:0.92rem;line-height:1.65;color:var(--charcoal);margin:0;">Understand what information <strong>oncologists want to see first, next, and last</strong> as they interpret comprehensive genomic profiling test results.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="case-section">
+    <p class="section-label">Research</p>
+    <h2 class="section-heading">Understanding oncologists and the context of genomic testing</h2>
+    <div class="case-body">
+      <p>The initiative began with a deep dive into how oncologists work — their varying levels of familiarity with genomic testing, the clinical decisions they need to make, and what information they need most at the moment of reading a report. This included in-depth interviews, contextual inquiry, and analysis of how the current reports were (and weren't) meeting their needs.</p>
+      <p>The Foundation Medicine Design Team then partnered with IDEO to research patients and develop archetypes for patients and their caregivers. This research helped us understand patients' needs for interpreting their genomic testing results, how those results can and should be communicated, and in what ways Foundation Medicine can serve as an ally in their cancer journey.</p>
+    </div>
+    <div style="margin-top:2rem;position:relative;">
+      <div style="overflow:hidden;border-radius:8px;">
+        <div id="persona-fmi-track" style="display:flex;transition:transform 0.4s ease;">
+          <div style="min-width:100%;"><img src="FMI/FMI interactive report/FMI_interactive_report_clinical_persona_bythebooka.png" alt="By the Book" style="width:100%;display:block;border-radius:8px;"/></div>
+          <div style="min-width:100%;"><img src="FMI/FMI interactive report/FMI_interactive_report_clinical_persona_moderate.png" alt="Moderate" style="width:100%;display:block;border-radius:8px;"/></div>
+          <div style="min-width:100%;"><img src="FMI/FMI interactive report/FMI_interactive_report_clinical_persona_progressive.png" alt="Progressive" style="width:100%;display:block;border-radius:8px;"/></div>
+          <div style="min-width:100%;"><img src="FMI/FMI interactive report/FMI_interactive_report_clinical_persona_utilitarian.png" alt="Utilitarian" style="width:100%;display:block;border-radius:8px;"/></div>
+          <div style="min-width:100%;"><img src="FMI/FMI interactive report/FMI_interactive_report_clinical_personas.png" alt="All Clinical Personas" style="width:100%;display:block;border-radius:8px;"/></div>
+        </div>
+      </div>
+      <!-- Nav arrows -->
+      <button onclick="fmiPersonaNav(-1)" style="position:absolute;top:50%;left:-18px;transform:translateY(-50%);background:#fff;border:1px solid #ddd;border-radius:50%;width:36px;height:36px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.12);z-index:2;">&#8249;</button>
+      <button onclick="fmiPersonaNav(1)" style="position:absolute;top:50%;right:-18px;transform:translateY(-50%);background:#fff;border:1px solid #ddd;border-radius:50%;width:36px;height:36px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,0.12);z-index:2;">&#8250;</button>
+      <!-- Dots -->
+      <div style="display:flex;justify-content:center;gap:8px;margin-top:12px;">
+        <span class="fmi-pdot" onclick="fmiPersonaGoTo(0)" style="width:8px;height:8px;border-radius:50%;background:#2d5fa3;cursor:pointer;opacity:1;"></span>
+        <span class="fmi-pdot" onclick="fmiPersonaGoTo(1)" style="width:8px;height:8px;border-radius:50%;background:#2d5fa3;cursor:pointer;opacity:0.3;"></span>
+        <span class="fmi-pdot" onclick="fmiPersonaGoTo(2)" style="width:8px;height:8px;border-radius:50%;background:#2d5fa3;cursor:pointer;opacity:0.3;"></span>
+        <span class="fmi-pdot" onclick="fmiPersonaGoTo(3)" style="width:8px;height:8px;border-radius:50%;background:#2d5fa3;cursor:pointer;opacity:0.3;"></span>
+        <span class="fmi-pdot" onclick="fmiPersonaGoTo(4)" style="width:8px;height:8px;border-radius:50%;background:#2d5fa3;cursor:pointer;opacity:0.3;"></span>
+      </div>
+    </div>
+    <script>
+    (function(){
+      var cur=0, total=5;
+      function update(){
+        document.getElementById('persona-fmi-track').style.transform='translateX(-'+cur*100+'%)';
+        var dots=document.querySelectorAll('.fmi-pdot');
+        dots.forEach(function(d,i){d.style.opacity=i===cur?'1':'0.3';});
+      }
+      window.fmiPersonaNav=function(dir){cur=(cur+dir+total)%total;update();};
+      window.fmiPersonaGoTo=function(i){cur=i;update();};
+    })();
+    </script>
+
+    <div style="margin-top:1.5rem;border-radius:8px;overflow:hidden;border:1px solid rgba(26,22,20,0.08);">
+      <div style="background:var(--berry);padding:1.25rem 2rem;">
+        <p style="font-size:1.3rem;font-weight:800;color:#fff;letter-spacing:-0.02em;margin:0;">Problems + opportunities</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;">
+        <!-- Problems -->
+        <div style="padding:2rem;background:var(--cream-alt);border-right:1px solid rgba(26,22,20,0.08);">
+          <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--berry);margin-bottom:1.25rem;">Problems</p>
+          <ol style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.85rem;">
+            <li style="display:flex;gap:0.85rem;font-size:0.88rem;line-height:1.55;color:var(--charcoal);"><span style="color:var(--berry);font-weight:700;flex-shrink:0;">1.</span>Oncologists are spending their time fighting insurance companies</li>
+            <li style="display:flex;gap:0.85rem;font-size:0.88rem;line-height:1.55;color:var(--charcoal);"><span style="color:var(--berry);font-weight:700;flex-shrink:0;">2.</span>Oncologists don't trust their EMRs</li>
+            <li style="display:flex;gap:0.85rem;font-size:0.88rem;line-height:1.55;color:var(--charcoal);"><span style="color:var(--berry);font-weight:700;flex-shrink:0;">3.</span>Oncologists are overwhelmed with information overload</li>
+            <li style="display:flex;gap:0.85rem;font-size:0.88rem;line-height:1.55;color:var(--charcoal);"><span style="color:var(--berry);font-weight:700;flex-shrink:0;">4.</span>Oncologists don't have time to read full reports</li>
+            <li style="display:flex;gap:0.85rem;font-size:0.88rem;line-height:1.55;color:var(--charcoal);"><span style="color:var(--berry);font-weight:700;flex-shrink:0;">5.</span>Oncologists have limited time to do research into new treatments</li>
+            <li style="display:flex;gap:0.85rem;font-size:0.88rem;line-height:1.55;color:var(--charcoal);"><span style="color:var(--berry);font-weight:700;flex-shrink:0;">6.</span>Oncologists have superficial understanding of some treatments</li>
+            <li style="display:flex;gap:0.85rem;font-size:0.88rem;line-height:1.55;color:var(--charcoal);"><span style="color:var(--berry);font-weight:700;flex-shrink:0;">7.</span>Oncologists who are clinically focused and who are research focused are in both community and academic settings</li>
+          </ol>
+        </div>
+        <!-- Opportunities -->
+        <div style="padding:2rem;background:var(--cream);">
+          <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--berry);margin-bottom:1.25rem;">Opportunities</p>
+          <ol style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.85rem;">
+            <li style="display:flex;gap:0.85rem;font-size:0.88rem;line-height:1.55;color:var(--charcoal);"><span style="color:var(--berry);font-weight:700;flex-shrink:0;">1.</span>How might we…arm oncologists with the right information/documentation to streamline their discussions with insurance companies?</li>
+            <li style="display:flex;gap:0.85rem;font-size:0.88rem;line-height:1.55;color:var(--charcoal);"><span style="color:var(--berry);font-weight:700;flex-shrink:0;">2.</span>How might we…establish trust and credibility when integrating the ability to order our test into local EMRs?</li>
+            <li style="display:flex;gap:0.85rem;font-size:0.88rem;line-height:1.55;color:var(--charcoal);"><span style="color:var(--berry);font-weight:700;flex-shrink:0;">3.</span>How might we…direct oncologists to the information that they need to take action?</li>
+            <li style="display:flex;gap:0.85rem;font-size:0.88rem;line-height:1.55;color:var(--charcoal);"><span style="color:var(--berry);font-weight:700;flex-shrink:0;">4.</span>How might we…simplify and condense important findings so that oncologists are able to identify them and take action?</li>
+            <li style="display:flex;gap:0.85rem;font-size:0.88rem;line-height:1.55;color:var(--charcoal);"><span style="color:var(--berry);font-weight:700;flex-shrink:0;">5.</span>How might we…provide access to research and findings to allow oncologists to capitalize on their limited amount of time?</li>
+            <li style="display:flex;gap:0.85rem;font-size:0.88rem;line-height:1.55;color:var(--charcoal);"><span style="color:var(--berry);font-weight:700;flex-shrink:0;">6.</span>How might we…establish a deeper understanding and familiarity with treatment options on our reports?</li>
+            <li style="display:flex;gap:0.85rem;font-size:0.88rem;line-height:1.55;color:var(--charcoal);"><span style="color:var(--berry);font-weight:700;flex-shrink:0;">7.</span>How might we…segment oncologists more accurately to represent their motivations and behaviors and not just their locations?</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="dark-section">
+    <div class="dark-section-inner">
+      <p class="section-label">Key Insight</p>
+      <h2 class="section-heading">Three questions oncologists always bring to a report</h2>
+      <div class="pill-grid" style="margin-top:1.5rem;">
+        <div class="pill" style="background:rgba(247,244,232,0.12);">
+          <div class="pill-icon">💊</div>
+          <h4 style="color:#F7F4E8;">Is the current therapy working?</h4>
+          <p style="color:rgba(247,244,232,0.75);">Oncologists want to quickly validate whether a patient's current treatment aligns with their latest genomic findings.</p>
+        </div>
+        <div class="pill" style="background:rgba(247,244,232,0.12);">
+          <div class="pill-icon">🧬</div>
+          <h4 style="color:#F7F4E8;">Any new biomarkers to pay attention to?</h4>
+          <p style="color:rgba(247,244,232,0.75);">New or changed genomic signatures can signal a need to adjust the treatment pathway.</p>
+        </div>
+        <div class="pill" style="background:rgba(247,244,232,0.12);">
+          <div class="pill-icon">🔬</div>
+          <h4 style="color:#F7F4E8;">Are there relevant clinical trials nearby?</h4>
+          <p style="color:rgba(247,244,232,0.75);">Access to relevant trials close to the patient's location is a critical, time-sensitive need.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="case-section">
+    <p class="section-label">Design</p>
+    <h2 class="section-heading">From static PDF to interactive results portal</h2>
+    <div class="case-body">
+      <p>Based on the report taxonomy analysis, user needs research, and insight into how clinicians use — and want to use — genomic data, the design team began iterating on an interactive reporting experience. The vision: transform the Foundation Medicine report from a static, 20+ page PDF into a real-time results portal where oncologists could dig as deeply as they needed into relevant clinical data for their patients.</p>
+      <p>The design prioritized three critical elements: prioritized genetic findings from comprehensive genomic profiling testing, FDA-approved therapies and precision medicines, and access to relevant clinical trials — each accessible via progressive disclosure on both mobile and desktop formats.</p>
+    </div>
+
+    <div style="margin-top:2rem;position:relative;">
+      <div style="overflow:hidden;border-radius:8px;">
+        <div id="design-mock-track" style="display:flex;transition:transform 0.4s ease;">
+          <div style="min-width:100%;"><img src="FMI/FMI interactive report/FMI_interactive_report_early_mock2_mobile.png" alt="Early mobile mock" style="width:100%;display:block;border-radius:8px;"></div>
+          <div style="min-width:100%;"><img src="FMI/FMI interactive report/FMI_interactive_report_clinical_trials_mock.png" alt="Clinical trials mock" style="width:100%;display:block;border-radius:8px;"></div>
+          <div style="min-width:100%;"><img src="FMI/FMI interactive report/FMI_interactive_report_early_mock1.png" alt="Early mock 1" style="width:80%;display:block;border-radius:8px;margin:0 auto;"></div>
+        </div>
+      </div>
+      <!-- Arrows -->
+      <button onclick="designMockNav(-1)" style="position:absolute;top:50%;left:0.75rem;transform:translateY(-50%);background:rgba(247,244,232,0.9);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.15);">‹</button>
+      <button onclick="designMockNav(1)" style="position:absolute;top:50%;right:0.75rem;transform:translateY(-50%);background:rgba(247,244,232,0.9);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.15);">›</button>
+      <!-- Dots -->
+      <div id="design-mock-dots" style="display:flex;justify-content:center;gap:0.5rem;margin-top:0.75rem;">
+        <span onclick="designMockGoTo(0)" style="width:8px;height:8px;border-radius:50%;background:var(--berry);cursor:pointer;display:inline-block;opacity:1;"></span>
+        <span onclick="designMockGoTo(1)" style="width:8px;height:8px;border-radius:50%;background:var(--berry);cursor:pointer;display:inline-block;opacity:0.3;"></span>
+        <span onclick="designMockGoTo(2)" style="width:8px;height:8px;border-radius:50%;background:var(--berry);cursor:pointer;display:inline-block;opacity:0.3;"></span>
+      </div>
+    </div>
+    <script>
+      (function(){
+        var idx = 0, total = 3;
+        function update(){
+          document.getElementById('design-mock-track').style.transform = 'translateX(-'+idx*100+'%)';
+          var dots = document.getElementById('design-mock-dots').children;
+          for(var i=0;i<dots.length;i++) dots[i].style.opacity = i===idx ? '1' : '0.3';
+        }
+        window.designMockNav = function(dir){ idx = (idx+dir+total)%total; update(); };
+        window.designMockGoTo = function(i){ idx = i; update(); };
+      })();
+    </script>
+
+  </section>
+
+  <section class="case-section">
+    <p class="section-label">Pilot & Outcomes</p>
+    <h2 class="section-heading">Testing, learning, and refining</h2>
+    <div class="case-body">
+      <p>The design team worked closely with translational oncology, product strategy, marketing, and engineering to pilot the interactive report with a select group of Foundation Medicine customers. Feedback confirmed the value of the interactive format for on-the-go results review, while also surfacing an important nuance: the PDF still had utility for clinicians who rely on the appendix content for detailed gene and biomarker information, and for copying findings into patient EMR progress notes.</p>
+    </div>
+
+    <div style="margin-top:2rem;position:relative;">
+      <div style="overflow:hidden;border-radius:8px;">
+        <div id="iteration-track" style="display:flex;transition:transform 0.4s ease;">
+          <div style="min-width:100%;"><img src="FMI/FMI interactive report/FMI_interactive_report_iteration_clinicaltrial.png" alt="Clinical trial iteration" style="width:100%;display:block;border-radius:8px;"></div>
+          <div style="min-width:100%;"><img src="FMI/FMI interactive report/FMI_interactive_report_iteration_graphing.png" alt="Graphing iteration" style="width:100%;display:block;border-radius:8px;"></div>
+          <div style="min-width:100%;"><img src="FMI/FMI interactive report/FMI_interactive_report_iteration_highlights.png" alt="Highlights iteration" style="width:100%;display:block;border-radius:8px;"></div>
+        </div>
+      </div>
+      <button onclick="iterationNav(-1)" style="position:absolute;top:50%;left:0.75rem;transform:translateY(-50%);background:rgba(247,244,232,0.9);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.15);">‹</button>
+      <button onclick="iterationNav(1)" style="position:absolute;top:50%;right:0.75rem;transform:translateY(-50%);background:rgba(247,244,232,0.9);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.15);">›</button>
+      <div id="iteration-dots" style="display:flex;justify-content:center;gap:0.5rem;margin-top:0.75rem;">
+        <span onclick="iterationGoTo(0)" style="width:8px;height:8px;border-radius:50%;background:var(--berry);cursor:pointer;display:inline-block;opacity:1;"></span>
+        <span onclick="iterationGoTo(1)" style="width:8px;height:8px;border-radius:50%;background:var(--berry);cursor:pointer;display:inline-block;opacity:0.3;"></span>
+        <span onclick="iterationGoTo(2)" style="width:8px;height:8px;border-radius:50%;background:var(--berry);cursor:pointer;display:inline-block;opacity:0.3;"></span>
+      </div>
+    </div>
+    <script>
+      (function(){
+        var idx=0, total=3;
+        function update(){
+          document.getElementById('iteration-track').style.transform='translateX(-'+idx*100+'%)';
+          var dots=document.getElementById('iteration-dots').children;
+          for(var i=0;i<dots.length;i++) dots[i].style.opacity=i===idx?'1':'0.3';
+        }
+        window.iterationNav=function(dir){idx=(idx+dir+total)%total;update();};
+        window.iterationGoTo=function(i){idx=i;update();};
+      })();
+    </script>
+
+    <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--berry);margin-top:2.5rem;margin-bottom:1rem;">Feedback</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.1rem;margin-top:0.5rem;">
+
+      <div style="position:relative;background:#1A1614;border-radius:12px;padding:1.25rem 1.4rem;color:#F7F4E8;font-size:0.85rem;font-style:italic;line-height:1.65;">
+        "The findings could be organized from most relevant to least relevant. BRCA2 is most relevant in this case, and AR is less so. Perhaps this could be pushed down."
+        <div style="position:absolute;bottom:-10px;left:22px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:10px solid #1A1614;"></div>
+      </div>
+
+      <div style="position:relative;background:#786428;border-radius:12px;padding:1.25rem 1.4rem;color:#F7F4E8;font-size:0.85rem;font-style:italic;line-height:1.65;">
+        "For the clinical trials, it would be nice to have the distance, like within 250 miles of the zip code of my practice."
+        <div style="position:absolute;bottom:-10px;left:22px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:10px solid #786428;"></div>
+      </div>
+
+      <div style="position:relative;background:#1A1614;border-radius:12px;padding:1.25rem 1.4rem;color:#F7F4E8;font-size:0.85rem;font-style:italic;line-height:1.65;">
+        "I would love to see more information on relevant clinical trials — which ones are open and enrolling, the trial names, where they're located, and even have a link to them for more information."
+        <div style="position:absolute;bottom:-10px;left:22px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:10px solid #1A1614;"></div>
+      </div>
+
+      <div style="position:relative;background:#C83A58;border-radius:12px;padding:1.25rem 1.4rem;color:#F7F4E8;font-size:0.85rem;font-style:italic;line-height:1.65;margin-top:0.75rem;">
+        "I like the recommended therapies section – with the NCCN recommendations here, it makes it easier to select a therapy."
+        <div style="position:absolute;bottom:-10px;left:22px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:10px solid #C83A58;"></div>
+      </div>
+
+      <div style="position:relative;background:#7A6050;border-radius:12px;padding:1.25rem 1.4rem;color:#F7F4E8;font-size:0.85rem;font-style:italic;line-height:1.65;margin-top:0.75rem;grid-column:span 2;">
+        "When it comes to findings, I want to know what gene or genes I can act on now. So show me what's actionable there."
+        <div style="position:absolute;bottom:-10px;left:22px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:10px solid #7A6050;"></div>
+      </div>
+
+      <div style="position:relative;background:#1A1614;border-radius:12px;padding:1.25rem 1.4rem;color:#F7F4E8;font-size:0.85rem;font-style:italic;line-height:1.65;margin-top:0.75rem;grid-column:span 2;">
+        "Therapies and trials pages are very clear to me, and I love how I can drill down to get more information on the therapies, specifically. This feels like the right amount of information for me here."
+        <div style="position:absolute;bottom:-10px;left:22px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:10px solid #1A1614;"></div>
+      </div>
+
+      <div style="position:relative;background:#786428;border-radius:12px;padding:1.25rem 1.4rem;color:#F7F4E8;font-size:0.85rem;font-style:italic;line-height:1.65;margin-top:0.75rem;">
+        "All this stuff on the findings tab is taking up too much real estate for me – I don't want to have to scroll to look at all of the mutations."
+        <div style="position:absolute;bottom:-10px;left:22px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:10px solid #786428;"></div>
+      </div>
+
+      <div style="position:relative;background:#7A6050;border-radius:12px;padding:1.25rem 1.4rem;color:#F7F4E8;font-size:0.85rem;font-style:italic;line-height:1.65;margin-top:0.75rem;">
+        "This back button confuses me – I would assume I'd be going back to all of the reports for this patient."
+        <div style="position:absolute;bottom:-10px;left:22px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:10px solid #7A6050;"></div>
+      </div>
+
+      <div style="position:relative;background:#1A1614;border-radius:12px;padding:1.25rem 1.4rem;color:#F7F4E8;font-size:0.85rem;font-style:italic;line-height:1.65;margin-top:0.75rem;">
+        "I might want to still download the PDF report, but this doesn't need to be front and center on the interactive report."
+        <div style="position:absolute;bottom:-10px;left:22px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:10px solid #1A1614;"></div>
+      </div>
+
+      <div style="position:relative;background:#C83A58;border-radius:12px;padding:1.25rem 1.4rem;color:#F7F4E8;font-size:0.85rem;font-style:italic;line-height:1.65;margin-top:0.75rem;grid-column:span 2;">
+        "Could there be a summary page, with findings, therapies, and trials all in one blurb?"
+        <div style="position:absolute;bottom:-10px;left:22px;width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-top:10px solid #C83A58;"></div>
+      </div>
+
+    </div>
+
+    <div class="case-body" style="margin-top:2rem;">
+      <p>Subsequent refinements focused on: surfacing the most actionable genetic results first, displaying patient progress over time through a new monitoring feature, and simplifying key clinical insights to make oncologist review faster and more confident.</p>
+    </div>
+    <div class="outcomes-row">
+      <div class="outcome-card">
+        <div class="outcome-num">20+</div>
+        <div class="outcome-label">Page PDF replaced by dynamic digital experience</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">3</div>
+        <div class="outcome-label">Critical report elements surfaced at-a-glance</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-num">2x</div>
+        <div class="outcome-label">Formats delivered — mobile and desktop</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="case-footer">
+    <h3>Want to talk through this work?</h3>
+    <p>I'm happy to walk through the research, process, and decisions in more detail.</p>
+    <a href="mailto:egatts@gmail.com" class="btn btn-berry">Get in Touch</a>
+    <a href="portfolio.html" class="btn btn-outline-light">← Back to Portfolio</a>
+  </footer>
+</body>
+</html>
