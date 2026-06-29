@@ -507,6 +507,15 @@
       .image-grid-2 { grid-template-columns: 1fr; }
       .case-footer { padding: 3rem 1.5rem; }
     }
+  
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.5rem; }
+      nav ul { gap: 1.25rem; }
+      nav ul li a { font-size: 0.75rem; }
+    }
+    @media (max-width: 420px) {
+      nav ul { display: none; }
+    }
   </style>
 </head>
 <body>
