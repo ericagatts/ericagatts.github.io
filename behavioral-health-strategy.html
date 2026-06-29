@@ -97,6 +97,40 @@
     @media (max-width: 420px) {
       nav ul { display: none; }
     }
+
+    /* ── Responsive diagram classes ── */
+    .bh-vision-pillars { display:grid; grid-template-columns:1fr 2fr 1fr; gap:1rem; margin-bottom:1rem; }
+    .bh-sub-pillars { display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; }
+
+    .bh-matrix-wrap { display:grid; grid-template-columns:2rem 1fr 1fr; grid-template-rows:1fr 1fr 2rem; gap:0.75rem; min-height:420px; }
+    .bh-matrix-mobile { display:none; flex-direction:column; gap:0.75rem; }
+
+    .bh-roadmap-head { display:grid; grid-template-columns:10rem 1fr 1fr 1fr; gap:1rem; margin-bottom:1rem; }
+    .bh-roadmap-rows { display:flex; flex-direction:column; gap:0.75rem; }
+    .bh-roadmap-row { display:grid; grid-template-columns:10rem 1fr 1fr 1fr; gap:1rem; align-items:start; }
+    .bh-period-label { display:none; font-size:0.6rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.35rem; }
+
+    @media (max-width:768px) {
+      /* Vision pillars stack */
+      .bh-vision-pillars { grid-template-columns:1fr; }
+      .bh-sub-pillars { grid-template-columns:1fr; }
+
+      /* Prioritization: hide desktop grid, show stacked cards */
+      .bh-matrix-wrap { display:none; }
+      .bh-matrix-mobile { display:flex; }
+
+      /* Roadmap: concept name becomes full-width header, time cells stack below */
+      .bh-roadmap-head { display:none; }
+      .bh-roadmap-row { grid-template-columns:1fr; gap:0.5rem; }
+      .bh-roadmap-row > div:first-child { font-size:0.85rem; font-weight:800; color:var(--bh-teal); background:rgba(32,81,97,0.1); border-radius:6px; padding:0.75rem 1rem; }
+      .bh-period-label { display:block; }
+      .bh-period-label.green { color:var(--bh-green); }
+      .bh-period-label.blue { color:var(--bh-blue); }
+      .bh-period-label.teal { color:var(--bh-teal); }
+
+      /* Diagrams: reduce outer padding */
+      div[style*="max-width:1100px"] { padding-left:1.5rem !important; padding-right:1.5rem !important; }
+    }
   </style>
 </head>
 <body>
@@ -239,8 +273,7 @@
       </div>
 
       <!-- Four pillars -->
-      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:1rem;">
-      <div style="display:grid;grid-template-columns:1fr 2fr 1fr;gap:1rem;min-width:560px;">
+      <div class="bh-vision-pillars">
 
         <!-- A: Change the Dialog -->
         <div style="background:rgba(53,178,90,0.18);border:1px solid rgba(53,178,90,0.35);border-radius:8px;padding:1.5rem;">
@@ -253,7 +286,7 @@
         <div style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1.5rem;">
           <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:0.5rem;">Pillar B</div>
           <div style="font-size:1rem;font-weight:700;color:var(--cream);margin-bottom:1rem;">Innovate the Value Chain</div>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;">
+          <div class="bh-sub-pillars">
             <div style="background:rgba(247,244,232,0.06);border-radius:6px;padding:1rem;">
               <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:0.4rem;">B1</div>
               <div style="font-size:0.82rem;font-weight:700;color:var(--cream);margin-bottom:0.4rem;">Maintain Behavioral Health</div>
@@ -278,7 +311,6 @@
           <div style="font-size:1rem;font-weight:700;color:var(--cream);margin-bottom:0.75rem;">Fix the Business Model</div>
           <p style="font-size:0.78rem;color:rgba(247,244,232,0.65);line-height:1.6;">Understand current economics and respond with new approaches for balancing payer, provider, and patient responsibility to create lasting value.</p>
         </div>
-      </div>
       </div>
 
       <!-- D: Foundation row -->
@@ -434,9 +466,8 @@
       <p style="font-size:1.1rem;font-weight:700;color:var(--bh-teal);text-align:center;margin-bottom:0.5rem;">Opportunities Mapped by Impact &amp; Effort</p>
       <p style="font-size:0.82rem;color:var(--bh-teal);text-align:center;margin-bottom:2.5rem;max-width:560px;margin-left:auto;margin-right:auto;">Shorter-term wins versus longer-term strategic investments — prioritized to guide where Highmark should act first.</p>
 
-      <!-- 2x2 matrix grid -->
-      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-      <div style="display:grid;grid-template-columns:2rem 1fr 1fr;grid-template-rows:1fr 1fr 2rem;gap:0.75rem;min-height:420px;min-width:480px;">
+      <!-- 2x2 matrix grid — desktop -->
+      <div class="bh-matrix-wrap">
 
         <!-- Y-axis label -->
         <div style="grid-row:1/3;grid-column:1;display:flex;align-items:center;justify-content:center;">
@@ -444,7 +475,7 @@
         </div>
 
         <!-- High impact / Lower effort -->
-        <div style="grid-row:1;grid-column:2;background:rgba(53,178,90,0.08);border:1px solid rgba(53,178,90,0.2);border-radius:8px;padding:1.5rem;position:relative;">
+        <div style="grid-row:1;grid-column:2;background:rgba(53,178,90,0.08);border:1px solid rgba(53,178,90,0.2);border-radius:8px;padding:1.5rem;">
           <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-green);margin-bottom:1rem;">High Impact · Near-Term</div>
           <div style="display:flex;flex-direction:column;gap:0.6rem;">
             <div style="background:white;border-radius:6px;padding:0.75rem 1rem;box-shadow:0 1px 4px rgba(32,81,97,0.08);">
@@ -473,7 +504,7 @@
           </div>
         </div>
 
-        <!-- Lower impact / Lower effort -->
+        <!-- Moderate impact / Lower effort -->
         <div style="grid-row:2;grid-column:2;background:rgba(32,81,97,0.04);border:1px solid rgba(32,81,97,0.18);border-radius:8px;padding:1.5rem;">
           <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-teal);opacity:0.7;margin-bottom:1rem;">Moderate Impact · Near-Term</div>
           <div style="display:flex;flex-direction:column;gap:0.6rem;">
@@ -484,7 +515,7 @@
           </div>
         </div>
 
-        <!-- Lower impact / Higher effort -->
+        <!-- Moderate impact / Higher effort -->
         <div style="grid-row:2;grid-column:3;background:rgba(32,81,97,0.04);border:1px solid rgba(32,81,97,0.18);border-radius:8px;padding:1.5rem;">
           <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-teal);opacity:0.7;margin-bottom:1rem;">Moderate Impact · Longer-Term</div>
           <div style="display:flex;flex-direction:column;gap:0.6rem;">
@@ -501,6 +532,31 @@
         </div>
 
       </div>
+
+      <!-- 2x2 stacked cards — mobile only -->
+      <div class="bh-matrix-mobile">
+        <div style="background:rgba(53,178,90,0.08);border:1px solid rgba(53,178,90,0.2);border-radius:8px;padding:1.25rem;">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.75rem;">High Impact · Near-Term</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="background:white;border-radius:6px;padding:0.75rem 1rem;box-shadow:0 1px 4px rgba(32,81,97,0.08);"><div style="font-size:0.78rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.2rem;">Clinicians as Whole-Health Practitioners</div><div style="font-size:0.7rem;color:var(--bh-teal);">Enable all clinicians to address Behavioral Health needs without added burden</div></div>
+            <div style="background:white;border-radius:6px;padding:0.75rem 1rem;box-shadow:0 1px 4px rgba(32,81,97,0.08);"><div style="font-size:0.78rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.2rem;">Communities as Caregivers</div><div style="font-size:0.7rem;color:var(--bh-teal);">Schools, employers &amp; families as the first line of support</div></div>
+          </div>
+        </div>
+        <div style="background:rgba(108,184,227,0.08);border:1px solid rgba(108,184,227,0.2);border-radius:8px;padding:1.25rem;">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-blue);margin-bottom:0.75rem;">High Impact · Longer-Term</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="background:white;border-radius:6px;padding:0.75rem 1rem;box-shadow:0 1px 4px rgba(32,81,97,0.08);"><div style="font-size:0.78rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.2rem;">Flipping the Risk Problem</div><div style="font-size:0.7rem;color:var(--bh-teal);">New payer/provider models that realize long-term Behavioral Health value</div></div>
+            <div style="background:white;border-radius:6px;padding:0.75rem 1rem;box-shadow:0 1px 4px rgba(32,81,97,0.08);"><div style="font-size:0.78rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.2rem;">Use Data for Insights &amp; Action</div><div style="font-size:0.7rem;color:var(--bh-teal);">Predictive analytics to identify risk and drive proactive care</div></div>
+          </div>
+        </div>
+        <div style="background:rgba(32,81,97,0.04);border:1px solid rgba(32,81,97,0.18);border-radius:8px;padding:1.25rem;">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-teal);opacity:0.7;margin-bottom:0.75rem;">Moderate Impact · Near-Term</div>
+          <div style="background:white;border-radius:6px;padding:0.75rem 1rem;box-shadow:0 1px 4px rgba(32,81,97,0.06);"><div style="font-size:0.78rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.2rem;">Respond to COVID-19 Behavioral Health Needs</div><div style="font-size:0.7rem;color:var(--bh-teal);">Address pandemic-driven isolation, grief, and trauma</div></div>
+        </div>
+        <div style="background:rgba(32,81,97,0.04);border:1px solid rgba(32,81,97,0.18);border-radius:8px;padding:1.25rem;">
+          <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-teal);opacity:0.7;margin-bottom:0.75rem;">Moderate Impact · Longer-Term</div>
+          <div style="background:white;border-radius:6px;padding:0.75rem 1rem;box-shadow:0 1px 4px rgba(32,81,97,0.06);"><div style="font-size:0.78rem;font-weight:700;color:var(--bh-teal);margin-bottom:0.2rem;">Open Behavioral Health Resources for All</div><div style="font-size:0.7rem;color:var(--bh-teal);">Virtual &amp; peer models for the 60%+ of counties with no psychiatrist</div></div>
+        </div>
       </div>
 
       <!-- Legend -->
@@ -807,39 +863,37 @@
       <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--bh-green);margin-bottom:0.5rem;text-align:center;">Preliminary Ecosystem Roadmap</p>
       <p style="font-size:1.1rem;font-weight:700;color:var(--bh-teal);text-align:center;margin-bottom:0.5rem;">Proposed Staging of Design &amp; Development</p>
       <p style="font-size:0.82rem;color:var(--bh-teal);text-align:center;margin-bottom:2.5rem;max-width:560px;margin-left:auto;margin-right:auto;">The Behavioral Health Care Hub leads the roadmap as the foundation — other concepts integrate on top as they're developed and launched.</p>
-      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-      <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;margin-bottom:1rem;min-width:600px;">
+      <div class="bh-roadmap-head">
         <div></div>
         <div style="text-align:center;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-green);padding:0.5rem;background:rgba(53,178,90,0.08);border-radius:4px;">0–6 Months</div>
         <div style="text-align:center;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-blue);padding:0.5rem;background:rgba(108,184,227,0.08);border-radius:4px;">6–12 Months</div>
         <div style="text-align:center;font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--bh-teal);padding:0.5rem;background:rgba(108,184,227,0.08);border-radius:4px;">12–24 Months</div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:0.75rem;">
-        <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;align-items:start;min-width:600px;">
+      <div class="bh-roadmap-rows">
+        <div class="bh-roadmap-row">
           <div style="font-size:0.8rem;font-weight:700;color:var(--bh-teal);padding-top:0.75rem;">Behavioral Health Care Hub</div>
-          <div style="background:rgba(53,178,90,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Design &amp; prototype hub MVP · Integrate existing Behavioral Health resources · Plan marketing for customers &amp; clinicians</div>
-          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Develop &amp; launch hub MVP · Integrate enhanced Behavioral Health clinician profiles · Build same-day Behavioral Health help model</div>
-          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Integrate ecosystem features as they roll out · Leverage partnerships to build &amp; release new functionality</div>
+          <div style="background:rgba(53,178,90,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;"><div class="bh-period-label green">0–6 Months</div>Design &amp; prototype hub MVP · Integrate existing Behavioral Health resources · Plan marketing for customers &amp; clinicians</div>
+          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;"><div class="bh-period-label blue">6–12 Months</div>Develop &amp; launch hub MVP · Integrate enhanced Behavioral Health clinician profiles · Build same-day Behavioral Health help model</div>
+          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;"><div class="bh-period-label teal">12–24 Months</div>Integrate ecosystem features as they roll out · Leverage partnerships to build &amp; release new functionality</div>
         </div>
-        <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;align-items:start;min-width:600px;">
+        <div class="bh-roadmap-row">
           <div style="font-size:0.8rem;font-weight:700;color:var(--bh-teal);padding-top:0.75rem;">Perpetual Screening</div>
-          <div style="background:rgba(53,178,90,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Research partners &amp; rollout options · Design &amp; prototype MVP · Usability testing</div>
-          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Create operational &amp; marketing plans · Develop &amp; launch MVP across AHN</div>
-          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Enhance feature set with additional rollouts</div>
+          <div style="background:rgba(53,178,90,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;"><div class="bh-period-label green">0–6 Months</div>Research partners &amp; rollout options · Design &amp; prototype MVP · Usability testing</div>
+          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;"><div class="bh-period-label blue">6–12 Months</div>Create operational &amp; marketing plans · Develop &amp; launch MVP across AHN</div>
+          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;"><div class="bh-period-label teal">12–24 Months</div>Enhance feature set with additional rollouts</div>
         </div>
-        <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;align-items:start;min-width:600px;">
+        <div class="bh-roadmap-row">
           <div style="font-size:0.8rem;font-weight:700;color:var(--bh-teal);padding-top:0.75rem;">Peer Support</div>
-          <div style="background:rgba(53,178,90,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Discuss potential partners · Low-fidelity pilot for learning</div>
-          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Staff peer community organizer · Develop &amp; launch MVP</div>
-          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Build pathways for complex cases · Refine and scale</div>
+          <div style="background:rgba(53,178,90,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;"><div class="bh-period-label green">0–6 Months</div>Discuss potential partners · Low-fidelity pilot for learning</div>
+          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;"><div class="bh-period-label blue">6–12 Months</div>Staff peer community organizer · Develop &amp; launch MVP</div>
+          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;"><div class="bh-period-label teal">12–24 Months</div>Build pathways for complex cases · Refine and scale</div>
         </div>
-        <div style="display:grid;grid-template-columns:10rem 1fr 1fr 1fr;gap:1rem;align-items:start;min-width:600px;">
+        <div class="bh-roadmap-row">
           <div style="font-size:0.8rem;font-weight:700;color:var(--bh-teal);padding-top:0.75rem;">Culturally Competent Care</div>
-          <div style="background:rgba(53,178,90,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Expand D&amp;I working group · Research clinician training needs</div>
-          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Develop training for AHN clinicians · Pilot with subset · Begin workforce diversity plan</div>
-          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;">Launch broader training · Consider integration into existing platforms</div>
+          <div style="background:rgba(53,178,90,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;"><div class="bh-period-label green">0–6 Months</div>Expand D&amp;I working group · Research clinician training needs</div>
+          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;"><div class="bh-period-label blue">6–12 Months</div>Develop training for AHN clinicians · Pilot with subset · Begin workforce diversity plan</div>
+          <div style="background:rgba(108,184,227,0.08);border-radius:6px;padding:0.75rem;font-size:0.72rem;color:var(--bh-teal);line-height:1.5;"><div class="bh-period-label teal">12–24 Months</div>Launch broader training · Consider integration into existing platforms</div>
         </div>
-      </div>
       </div>
     </div>
   </div>
