@@ -147,6 +147,10 @@
 
       /* Diagrams: reduce outer padding */
       div[style*="max-width:1100px"] { padding-left:1.5rem !important; padding-right:1.5rem !important; }
+
+      /* Opportunity areas: reduce inner box padding and card padding at xs */
+      .bh-opp-inner { padding: 1.5rem !important; }
+      .bh-opp-card { padding: 1rem !important; }
     }
   </style>
 </head>
@@ -703,25 +707,25 @@
 
   <!-- OPPORTUNITY AREAS DIAGRAM -->
   <div style="max-width:1100px;margin:0 auto 5rem;padding:0 4rem;">
-    <div style="background:var(--bh-teal);border-radius:12px;padding:3rem;">
+    <div class="bh-opp-inner" style="background:var(--bh-teal);border-radius:12px;padding:3rem;">
 
       <p style="font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:0.5rem;text-align:center;">Six Prioritized Opportunity Areas</p>
       <p style="font-size:1.1rem;font-weight:700;color:var(--cream);text-align:center;margin-bottom:0.5rem;">Maintain Behavioral Health &amp; Optimize Capacity</p>
       <p style="font-size:0.82rem;color:rgba(247,244,232,0.55);text-align:center;margin-bottom:2.5rem;max-width:580px;margin-left:auto;margin-right:auto;">The two executive-prioritized strategic pillars from Phase 1 translated into six concrete innovation opportunity areas for Phase 2.</p>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:1.25rem;">
         <div>
           <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--bh-mint);margin-bottom:1rem;text-align:center;padding-bottom:0.75rem;border-bottom:1px solid rgba(247,244,232,0.12);">Maintain Behavioral Health</div>
           <div style="display:flex;flex-direction:column;gap:0.75rem;">
-            <div style="background:rgba(53,178,90,0.15);border:1px solid rgba(53,178,90,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
+            <div class="bh-opp-card" style="background:rgba(53,178,90,0.15);border:1px solid rgba(53,178,90,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
               <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;"><div style="width:1.5rem;height:1.5rem;border-radius:50%;background:rgba(53,178,90,0.8);color:#fff;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Prevent &amp; Intervene Early</div></div>
               <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.5;margin:0;">Create awareness and activate mental resilience self-care in at-risk populations before conditions become acute.</p>
             </div>
-            <div style="background:rgba(53,178,90,0.15);border:1px solid rgba(53,178,90,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
+            <div class="bh-opp-card" style="background:rgba(53,178,90,0.15);border:1px solid rgba(53,178,90,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
               <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;"><div style="width:1.5rem;height:1.5rem;border-radius:50%;background:rgba(53,178,90,0.8);color:#fff;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Identify Behavioral Health Needs &amp; Activate Care</div></div>
               <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.5;margin:0;">Bring new approaches to identifying behavioral health needs and connecting people to the right care, earlier.</p>
             </div>
-            <div style="background:rgba(53,178,90,0.15);border:1px solid rgba(53,178,90,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
+            <div class="bh-opp-card" style="background:rgba(53,178,90,0.15);border:1px solid rgba(53,178,90,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
               <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;"><div style="width:1.5rem;height:1.5rem;border-radius:50%;background:rgba(53,178,90,0.8);color:#fff;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Align Need with the Right Level of Care</div></div>
               <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.5;margin:0;">Match individuals with the appropriate care setting and level of intensity throughout their care journey.</p>
             </div>
@@ -730,15 +734,15 @@
         <div>
           <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(155,212,183,0.7);margin-bottom:1rem;text-align:center;padding-bottom:0.75rem;border-bottom:1px solid rgba(247,244,232,0.12);">Optimize Capacity</div>
           <div style="display:flex;flex-direction:column;gap:0.75rem;">
-            <div style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
+            <div class="bh-opp-card" style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
               <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;"><div style="width:1.5rem;height:1.5rem;border-radius:50%;background:rgba(108,184,227,0.85);color:#fff;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Activate the Caregiver Community</div></div>
               <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.5;margin:0;">Resource the entire caregiver community — families, peers, community organizations — to achieve greater scale.</p>
             </div>
-            <div style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
+            <div class="bh-opp-card" style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
               <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;"><div style="width:1.5rem;height:1.5rem;border-radius:50%;background:rgba(108,184,227,0.85);color:#fff;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">5</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Lead in Behavioral Health Clinical Insights</div></div>
               <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.5;margin:0;">Be a leader in Behavioral Health data analytics and clinical research to generate best practices and drive evidence-based care.</p>
             </div>
-            <div style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
+            <div class="bh-opp-card" style="background:rgba(108,184,227,0.15);border:1px solid rgba(108,184,227,0.3);border-radius:8px;padding:1.25rem 1.5rem;">
               <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem;"><div style="width:1.5rem;height:1.5rem;border-radius:50%;background:rgba(108,184,227,0.85);color:#fff;font-size:0.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">6</div><div style="font-size:0.82rem;font-weight:700;color:var(--cream);">Equitable, Culturally Competent Access</div></div>
               <p style="font-size:0.75rem;color:rgba(247,244,232,0.6);line-height:1.5;margin:0;">Address underserved populations and provide equitable access to culturally competent care across the network.</p>
             </div>
