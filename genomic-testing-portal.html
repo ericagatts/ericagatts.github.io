@@ -443,6 +443,51 @@
       font-weight: 500;
     }
 
+    /* ── Lightbox ── */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26,22,20,0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+    .lightbox-overlay.open { display: flex; }
+    .lightbox-img {
+      max-width: 92vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+      cursor: default;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: rgba(247,244,232,0.8);
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .lightbox-close:hover { color: #fff; }
+    .lightbox-label {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: rgba(247,244,232,0.7);
+    }
+    #cs-slideshow { cursor: zoom-in; }
+
     /* ── Divider ── */
     .divider {
       width: 100%;
@@ -884,7 +929,45 @@
     }
 
     function sketchSlide(dir) { sketchGoTo(sketchCurrent + dir); }
+
+    // ── Lightbox ──
+    const lightbox = document.getElementById('cs-lightbox');
+    const lightboxImg = document.getElementById('cs-lightbox-img');
+    const lightboxLbl = document.getElementById('cs-lightbox-label');
+
+    document.getElementById('cs-slideshow').addEventListener('click', function(e) {
+      if (e.target.classList.contains('ui-slide')) return; // ignore btn clicks
+      const active = document.querySelector('#cs-slideshow .ui-slide.active');
+      if (!active) return;
+      lightboxImg.src = active.src;
+      lightboxLbl.textContent = labels[current];
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightboxImg) return;
+      closeLightbox();
+    });
+
+    document.getElementById('cs-lightbox-close').addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
   </script>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox-overlay" id="cs-lightbox">
+    <button class="lightbox-close" id="cs-lightbox-close">×</button>
+    <img class="lightbox-img" id="cs-lightbox-img" src="" alt="Enlarged view">
+    <div class="lightbox-label" id="cs-lightbox-label"></div>
+  </div>
 
 </body>
 </html>
