@@ -682,26 +682,24 @@
   <div class="divider" style="max-width:1100px;margin:0 auto 5rem;padding:0 4rem;"></div>
   <section class="case-section">
     <p class="section-label">Discover</p>
-    <h2 class="section-heading">Understanding Ordering Archetypes</h2>
-    <div style="width:75%;margin:0 auto;">
-      <div class="ui-slideshow" id="arch-slideshow" style="background:#ffffff;aspect-ratio:4/3;">
-        <img class="ui-slide active" src="frontoffice.png" alt="Front Office" style="object-fit:contain;object-position:center;">
-        <img class="ui-slide" src="nurses.png" alt="Nurses" style="object-fit:contain;object-position:center;">
-        <img class="ui-slide" src="oncologists.png" alt="Oncologists" style="object-fit:contain;object-position:center;">
-        <img class="ui-slide" src="pathologists.png" alt="Pathologists" style="object-fit:contain;object-position:center;">
-        <button class="slide-btn prev" onclick="archSlide(-1)">‹</button>
-        <button class="slide-btn next" onclick="archSlide(1)">›</button>
-        <div class="slide-counter" id="arch-counter">1 / 4</div>
-      </div>
-      <div class="slide-dots" id="arch-dots">
-        <button class="dot active" onclick="archGoTo(0)"></button>
-        <button class="dot" onclick="archGoTo(1)"></button>
-        <button class="dot" onclick="archGoTo(2)"></button>
-        <button class="dot" onclick="archGoTo(3)"></button>
-      </div>
-      <div class="slide-labels">
-        <span class="slide-label-text" id="arch-label">Front Office</span>
-      </div>
+    <h2 class="section-heading">Understanding Our Users' Needs</h2>
+    <div class="ui-slideshow" id="arch-slideshow" style="background:#ffffff;aspect-ratio:4/3;">
+      <img class="ui-slide active" src="Front_desk.png" alt="Front Desk" style="object-fit:contain;object-position:center;">
+      <img class="ui-slide" src="Nurses.png" alt="Nurses" style="object-fit:contain;object-position:center;">
+      <img class="ui-slide" src="Oncologists.png" alt="Oncologists" style="object-fit:contain;object-position:center;">
+      <img class="ui-slide" src="Paths.png" alt="Pathologists" style="object-fit:contain;object-position:center;">
+      <button class="slide-btn prev" onclick="archSlide(-1)">‹</button>
+      <button class="slide-btn next" onclick="archSlide(1)">›</button>
+      <div class="slide-counter" id="arch-counter">1 / 4</div>
+    </div>
+    <div class="slide-dots" id="arch-dots">
+      <button class="dot active" onclick="archGoTo(0)"></button>
+      <button class="dot" onclick="archGoTo(1)"></button>
+      <button class="dot" onclick="archGoTo(2)"></button>
+      <button class="dot" onclick="archGoTo(3)"></button>
+    </div>
+    <div class="slide-labels">
+      <span class="slide-label-text" id="arch-label">Front Desk</span>
     </div>
     <div class="case-body" style="margin-top:1.5rem;">
       <p>Ethnographic research conducted with existing portal users revealed four distinct ordering archetypes, each with a different relationship to the portal. Front office staff are primarily responsible for initiating final orders, handling billing issues, and retrieving reports for oncologists. Nurses and residents "own" the clinical data entry side of ordering and coordinate closely with oncologists for orders on hold and sharing reports for consultation. Oncologists are the primary consumers of the genomic reports and are the clinical decision-makers—though they rarely initiate orders themselves. Pathologists play a critical upstream role in specimen coordination and finalizing order—and in some settings, act as the ordering physician entirely. Designing for this ecosystem meant accounting for handoffs, shared workflows, and role-specific information needs across every touchpoint.</p>
@@ -839,7 +837,7 @@
 
     const archSlides = document.querySelectorAll('#arch-slideshow .ui-slide');
     const archDots = document.querySelectorAll('#arch-dots .dot');
-    const archLabels = ['Front Office', 'Nurses', 'Oncologists', 'Pathologists'];
+    const archLabels = ['Front Desk', 'Nurses', 'Oncologists', 'Pathologists'];
     let archCurrent = 0;
 
     function archGoTo(n) {
