@@ -683,23 +683,25 @@
   <section class="case-section">
     <p class="section-label">Discover</p>
     <h2 class="section-heading">Understanding Ordering Archetypes</h2>
-    <div class="ui-slideshow" id="arch-slideshow" style="background:#ffffff;aspect-ratio:4/3;">
-      <img class="ui-slide active" src="frontoffice.png" alt="Front Office" style="object-fit:contain;">
-      <img class="ui-slide" src="nurses.png" alt="Nurses" style="object-fit:contain;">
-      <img class="ui-slide" src="oncologists.png" alt="Oncologists" style="object-fit:contain;">
-      <img class="ui-slide" src="pathologists.png" alt="Pathologists" style="object-fit:contain;">
-      <button class="slide-btn prev" onclick="archSlide(-1)">‹</button>
-      <button class="slide-btn next" onclick="archSlide(1)">›</button>
-      <div class="slide-counter" id="arch-counter">1 / 4</div>
-    </div>
-    <div class="slide-dots" id="arch-dots">
-      <button class="dot active" onclick="archGoTo(0)"></button>
-      <button class="dot" onclick="archGoTo(1)"></button>
-      <button class="dot" onclick="archGoTo(2)"></button>
-      <button class="dot" onclick="archGoTo(3)"></button>
-    </div>
-    <div class="slide-labels">
-      <span class="slide-label-text" id="arch-label">Front Office</span>
+    <div style="width:75%;margin:0 auto;">
+      <div class="ui-slideshow" id="arch-slideshow" style="background:#ffffff;aspect-ratio:4/3;">
+        <img class="ui-slide active" src="frontoffice.png" alt="Front Office" style="object-fit:contain;object-position:center;">
+        <img class="ui-slide" src="nurses.png" alt="Nurses" style="object-fit:contain;object-position:center;">
+        <img class="ui-slide" src="oncologists.png" alt="Oncologists" style="object-fit:contain;object-position:center;">
+        <img class="ui-slide" src="pathologists.png" alt="Pathologists" style="object-fit:contain;object-position:center;">
+        <button class="slide-btn prev" onclick="archSlide(-1)">‹</button>
+        <button class="slide-btn next" onclick="archSlide(1)">›</button>
+        <div class="slide-counter" id="arch-counter">1 / 4</div>
+      </div>
+      <div class="slide-dots" id="arch-dots">
+        <button class="dot active" onclick="archGoTo(0)"></button>
+        <button class="dot" onclick="archGoTo(1)"></button>
+        <button class="dot" onclick="archGoTo(2)"></button>
+        <button class="dot" onclick="archGoTo(3)"></button>
+      </div>
+      <div class="slide-labels">
+        <span class="slide-label-text" id="arch-label">Front Office</span>
+      </div>
     </div>
     <div class="case-body" style="margin-top:1.5rem;">
       <p>Research revealed four distinct ordering archetypes, each with a different relationship to the portal. Front office staff — PAs, MAs, and coordinators — were primarily responsible for initiating and partially completing orders, handling billing issues, and retrieving reports. Nurses and residents (APPs, NPs) owned the clinical data entry side of ordering and coordinated closely with oncologists on holds and report sharing. Oncologists were the primary consumers of genomic reports and clinical decision-makers, though they rarely initiated orders themselves. Pathologists played a critical upstream role in specimen coordination and TRF completion, and in some settings acted as the ordering physician entirely. Designing for this ecosystem meant accounting for handoffs, shared workflows, and role-specific information needs across every touchpoint.</p>
