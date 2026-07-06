@@ -725,9 +725,7 @@
     </div>
     <h2 class="section-heading" style="margin:3rem 0 1.25rem;">Initial Concepts</h2>
     <div class="ui-slideshow" id="sketch-slideshow" style="background:#ffffff;aspect-ratio:16/10;">
-      <img class="ui-slide active" src="homesketch.png" alt="Home Sketch" style="object-fit:contain;object-position:center;">
-      <img class="ui-slide" src="ordering_sketch.png" alt="Ordering Sketch" style="object-fit:contain;object-position:center;">
-      <img class="ui-slide" src="orederingsketch2.png" alt="Ordering Sketch 2" style="object-fit:contain;object-position:center;">
+      <img class="ui-slide active" src="orederingsketch2.png" alt="Ordering Sketch 2" style="object-fit:contain;object-position:center;">
       <img class="ui-slide" src="assignmentsketch.png" alt="Assignment Sketch" style="object-fit:contain;object-position:center;">
       <img class="ui-slide" src="wizardsketch1.png" alt="Wizard Sketch 1" style="object-fit:contain;object-position:center;">
       <img class="ui-slide" src="wizardsketch2.png" alt="Wizard Sketch 2" style="object-fit:contain;object-position:center;">
@@ -737,7 +735,7 @@
       <img class="ui-slide" src="MKsketch3.png" alt="MK Sketch 3" style="object-fit:contain;object-position:center;">
       <button class="slide-btn prev" onclick="sketchSlide(-1)">‹</button>
       <button class="slide-btn next" onclick="sketchSlide(1)">›</button>
-      <div class="slide-counter" id="sketch-counter">1 / 10</div>
+      <div class="slide-counter" id="sketch-counter">1 / 8</div>
     </div>
     <div class="slide-dots" id="sketch-dots">
       <button class="dot active" onclick="sketchGoTo(0)"></button>
@@ -748,8 +746,6 @@
       <button class="dot" onclick="sketchGoTo(5)"></button>
       <button class="dot" onclick="sketchGoTo(6)"></button>
       <button class="dot" onclick="sketchGoTo(7)"></button>
-      <button class="dot" onclick="sketchGoTo(8)"></button>
-      <button class="dot" onclick="sketchGoTo(9)"></button>
     </div>
     <div class="slide-labels">
       <span class="slide-label-text" id="sketch-label">Home Sketch</span>
@@ -877,7 +873,7 @@
 
     const sketchSlides = document.querySelectorAll('#sketch-slideshow .ui-slide');
     const sketchDots = document.querySelectorAll('#sketch-dots .dot');
-    const sketchLabelTexts = ['Home Sketch', 'Ordering Sketch', 'Ordering Sketch 2', 'Assignment Sketch', 'Wizard Sketch 1', 'Wizard Sketch 2', 'Wizard Sketch 3', 'MK Sketch 1', 'MK Sketch 2', 'MK Sketch 3'];
+    const sketchLabelTexts = ['Ordering Sketch 2', 'Assignment Sketch', 'Wizard Sketch 1', 'Wizard Sketch 2', 'Wizard Sketch 3', 'MK Sketch 1', 'MK Sketch 2', 'MK Sketch 3'];
     let sketchCurrent = 0;
 
     function sketchGoTo(n) {
