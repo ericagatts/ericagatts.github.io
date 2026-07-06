@@ -649,6 +649,9 @@
     <div class="case-body">
       <p>A patient newly diagnosed with cancer meets with their oncologist, who recommends comprehensive genomic testing. The oncologist orders the appropriate Foundation Medicine tests — either online or via paper form. The specimen is processed, sequenced, and analyzed, and a detailed genomic report is delivered back to the oncologist to inform the next step of their patient's cancer care.</p>
     </div>
+    <div class="callout">
+      "The design strategy was focused on elevating Foundation Medicine's genomic testing experience to support a robust, patient-centric experience for oncologists — simplifying complexity to deliver meaningful experiences for the people who need them most."
+    </div>
   </section>
 
   <div class="divider" style="max-width:1100px;margin:0 auto 5rem;padding:0 4rem;"></div>
@@ -866,17 +869,14 @@
       <img class="ui-slide" src="Dashboard 4.png" alt="Dashboard 4" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="Early Patient 1.png" alt="Early Patient 1" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="Early Patient 2.png" alt="Early Patient 2" style="object-fit:contain;object-position:center;" />
-      <img class="ui-slide" src="slides/slide-1.png" alt="Dashboard" style="object-fit:contain;object-position:center;" />
-      <img class="ui-slide" src="slides/slide-2.png" alt="Orders with Filters" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="slides/slide-3.png" alt="Patient Deep Dive" style="object-fit:contain;object-position:center;" />
-      <img class="ui-slide" src="slides/slide-4.png" alt="Patient Detail" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="slides/slide-5.png" alt="Order Summary" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="slides/slide-6.png" alt="Start an Order" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="slides/slide-7.png" alt="Order Confirmation" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="slides/slide-8.png" alt="Diagnosis — Optional Fields" style="object-fit:contain;object-position:center;" />
       <button class="slide-btn prev" onclick="csSlide(-1)">‹</button>
       <button class="slide-btn next" onclick="csSlide(1)">›</button>
-      <div class="slide-counter" id="cs-counter">1 / 16</div>
+      <div class="slide-counter" id="cs-counter">1 / 13</div>
     </div>
     <div class="slide-dots" id="cs-dots">
       <button class="dot active" onclick="csGoTo(0)"></button>
@@ -892,12 +892,9 @@
       <button class="dot" onclick="csGoTo(10)"></button>
       <button class="dot" onclick="csGoTo(11)"></button>
       <button class="dot" onclick="csGoTo(12)"></button>
-      <button class="dot" onclick="csGoTo(13)"></button>
-      <button class="dot" onclick="csGoTo(14)"></button>
-      <button class="dot" onclick="csGoTo(15)"></button>
     </div>
     <div class="slide-labels">
-      <span class="slide-label-text" id="cs-label">Dashboard</span>
+      <span class="slide-label-text" id="cs-label">Dash 1</span>
     </div>
   </div>
 
@@ -919,7 +916,7 @@
       <img class="ui-slide" src="Reports View.png" alt="Reports View" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="Test Selection 1.png" alt="Test Selection 1" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="test_selection_2.png" alt="Test Selection 2" style="object-fit:contain;object-position:center;" />
-      <img class="ui-slide" src="Test Selection 3.png" alt="Test Selection 3" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="test_selection_3.png" alt="Test Selection 3" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="Test Selection Color.png" alt="Test Selection Color" style="object-fit:contain;object-position:center;" />
       <button class="slide-btn prev" onclick="refSlide(-1)">‹</button>
       <button class="slide-btn next" onclick="refSlide(1)">›</button>
@@ -946,13 +943,6 @@
       <span class="slide-label-text" id="ref-label">Mid Dash 1</span>
     </div>
   </div>
-
-  <!-- CALLOUT -->
-  <section class="case-section">
-    <div class="callout">
-      "The design strategy was focused on elevating Foundation Medicine's genomic testing experience to support a robust, patient-centric experience for oncologists — simplifying complexity to deliver meaningful experiences for the people who need them most."
-    </div>
-  </section>
 
   <!-- FIGMA PROTOTYPE -->
   <section class="case-section" style="padding-bottom:5rem;">
@@ -984,7 +974,7 @@
   <script>
     const slides = document.querySelectorAll('#cs-slideshow .ui-slide');
     const dots = document.querySelectorAll('#cs-dots .dot');
-    const labels = ['Dash 1', 'Dash 2', 'Dashboard 1', 'Dashboard 2', 'Dashboard 3', 'Dashboard 4', 'Early Patient 1', 'Early Patient 2', 'Dashboard', 'Orders with Filters', 'Patient Deep Dive', 'Patient Detail', 'Order Summary', 'Start an Order', 'Order Confirmation', 'Diagnosis'];
+    const labels = ['Dash 1', 'Dash 2', 'Dashboard 1', 'Dashboard 2', 'Dashboard 3', 'Dashboard 4', 'Early Patient 1', 'Early Patient 2', 'Patient Deep Dive', 'Order Summary', 'Start an Order', 'Order Confirmation', 'Diagnosis'];
     let current = 0;
 
     function csGoTo(n) {
