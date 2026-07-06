@@ -858,7 +858,15 @@
     <p class="section-label" style="text-align:center;margin-bottom:0.5rem;">Design Iteration</p>
     <h2 class="section-heading" style="text-align:center;margin-bottom:2rem;">Refining design concepts</h2>
     <div class="ui-slideshow" id="cs-slideshow" style="background:#1a1614;">
-      <img class="ui-slide active" src="slides/slide-1.png" alt="Dashboard" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide active" src="Dash 1.png" alt="Dash 1" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Dash 2.png" alt="Dash 2" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Dashboard 1.png" alt="Dashboard 1" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Dashboard 2.png" alt="Dashboard 2" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Dashboard 3.png" alt="Dashboard 3" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Dashboard 4.png" alt="Dashboard 4" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Early Patient 1.png" alt="Early Patient 1" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Early Patient 2.png" alt="Early Patient 2" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="slides/slide-1.png" alt="Dashboard" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="slides/slide-2.png" alt="Orders with Filters" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="slides/slide-3.png" alt="Patient Deep Dive" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="slides/slide-4.png" alt="Patient Detail" style="object-fit:contain;object-position:center;" />
@@ -868,7 +876,7 @@
       <img class="ui-slide" src="slides/slide-8.png" alt="Diagnosis — Optional Fields" style="object-fit:contain;object-position:center;" />
       <button class="slide-btn prev" onclick="csSlide(-1)">‹</button>
       <button class="slide-btn next" onclick="csSlide(1)">›</button>
-      <div class="slide-counter" id="cs-counter">1 / 8</div>
+      <div class="slide-counter" id="cs-counter">1 / 16</div>
     </div>
     <div class="slide-dots" id="cs-dots">
       <button class="dot active" onclick="csGoTo(0)"></button>
@@ -879,6 +887,14 @@
       <button class="dot" onclick="csGoTo(5)"></button>
       <button class="dot" onclick="csGoTo(6)"></button>
       <button class="dot" onclick="csGoTo(7)"></button>
+      <button class="dot" onclick="csGoTo(8)"></button>
+      <button class="dot" onclick="csGoTo(9)"></button>
+      <button class="dot" onclick="csGoTo(10)"></button>
+      <button class="dot" onclick="csGoTo(11)"></button>
+      <button class="dot" onclick="csGoTo(12)"></button>
+      <button class="dot" onclick="csGoTo(13)"></button>
+      <button class="dot" onclick="csGoTo(14)"></button>
+      <button class="dot" onclick="csGoTo(15)"></button>
     </div>
     <div class="slide-labels">
       <span class="slide-label-text" id="cs-label">Dashboard</span>
@@ -922,7 +938,7 @@
   <script>
     const slides = document.querySelectorAll('#cs-slideshow .ui-slide');
     const dots = document.querySelectorAll('#cs-dots .dot');
-    const labels = ['Dashboard', 'Orders with Filters', 'Patient Deep Dive', 'Patient Detail', 'Order Summary', 'Start an Order', 'Order Confirmation', 'Diagnosis'];
+    const labels = ['Dash 1', 'Dash 2', 'Dashboard 1', 'Dashboard 2', 'Dashboard 3', 'Dashboard 4', 'Early Patient 1', 'Early Patient 2', 'Dashboard', 'Orders with Filters', 'Patient Deep Dive', 'Patient Detail', 'Order Summary', 'Start an Order', 'Order Confirmation', 'Diagnosis'];
     let current = 0;
 
     function csGoTo(n) {
