@@ -707,7 +707,20 @@
       <p>Research revealed four distinct ordering archetypes, each with a different relationship to the portal. Front office staff — PAs, MAs, and coordinators — were primarily responsible for initiating and partially completing orders, handling billing issues, and retrieving reports. Nurses and residents (APPs, NPs) owned the clinical data entry side of ordering and coordinated closely with oncologists on holds and report sharing. Oncologists were the primary consumers of genomic reports and clinical decision-makers, though they rarely initiated orders themselves. Pathologists played a critical upstream role in specimen coordination and TRF completion, and in some settings acted as the ordering physician entirely. Designing for this ecosystem meant accounting for handoffs, shared workflows, and role-specific information needs across every touchpoint.</p>
     </div>
     <h2 class="section-heading" style="margin:3rem 0 1.25rem;">Mapping the Current State</h2>
-    <img src="heuristic_eval1.png" alt="Mapping the Current State" style="width:100%;border-radius:6px;display:block;">
+    <div class="ui-slideshow" id="audit-slideshow" style="background:#ffffff;aspect-ratio:16/10;">
+      <img class="ui-slide active" src="heuristic_eval1.png" alt="Heuristic Evaluation" style="object-fit:contain;object-position:center;">
+      <img class="ui-slide" src="Portal Audit - Page 1 FMI Test Ordering through Portal.png" alt="Portal Audit — FMI Test Ordering" style="object-fit:contain;object-position:center;">
+      <button class="slide-btn prev" onclick="auditSlide(-1)">‹</button>
+      <button class="slide-btn next" onclick="auditSlide(1)">›</button>
+      <div class="slide-counter" id="audit-counter">1 / 2</div>
+    </div>
+    <div class="slide-dots" id="audit-dots">
+      <button class="dot active" onclick="auditGoTo(0)"></button>
+      <button class="dot" onclick="auditGoTo(1)"></button>
+    </div>
+    <div class="slide-labels">
+      <span class="slide-label-text" id="audit-label">Heuristic Evaluation</span>
+    </div>
   </section>
 
   <!-- UI SCREENS -->
@@ -811,6 +824,23 @@
     }
 
     function archSlide(dir) { archGoTo(archCurrent + dir); }
+
+    const auditSlides = document.querySelectorAll('#audit-slideshow .ui-slide');
+    const auditDots = document.querySelectorAll('#audit-dots .dot');
+    const auditLabelTexts = ['Heuristic Evaluation', 'Portal Audit — FMI Test Ordering'];
+    let auditCurrent = 0;
+
+    function auditGoTo(n) {
+      auditSlides[auditCurrent].classList.remove('active');
+      auditDots[auditCurrent].classList.remove('active');
+      auditCurrent = (n + auditSlides.length) % auditSlides.length;
+      auditSlides[auditCurrent].classList.add('active');
+      auditDots[auditCurrent].classList.add('active');
+      document.getElementById('audit-counter').textContent = (auditCurrent + 1) + ' / ' + auditSlides.length;
+      document.getElementById('audit-label').textContent = auditLabelTexts[auditCurrent];
+    }
+
+    function auditSlide(dir) { auditGoTo(auditCurrent + dir); }
   </script>
 
 </body>
