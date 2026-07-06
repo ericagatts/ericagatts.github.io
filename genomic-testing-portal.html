@@ -644,7 +644,7 @@
     <div class="case-body">
       <p>Foundation Medicine provides physicians a suite of genomic profiling tests and clinical reporting services designed to identify a cancer patient's biomarkers and unique genetic signatures. Genomic testing supports oncologists' clinical decision making — providing them critical information to select treatment pathways, precision oncology therapies, and clinical trials most appropriate for their patients' individual needs.</p>
     </div>
-    <img src="slides/story-how-it-works-transparent.png" alt="How genomic testing works" class="slide-image" style="background:#ffffff;" />
+    <img id="how-it-works-img" src="slides/story-how-it-works-transparent.png" alt="How genomic testing works" class="slide-image" style="background:#ffffff; cursor:zoom-in;" />
     <p class="image-caption">The end-to-end genomic testing journey, from diagnosis through clinical reporting.</p>
     <div class="case-body">
       <p>A patient newly diagnosed with cancer meets with their oncologist, who recommends comprehensive genomic testing. The oncologist orders the appropriate Foundation Medicine tests — either online or via paper form. The specimen is processed, sequenced, and analyzed, and a detailed genomic report is delivered back to the oncologist to inform the next step of their patient's cancer care.</p>
@@ -1088,6 +1088,14 @@
       lightbox.classList.remove('open');
       document.body.style.overflow = '';
     }
+
+    // ── How it works image lightbox ──
+    document.getElementById('how-it-works-img').addEventListener('click', function() {
+      lightboxImg.src = this.src;
+      lightboxLbl.textContent = 'The end-to-end genomic testing journey';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
   </script>
 
   <!-- LIGHTBOX -->
