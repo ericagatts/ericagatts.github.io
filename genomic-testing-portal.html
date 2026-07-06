@@ -901,6 +901,50 @@
     </div>
   </div>
 
+  <!-- DESIGN REFINEMENT -->
+  <div class="ui-slideshow-wrap" style="max-width:900px;">
+    <p class="section-label" style="text-align:center;margin-bottom:0.5rem;">Design Iteration</p>
+    <h2 class="section-heading" style="text-align:center;margin-bottom:2rem;">Design Refinement and Testing</h2>
+    <div class="ui-slideshow" id="ref-slideshow" style="background:#1a1614;">
+      <img class="ui-slide active" src="Mid Dash 1.png" alt="Mid Dash 1" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Mid Dash 2.png" alt="Mid Dash 2" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Mid Dash 3.png" alt="Mid Dash 3" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Order List Iteration 2.png" alt="Order List Iteration 2" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Ordering Iterations1.png" alt="Ordering Iterations 1" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Ordering Iterations2.png" alt="Ordering Iterations 2" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Ordering Iterations3.png" alt="Ordering Iterations 3" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Ordering Iterations4.png" alt="Ordering Iterations 4" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Ordering Iterations5.png" alt="Ordering Iterations 5" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Patient Add.png" alt="Patient Add" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Reports View.png" alt="Reports View" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Test Selection 1.png" alt="Test Selection 1" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Test Selection 2.png" alt="Test Selection 2" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Test Selection Color.png" alt="Test Selection Color" style="object-fit:contain;object-position:center;" />
+      <button class="slide-btn prev" onclick="refSlide(-1)">‹</button>
+      <button class="slide-btn next" onclick="refSlide(1)">›</button>
+      <div class="slide-counter" id="ref-counter">1 / 14</div>
+    </div>
+    <div class="slide-dots" id="ref-dots">
+      <button class="dot active" onclick="refGoTo(0)"></button>
+      <button class="dot" onclick="refGoTo(1)"></button>
+      <button class="dot" onclick="refGoTo(2)"></button>
+      <button class="dot" onclick="refGoTo(3)"></button>
+      <button class="dot" onclick="refGoTo(4)"></button>
+      <button class="dot" onclick="refGoTo(5)"></button>
+      <button class="dot" onclick="refGoTo(6)"></button>
+      <button class="dot" onclick="refGoTo(7)"></button>
+      <button class="dot" onclick="refGoTo(8)"></button>
+      <button class="dot" onclick="refGoTo(9)"></button>
+      <button class="dot" onclick="refGoTo(10)"></button>
+      <button class="dot" onclick="refGoTo(11)"></button>
+      <button class="dot" onclick="refGoTo(12)"></button>
+      <button class="dot" onclick="refGoTo(13)"></button>
+    </div>
+    <div class="slide-labels">
+      <span class="slide-label-text" id="ref-label">Mid Dash 1</span>
+    </div>
+  </div>
+
   <!-- CALLOUT -->
   <section class="case-section">
     <div class="callout">
@@ -952,6 +996,24 @@
     }
 
     function csSlide(dir) { csGoTo(current + dir); }
+
+    const refSlides = document.querySelectorAll('#ref-slideshow .ui-slide');
+    const refDots = document.querySelectorAll('#ref-dots .dot');
+    const refLabelTexts = ['Mid Dash 1', 'Mid Dash 2', 'Mid Dash 3', 'Order List Iteration 2', 'Ordering Iterations 1', 'Ordering Iterations 2', 'Ordering Iterations 3', 'Ordering Iterations 4', 'Ordering Iterations 5', 'Patient Add', 'Reports View', 'Test Selection 1', 'Test Selection 2', 'Test Selection Color'];
+    let refCurrent = 0;
+
+    function refGoTo(n) {
+      refSlides[refCurrent].classList.remove('active');
+      refDots[refCurrent].classList.remove('active');
+      refCurrent = (n + refSlides.length) % refSlides.length;
+      refSlides[refCurrent].classList.add('active');
+      refDots[refCurrent].classList.add('active');
+      document.getElementById('ref-counter').textContent = (refCurrent + 1) + ' / ' + refSlides.length;
+      document.getElementById('ref-label').textContent = refLabelTexts[refCurrent];
+    }
+
+    function refSlide(dir) { refGoTo(refCurrent + dir); }
+
 
     const archSlides = document.querySelectorAll('#arch-slideshow .ui-slide');
     const archDots = document.querySelectorAll('#arch-dots .dot');
