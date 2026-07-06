@@ -265,6 +265,23 @@
       margin: 0;
     }
 
+    /* ── Insight cards ── */
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(260px,100%), 1fr));
+      gap: 1rem;
+      margin: 2rem 0 0;
+    }
+    .insight-card {
+      background: var(--cream-alt);
+      border-left: 3px solid var(--berry);
+      border-radius: 0 8px 8px 0;
+      padding: 1.1rem 1.25rem;
+      font-size: 0.82rem;
+      color: var(--warm-brown);
+      line-height: 1.55;
+    }
+
     /* ── Process steps ── */
     .process-row {
       display: grid;
@@ -765,6 +782,17 @@
     </div>
     <div class="slide-labels">
       <span class="slide-label-text" id="audit-label">Heuristic Evaluation</span>
+    </div>
+    <div class="insight-grid">
+      <div class="insight-card">Much of the current portal does not conform to current design standards and users' expectations, creating an inconsistent and confusing user experience.</div>
+      <div class="insight-card">The portal does not promote its own value to users. Our customers may not know of all of the features and functionality available to them beyond just ordering a FMI test.</div>
+      <div class="insight-card">Navigation and wayfinding in the portal is confusing—and sometimes non-existent—leading users to dead-ends and unexpected spots.</div>
+      <div class="insight-card">Login and forgot password flows are clumsy and frustrating to oncologists who "do not want to remember yet another password."</div>
+      <div class="insight-card">The portal is not customized to our users' individual needs, missing communication and notification preferences, the ability to add team members, displaying order favorites, and surfacing frequently used features.</div>
+      <div class="insight-card">The ordering process is fraught with pain points, including its overwhelming length, the necessity of leaving to fetch additional paperwork to add to the form, and the ever-expanding list of new tests and product offerings.</div>
+      <div class="insight-card">Ordering FMI's tests is collaborative, often necessitating multiple users to fill out different portions of the form—but we do not support these flows.</div>
+      <div class="insight-card">There is little explanation of what test would be most appropriate for the patient before the user begins filling out the order form.</div>
+      <div class="insight-card">There is no help functionality built into the portal, leaving users to either trouble-shoot on their own, or call FMI for answers.</div>
     </div>
     <h2 class="section-heading" style="margin:3rem 0 1.25rem;">Initial Concepts</h2>
     <div class="ui-slideshow" id="sketch-slideshow" style="background:#ffffff;aspect-ratio:16/10;">
