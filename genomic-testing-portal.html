@@ -466,6 +466,7 @@
       cursor: zoom-out;
     }
     .lightbox-overlay.open { display: flex; }
+    #hiw-lb:target { display: flex; }
     .lightbox-img {
       max-width: 92vw;
       max-height: 90vh;
@@ -644,7 +645,9 @@
     <div class="case-body">
       <p>Foundation Medicine provides physicians a suite of genomic profiling tests and clinical reporting services designed to identify a cancer patient's biomarkers and unique genetic signatures. Genomic testing supports oncologists' clinical decision making — providing them critical information to select treatment pathways, precision oncology therapies, and clinical trials most appropriate for their patients' individual needs.</p>
     </div>
-    <img id="how-it-works-img" src="slides/story-how-it-works-transparent.png" alt="How genomic testing works" class="slide-image" style="background:#ffffff; cursor:zoom-in;" />
+    <a href="#hiw-lb" style="display:block;cursor:zoom-in;">
+      <img src="slides/story-how-it-works-transparent.png" alt="How genomic testing works" class="slide-image" style="background:#ffffff; margin:2.5rem 0;" />
+    </a>
     <p class="image-caption">The end-to-end genomic testing journey, from diagnosis through clinical reporting.</p>
     <div class="case-body">
       <p>A patient newly diagnosed with cancer meets with their oncologist, who recommends comprehensive genomic testing. The oncologist orders the appropriate Foundation Medicine tests — either online or via paper form. The specimen is processed, sequenced, and analyzed, and a detailed genomic report is delivered back to the oncologist to inform the next step of their patient's cancer care.</p>
@@ -740,7 +743,7 @@
   <section class="case-section">
     <p class="section-label">Discover</p>
     <h2 class="section-heading">Understanding Our Users' Needs</h2>
-    <div class="ui-slideshow" id="arch-slideshow" style="background:#ffffff;aspect-ratio:4/3;max-height:539px;width:100%;">
+    <div class="ui-slideshow" id="arch-slideshow" style="background:#ffffff;aspect-ratio:4/3;max-height:458px;width:100%;">
       <img class="ui-slide active" src="Front_desk.png" alt="Front Desk" style="object-fit:contain;object-position:center;">
       <img class="ui-slide" src="nurses_card.png" alt="Nurses" style="object-fit:contain;object-position:center;">
       <img class="ui-slide" src="oncologists_card.png" alt="Oncologists" style="object-fit:contain;object-position:center;">
@@ -1062,7 +1065,7 @@
     const lightboxLbl = document.getElementById('cs-lightbox-label');
 
     document.getElementById('cs-slideshow').addEventListener('click', function(e) {
-      if (e.target.classList.contains('ui-slide')) return; // ignore btn clicks
+      if (e.target.classList.contains('slide-btn') || e.target.classList.contains('slide-counter')) return;
       const active = document.querySelector('#cs-slideshow .ui-slide.active');
       if (!active) return;
       lightboxImg.src = active.src;
@@ -1087,14 +1090,14 @@
       document.body.style.overflow = '';
     }
 
-    // ── How it works image lightbox ──
-    document.getElementById('how-it-works-img').addEventListener('click', function() {
-      lightboxImg.src = this.src;
-      lightboxLbl.textContent = 'The end-to-end genomic testing journey';
-      lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
   </script>
+
+  <!-- HOW IT WORKS LIGHTBOX -->
+  <div id="hiw-lb" style="display:none;position:fixed;inset:0;background:rgba(26,22,20,0.92);z-index:9999;align-items:center;justify-content:center;">
+    <a href="#" style="position:absolute;inset:0;" aria-label="Close"></a>
+    <a href="#" style="position:absolute;top:1.25rem;right:1.5rem;color:rgba(247,244,232,0.8);font-size:2rem;line-height:1;text-decoration:none;z-index:1;">×</a>
+    <img src="slides/story-how-it-works-transparent.png" style="max-width:92vw;max-height:90vh;object-fit:contain;border-radius:6px;background:#ffffff;position:relative;z-index:1;">
+  </div>
 
   <!-- LIGHTBOX -->
   <div class="lightbox-overlay" id="cs-lightbox">
