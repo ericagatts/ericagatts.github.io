@@ -742,29 +742,7 @@
   <div class="divider" style="max-width:1100px;margin:0 auto 5rem;padding:0 4rem;"></div>
   <section class="case-section">
     <p class="section-label">Discover</p>
-    <h2 class="section-heading">Understanding Our Users' Needs</h2>
-    <div class="ui-slideshow" id="arch-slideshow" style="background:#ffffff;aspect-ratio:4/3;max-height:458px;width:100%;">
-      <img class="ui-slide active" src="Front_desk.png" alt="Front Desk" style="object-fit:contain;object-position:center;">
-      <img class="ui-slide" src="nurses_card.png" alt="Nurses" style="object-fit:contain;object-position:center;">
-      <img class="ui-slide" src="oncologists_card.png" alt="Oncologists" style="object-fit:contain;object-position:center;">
-      <img class="ui-slide" src="Paths.png" alt="Pathologists" style="object-fit:contain;object-position:center;">
-      <button class="slide-btn prev" onclick="archSlide(-1)">‹</button>
-      <button class="slide-btn next" onclick="archSlide(1)">›</button>
-      <div class="slide-counter" id="arch-counter">1 / 4</div>
-    </div>
-    <div class="slide-dots" id="arch-dots">
-      <button class="dot active" onclick="archGoTo(0)"></button>
-      <button class="dot" onclick="archGoTo(1)"></button>
-      <button class="dot" onclick="archGoTo(2)"></button>
-      <button class="dot" onclick="archGoTo(3)"></button>
-    </div>
-    <div class="slide-labels">
-      <span class="slide-label-text" id="arch-label">Front Desk</span>
-    </div>
-    <div class="case-body" style="margin-top:1.5rem;">
-      <p>Ethnographic research conducted with existing portal users revealed four distinct ordering archetypes, each with a different relationship to the portal. Front office staff are primarily responsible for initiating final orders, handling billing issues, and retrieving reports for oncologists. Nurses and residents "own" the clinical data entry side of ordering and coordinate closely with oncologists for orders on hold and sharing reports for consultation. Oncologists are the primary consumers of the genomic reports and are the clinical decision-makers—though they rarely initiate orders themselves. Pathologists play a critical upstream role in specimen coordination and finalizing order—and in some settings, act as the ordering physician entirely. Designing for this ecosystem meant accounting for handoffs, shared workflows, and role-specific information needs across every touchpoint.</p>
-    </div>
-    <h2 class="section-heading" style="margin:3rem 0 1.25rem;">Mapping the Current State</h2>
+    <h2 class="section-heading">Mapping the Current State</h2>
     <div class="ui-slideshow" id="audit-slideshow" style="background:#ffffff;aspect-ratio:16/10;">
       <img class="ui-slide active" src="heuristic_eval1.png" alt="Heuristic Evaluation 1" style="object-fit:contain;object-position:center;">
       <img class="ui-slide" src="heuristic_eval2.png" alt="Heuristic Evaluation 2" style="object-fit:contain;object-position:center;">
@@ -827,6 +805,28 @@
         <h4>No Help System</h4>
         <p>There is no help functionality built into the portal, leaving users to either trouble-shoot on their own, or call FMI for answers.</p>
       </div>
+    </div>
+    <h2 class="section-heading" style="margin:3rem 0 1.25rem;">Understanding Our Users' Needs</h2>
+    <div class="ui-slideshow" id="arch-slideshow" style="background:#ffffff;aspect-ratio:4/3;max-height:458px;width:100%;">
+      <img class="ui-slide active" src="Front_desk.png" alt="Front Desk" style="object-fit:contain;object-position:center;">
+      <img class="ui-slide" src="nurses_card.png" alt="Nurses" style="object-fit:contain;object-position:center;">
+      <img class="ui-slide" src="oncologists_card.png" alt="Oncologists" style="object-fit:contain;object-position:center;">
+      <img class="ui-slide" src="Paths.png" alt="Pathologists" style="object-fit:contain;object-position:center;">
+      <button class="slide-btn prev" onclick="archSlide(-1)">‹</button>
+      <button class="slide-btn next" onclick="archSlide(1)">›</button>
+      <div class="slide-counter" id="arch-counter">1 / 4</div>
+    </div>
+    <div class="slide-dots" id="arch-dots">
+      <button class="dot active" onclick="archGoTo(0)"></button>
+      <button class="dot" onclick="archGoTo(1)"></button>
+      <button class="dot" onclick="archGoTo(2)"></button>
+      <button class="dot" onclick="archGoTo(3)"></button>
+    </div>
+    <div class="slide-labels">
+      <span class="slide-label-text" id="arch-label">Front Desk</span>
+    </div>
+    <div class="case-body" style="margin-top:1.5rem;">
+      <p>Ethnographic research conducted with existing portal users revealed four distinct ordering archetypes, each with a different relationship to the portal. Front office staff are primarily responsible for initiating final orders, handling billing issues, and retrieving reports for oncologists. Nurses and residents "own" the clinical data entry side of ordering and coordinate closely with oncologists for orders on hold and sharing reports for consultation. Oncologists are the primary consumers of the genomic reports and are the clinical decision-makers—though they rarely initiate orders themselves. Pathologists play a critical upstream role in specimen coordination and finalizing order—and in some settings, act as the ordering physician entirely. Designing for this ecosystem meant accounting for handoffs, shared workflows, and role-specific information needs across every touchpoint.</p>
     </div>
     <h2 class="section-heading" style="margin:3rem 0 1.25rem;">Initial Concepts</h2>
     <div class="ui-slideshow" id="sketch-slideshow" style="background:#ffffff;aspect-ratio:16/10;">
