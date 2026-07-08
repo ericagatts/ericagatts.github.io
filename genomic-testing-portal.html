@@ -499,6 +499,7 @@
       color: rgba(247,244,232,0.7);
     }
     #cs-slideshow { cursor: zoom-in; }
+    #ref-slideshow { cursor: zoom-in; }
 
     /* ── Divider ── */
     .divider {
@@ -904,7 +905,8 @@
     <p class="section-label" style="text-align:center;margin-bottom:0.5rem;">Design Iteration</p>
     <h2 class="section-heading" style="text-align:center;margin-bottom:2rem;">Design Refinement and Testing</h2>
     <div class="ui-slideshow" id="ref-slideshow" style="background:#1a1614;">
-      <img class="ui-slide active" src="Mid Dash 1.png" alt="Mid Dash 1" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide active" src="UX Testing Ordering Portal.png" alt="UX Testing" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Mid Dash 1.png" alt="Mid Dash 1" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="Mid Dash 2.png" alt="Mid Dash 2" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="Mid Dash 3.png" alt="Mid Dash 3" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="Order List Iteration 2.png" alt="Order List Iteration 2" style="object-fit:contain;object-position:center;" />
@@ -921,7 +923,7 @@
       <img class="ui-slide" src="Test Selection Color.png" alt="Test Selection Color" style="object-fit:contain;object-position:center;" />
       <button class="slide-btn prev" onclick="refSlide(-1)">‹</button>
       <button class="slide-btn next" onclick="refSlide(1)">›</button>
-      <div class="slide-counter" id="ref-counter">1 / 15</div>
+      <div class="slide-counter" id="ref-counter">1 / 16</div>
     </div>
     <div class="slide-dots" id="ref-dots">
       <button class="dot active" onclick="refGoTo(0)"></button>
@@ -939,9 +941,10 @@
       <button class="dot" onclick="refGoTo(12)"></button>
       <button class="dot" onclick="refGoTo(13)"></button>
       <button class="dot" onclick="refGoTo(14)"></button>
+      <button class="dot" onclick="refGoTo(15)"></button>
     </div>
     <div class="slide-labels">
-      <span class="slide-label-text" id="ref-label">Mid Dash 1</span>
+      <span class="slide-label-text" id="ref-label">UX Testing</span>
     </div>
   </div>
 
@@ -1024,7 +1027,7 @@
 
     const refSlides = document.querySelectorAll('#ref-slideshow .ui-slide');
     const refDots = document.querySelectorAll('#ref-dots .dot');
-    const refLabelTexts = ['Mid Dash 1', 'Mid Dash 2', 'Mid Dash 3', 'Order List Iteration 2', 'Ordering Iterations 1', 'Ordering Iterations 2', 'Ordering Iterations 3', 'Ordering Iterations 4', 'Ordering Iterations 5', 'Patient Add', 'Reports View', 'Test Selection 1', 'Test Selection 2', 'Test Selection 3', 'Test Selection Color'];
+    const refLabelTexts = ['UX Testing', 'Mid Dash 1', 'Mid Dash 2', 'Mid Dash 3', 'Order List Iteration 2', 'Ordering Iterations 1', 'Ordering Iterations 2', 'Ordering Iterations 3', 'Ordering Iterations 4', 'Ordering Iterations 5', 'Patient Add', 'Reports View', 'Test Selection 1', 'Test Selection 2', 'Test Selection 3', 'Test Selection Color'];
     let refCurrent = 0;
 
     function refGoTo(n) {
@@ -1130,11 +1133,42 @@
     document.getElementById('cs-lightbox-close').addEventListener('click', closeLightbox);
 
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'Escape') { closeLightbox(); }
     });
 
     function closeLightbox() {
       lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ── Ref-slideshow lightbox ──
+    const refLightbox = document.getElementById('ref-lightbox');
+    const refLightboxImg = document.getElementById('ref-lightbox-img');
+    const refLightboxLbl = document.getElementById('ref-lightbox-label');
+
+    document.getElementById('ref-slideshow').addEventListener('click', function(e) {
+      if (e.target.classList.contains('slide-btn') || e.target.classList.contains('slide-counter')) return;
+      const active = document.querySelector('#ref-slideshow .ui-slide.active');
+      if (!active) return;
+      refLightboxImg.src = active.src;
+      refLightboxLbl.textContent = refLabelTexts[refCurrent];
+      refLightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+
+    refLightbox.addEventListener('click', function(e) {
+      if (e.target === refLightboxImg) return;
+      closeRefLightbox();
+    });
+
+    document.getElementById('ref-lightbox-close').addEventListener('click', closeRefLightbox);
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { closeLightbox(); closeRefLightbox(); }
+    });
+
+    function closeRefLightbox() {
+      refLightbox.classList.remove('open');
       document.body.style.overflow = '';
     }
 
@@ -1145,6 +1179,13 @@
     <a href="#" style="position:absolute;inset:0;" aria-label="Close"></a>
     <a href="#" style="position:absolute;top:1.25rem;right:1.5rem;color:rgba(247,244,232,0.8);font-size:2rem;line-height:1;text-decoration:none;z-index:1;">×</a>
     <img src="slides/story-how-it-works-transparent.png" style="max-width:92vw;max-height:90vh;object-fit:contain;border-radius:6px;background:#ffffff;position:relative;z-index:1;">
+  </div>
+
+  <!-- REF LIGHTBOX -->
+  <div class="lightbox-overlay" id="ref-lightbox">
+    <button class="lightbox-close" id="ref-lightbox-close">×</button>
+    <img class="lightbox-img" id="ref-lightbox-img" src="" alt="Enlarged view">
+    <div class="lightbox-label" id="ref-lightbox-label"></div>
   </div>
 
   <!-- LIGHTBOX -->
