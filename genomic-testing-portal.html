@@ -747,30 +747,14 @@
       <img class="ui-slide active" src="heuristic_eval1.png" alt="Heuristic Evaluation 1" style="object-fit:contain;object-position:center;">
       <img class="ui-slide" src="heuristic_eval2.png" alt="Heuristic Evaluation 2" style="object-fit:contain;object-position:center;">
       <img class="ui-slide" src="Portal Audit - Page 1 FMI Test Ordering through Portal.png" alt="Portal Audit — FMI Test Ordering" style="object-fit:contain;object-position:center;">
-      <img class="ui-slide" src="orederingsketch2.png" alt="Ordering Sketch 2" style="object-fit:contain;object-position:center;">
-      <img class="ui-slide" src="assignmentsketch.png" alt="Assignment Sketch" style="object-fit:contain;object-position:center;">
-      <img class="ui-slide" src="wizardsketch1.png" alt="Wizard Sketch 1" style="object-fit:contain;object-position:center;">
-      <img class="ui-slide" src="wizardsketch2.png" alt="Wizard Sketch 2" style="object-fit:contain;object-position:center;">
-      <img class="ui-slide" src="wizardsketch3.png" alt="Wizard Sketch 3" style="object-fit:contain;object-position:center;">
-      <img class="ui-slide" src="MKsketch1.png" alt="One page order" style="object-fit:contain;object-position:center;">
-      <img class="ui-slide" src="MKsketch2.png" alt="Sidebar navigation" style="object-fit:contain;object-position:center;">
-      <img class="ui-slide" src="MKsketch3.png" alt="Test suggestion based on specimen" style="object-fit:contain;object-position:center;">
       <button class="slide-btn prev" onclick="auditSlide(-1)">‹</button>
       <button class="slide-btn next" onclick="auditSlide(1)">›</button>
-      <div class="slide-counter" id="audit-counter">1 / 11</div>
+      <div class="slide-counter" id="audit-counter">1 / 3</div>
     </div>
     <div class="slide-dots" id="audit-dots">
       <button class="dot active" onclick="auditGoTo(0)"></button>
       <button class="dot" onclick="auditGoTo(1)"></button>
       <button class="dot" onclick="auditGoTo(2)"></button>
-      <button class="dot" onclick="auditGoTo(3)"></button>
-      <button class="dot" onclick="auditGoTo(4)"></button>
-      <button class="dot" onclick="auditGoTo(5)"></button>
-      <button class="dot" onclick="auditGoTo(6)"></button>
-      <button class="dot" onclick="auditGoTo(7)"></button>
-      <button class="dot" onclick="auditGoTo(8)"></button>
-      <button class="dot" onclick="auditGoTo(9)"></button>
-      <button class="dot" onclick="auditGoTo(10)"></button>
     </div>
     <div class="slide-labels">
       <span class="slide-label-text" id="audit-label">Heuristic Evaluation</span>
@@ -843,6 +827,33 @@
     </div>
     <div class="case-body" style="margin-top:1.5rem;">
       <p>Ethnographic research conducted with existing portal users revealed four distinct ordering archetypes, each with a different relationship to the portal. We also gained a deeper understanding of the current pain points these user archetypes encounter throughout the process of ordering genomic tests. These findings helped us refine our initial concepts and narrow down on key workflows that we needed to build to help our users succeed.</p>
+    </div>
+    <h2 class="section-heading" style="margin:3rem 0 1.25rem;">Initial Concepts</h2>
+    <div class="ui-slideshow" id="sketch-slideshow" style="background:#ffffff;aspect-ratio:16/10;">
+      <img class="ui-slide active" src="orederingsketch2.png" alt="Ordering Sketch 2" style="object-fit:contain;object-position:center;">
+      <img class="ui-slide" src="assignmentsketch.png" alt="Assignment Sketch" style="object-fit:contain;object-position:center;">
+      <img class="ui-slide" src="wizardsketch1.png" alt="Wizard Sketch 1" style="object-fit:contain;object-position:center;">
+      <img class="ui-slide" src="wizardsketch2.png" alt="Wizard Sketch 2" style="object-fit:contain;object-position:center;">
+      <img class="ui-slide" src="wizardsketch3.png" alt="Wizard Sketch 3" style="object-fit:contain;object-position:center;">
+      <img class="ui-slide" src="MKsketch1.png" alt="One page order" style="object-fit:contain;object-position:center;">
+      <img class="ui-slide" src="MKsketch2.png" alt="Sidebar navigation" style="object-fit:contain;object-position:center;">
+      <img class="ui-slide" src="MKsketch3.png" alt="Test suggestion based on specimen" style="object-fit:contain;object-position:center;">
+      <button class="slide-btn prev" onclick="sketchSlide(-1)">‹</button>
+      <button class="slide-btn next" onclick="sketchSlide(1)">›</button>
+      <div class="slide-counter" id="sketch-counter">1 / 8</div>
+    </div>
+    <div class="slide-dots" id="sketch-dots">
+      <button class="dot active" onclick="sketchGoTo(0)"></button>
+      <button class="dot" onclick="sketchGoTo(1)"></button>
+      <button class="dot" onclick="sketchGoTo(2)"></button>
+      <button class="dot" onclick="sketchGoTo(3)"></button>
+      <button class="dot" onclick="sketchGoTo(4)"></button>
+      <button class="dot" onclick="sketchGoTo(5)"></button>
+      <button class="dot" onclick="sketchGoTo(6)"></button>
+      <button class="dot" onclick="sketchGoTo(7)"></button>
+    </div>
+    <div class="slide-labels">
+      <span class="slide-label-text" id="sketch-label">Ordering Sketch 2</span>
     </div>
   </section>
 
@@ -1016,7 +1027,7 @@
 
     const auditSlides = document.querySelectorAll('#audit-slideshow .ui-slide');
     const auditDots = document.querySelectorAll('#audit-dots .dot');
-    const auditLabelTexts = ['Heuristic Evaluation 1', 'Heuristic Evaluation 2', 'Portal Audit — FMI Test Ordering', 'Ordering Sketch 2', 'Assignment Sketch', 'Wizard Sketch 1', 'Wizard Sketch 2', 'Wizard Sketch 3', 'One page order', 'Sidebar navigation', 'Test suggestion based on specimen'];
+    const auditLabelTexts = ['Heuristic Evaluation 1', 'Heuristic Evaluation 2', 'Portal Audit — FMI Test Ordering'];
     let auditCurrent = 0;
 
     function auditGoTo(n) {
@@ -1031,6 +1042,22 @@
 
     function auditSlide(dir) { auditGoTo(auditCurrent + dir); }
 
+    const sketchSlides = document.querySelectorAll('#sketch-slideshow .ui-slide');
+    const sketchDots = document.querySelectorAll('#sketch-dots .dot');
+    const sketchLabelTexts = ['Ordering Sketch 2', 'Assignment Sketch', 'Wizard Sketch 1', 'Wizard Sketch 2', 'Wizard Sketch 3', 'One page order', 'Sidebar navigation', 'Test suggestion based on specimen'];
+    let sketchCurrent = 0;
+
+    function sketchGoTo(n) {
+      sketchSlides[sketchCurrent].classList.remove('active');
+      sketchDots[sketchCurrent].classList.remove('active');
+      sketchCurrent = (n + sketchSlides.length) % sketchSlides.length;
+      sketchSlides[sketchCurrent].classList.add('active');
+      sketchDots[sketchCurrent].classList.add('active');
+      document.getElementById('sketch-counter').textContent = (sketchCurrent + 1) + ' / ' + sketchSlides.length;
+      document.getElementById('sketch-label').textContent = sketchLabelTexts[sketchCurrent];
+    }
+
+    function sketchSlide(dir) { sketchGoTo(sketchCurrent + dir); }
 
     // ── Lightbox ──
     const lightbox = document.getElementById('cs-lightbox');
