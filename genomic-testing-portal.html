@@ -925,10 +925,11 @@
       <img class="ui-slide" src="test_selection_2.png" alt="Test Selection 2" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="test_selection_3.png" alt="Test Selection 3" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="Test Selection Color.png" alt="Test Selection Color" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Early_Teams.png" alt="Early Teams" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="UX Testing Ordering Portal.png" alt="UX Testing" style="object-fit:contain;object-position:center;" />
       <button class="slide-btn prev" onclick="refSlide(-1)">‹</button>
       <button class="slide-btn next" onclick="refSlide(1)">›</button>
-      <div class="slide-counter" id="ref-counter">1 / 16</div>
+      <div class="slide-counter" id="ref-counter">1 / 17</div>
     </div>
     <div class="slide-dots" id="ref-dots">
       <button class="dot active" onclick="refGoTo(0)"></button>
@@ -947,9 +948,10 @@
       <button class="dot" onclick="refGoTo(13)"></button>
       <button class="dot" onclick="refGoTo(14)"></button>
       <button class="dot" onclick="refGoTo(15)"></button>
+      <button class="dot" onclick="refGoTo(16)"></button>
     </div>
     <div class="slide-labels">
-      <span class="slide-label-text" id="ref-label">UX Testing</span>
+      <span class="slide-label-text" id="ref-label">Mid Dash 1</span>
     </div>
     <div class="case-body" style="margin-top:1.5rem;">
       <p>As the team moved into design development, we focused on getting several core workflows down: providing real-time updates on the dashboard, refined test ordering workflow with several options for selection based on the patient's diagnosis, and a new concept called "Teams" where users could easily collaborate with colleagues to get the right tests ordered quickly.</p>
@@ -1040,7 +1042,7 @@
 
     const refSlides = document.querySelectorAll('#ref-slideshow .ui-slide');
     const refDots = document.querySelectorAll('#ref-dots .dot');
-    const refLabelTexts = ['Mid Dash 1', 'Mid Dash 2', 'Mid Dash 3', 'Order List Iteration 2', 'Ordering Iterations 1', 'Ordering Iterations 2', 'Ordering Iterations 3', 'Ordering Iterations 4', 'Ordering Iterations 5', 'Patient Add', 'Reports View', 'Test Selection 1', 'Test Selection 2', 'Test Selection 3', 'Test Selection Color', 'UX Testing'];
+    const refLabelTexts = ['Mid Dash 1', 'Mid Dash 2', 'Mid Dash 3', 'Order List Iteration 2', 'Ordering Iterations 1', 'Ordering Iterations 2', 'Ordering Iterations 3', 'Ordering Iterations 4', 'Ordering Iterations 5', 'Patient Add', 'Reports View', 'Test Selection 1', 'Test Selection 2', 'Test Selection 3', 'Test Selection Color', 'Early Teams', 'UX Testing'];
     let refCurrent = 0;
 
     function refGoTo(n) {
