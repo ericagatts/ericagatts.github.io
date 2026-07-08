@@ -961,9 +961,11 @@
       <img class="ui-slide" src="Patient Details Final.png" alt="Patient Details Final" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="Patient Directory Final.png" alt="Patient Directory Final" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="Reporting Final.png" alt="Reporting Final" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="mobile.png" alt="Mobile" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="mobile details.png" alt="Mobile Details" style="object-fit:contain;object-position:center;" />
       <button class="slide-btn prev" onclick="finalSlide(-1)">‹</button>
       <button class="slide-btn next" onclick="finalSlide(1)">›</button>
-      <div class="slide-counter" id="final-counter">1 / 8</div>
+      <div class="slide-counter" id="final-counter">1 / 10</div>
     </div>
     <div class="slide-dots" id="final-dots">
       <button class="dot active" onclick="finalGoTo(0)"></button>
@@ -974,6 +976,8 @@
       <button class="dot" onclick="finalGoTo(5)"></button>
       <button class="dot" onclick="finalGoTo(6)"></button>
       <button class="dot" onclick="finalGoTo(7)"></button>
+      <button class="dot" onclick="finalGoTo(8)"></button>
+      <button class="dot" onclick="finalGoTo(9)"></button>
     </div>
     <div class="slide-labels">
       <span class="slide-label-text" id="final-label">Teams New Final</span>
@@ -1044,7 +1048,7 @@
 
     const finalSlides = document.querySelectorAll('#final-slideshow .ui-slide');
     const finalDots = document.querySelectorAll('#final-dots .dot');
-    const finalLabelTexts = ['Teams New Final', 'Teams Details Final', 'FMI Dashboard', 'Notifications Final', 'Order Lift Final', 'Patient Details Final', 'Patient Directory Final', 'Reporting Final'];
+    const finalLabelTexts = ['Teams New Final', 'Teams Details Final', 'FMI Dashboard', 'Notifications Final', 'Order Lift Final', 'Patient Details Final', 'Patient Directory Final', 'Reporting Final', 'Mobile', 'Mobile Details'];
     let finalCurrent = 0;
 
     function finalGoTo(n) {
