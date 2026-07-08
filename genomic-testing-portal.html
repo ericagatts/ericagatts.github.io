@@ -945,6 +945,38 @@
     </div>
   </div>
 
+  <!-- FINAL MOCKS -->
+  <div class="ui-slideshow-wrap" style="max-width:900px;">
+    <p class="section-label" style="text-align:center;margin-bottom:0.5rem;">Design Iteration</p>
+    <h2 class="section-heading" style="text-align:center;margin-bottom:2rem;">Finalized Mocks and Dev Handoff</h2>
+    <div class="ui-slideshow" id="final-slideshow" style="background:#1a1614;">
+      <img class="ui-slide active" src="Teams New Final.png" alt="Teams New Final" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Teams Details Final.png" alt="Teams Details Final" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="fmi-dashboard.png" alt="FMI Dashboard" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Notifications_Final.png" alt="Notifications Final" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Order Lift Final.png" alt="Order Lift Final" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Patient Details Final.png" alt="Patient Details Final" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Patient Directory Final.png" alt="Patient Directory Final" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="Reporting Final.png" alt="Reporting Final" style="object-fit:contain;object-position:center;" />
+      <button class="slide-btn prev" onclick="finalSlide(-1)">‹</button>
+      <button class="slide-btn next" onclick="finalSlide(1)">›</button>
+      <div class="slide-counter" id="final-counter">1 / 8</div>
+    </div>
+    <div class="slide-dots" id="final-dots">
+      <button class="dot active" onclick="finalGoTo(0)"></button>
+      <button class="dot" onclick="finalGoTo(1)"></button>
+      <button class="dot" onclick="finalGoTo(2)"></button>
+      <button class="dot" onclick="finalGoTo(3)"></button>
+      <button class="dot" onclick="finalGoTo(4)"></button>
+      <button class="dot" onclick="finalGoTo(5)"></button>
+      <button class="dot" onclick="finalGoTo(6)"></button>
+      <button class="dot" onclick="finalGoTo(7)"></button>
+    </div>
+    <div class="slide-labels">
+      <span class="slide-label-text" id="final-label">Teams New Final</span>
+    </div>
+  </div>
+
   <!-- FIGMA PROTOTYPE -->
   <section class="case-section" style="padding-bottom:5rem;">
     <a href="https://www.figma.com/make/out0AI2ZgQExwTCgUOaIab/FMI-Ordering-Test?fullscreen=1&t=KYapXgXH6vijwfNc-1&code-node-id=0-9" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;width:100%;min-height:280px;background:#E3464B;border-radius:8px;text-decoration:none;gap:1rem;flex-direction:column;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
@@ -1007,6 +1039,22 @@
 
     function refSlide(dir) { refGoTo(refCurrent + dir); }
 
+    const finalSlides = document.querySelectorAll('#final-slideshow .ui-slide');
+    const finalDots = document.querySelectorAll('#final-dots .dot');
+    const finalLabelTexts = ['Teams New Final', 'Teams Details Final', 'FMI Dashboard', 'Notifications Final', 'Order Lift Final', 'Patient Details Final', 'Patient Directory Final', 'Reporting Final'];
+    let finalCurrent = 0;
+
+    function finalGoTo(n) {
+      finalSlides[finalCurrent].classList.remove('active');
+      finalDots[finalCurrent].classList.remove('active');
+      finalCurrent = (n + finalSlides.length) % finalSlides.length;
+      finalSlides[finalCurrent].classList.add('active');
+      finalDots[finalCurrent].classList.add('active');
+      document.getElementById('final-counter').textContent = (finalCurrent + 1) + ' / ' + finalSlides.length;
+      document.getElementById('final-label').textContent = finalLabelTexts[finalCurrent];
+    }
+
+    function finalSlide(dir) { finalGoTo(finalCurrent + dir); }
 
     const archSlides = document.querySelectorAll('#arch-slideshow .ui-slide');
     const archDots = document.querySelectorAll('#arch-dots .dot');
