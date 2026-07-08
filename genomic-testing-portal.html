@@ -876,11 +876,10 @@
       <img class="ui-slide" src="slides/slide-3.png" alt="Patient Deep Dive" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="slides/slide-5.png" alt="Order Summary" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="slides/slide-6.png" alt="Start an Order" style="object-fit:contain;object-position:center;" />
-      <img class="ui-slide" src="slides/slide-7.png" alt="Order Confirmation" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="slides/slide-8.png" alt="Diagnosis — Optional Fields" style="object-fit:contain;object-position:center;" />
       <button class="slide-btn prev" onclick="csSlide(-1)">‹</button>
       <button class="slide-btn next" onclick="csSlide(1)">›</button>
-      <div class="slide-counter" id="cs-counter">1 / 13</div>
+      <div class="slide-counter" id="cs-counter">1 / 12</div>
     </div>
     <div class="slide-dots" id="cs-dots">
       <button class="dot active" onclick="csGoTo(0)"></button>
@@ -895,7 +894,6 @@
       <button class="dot" onclick="csGoTo(9)"></button>
       <button class="dot" onclick="csGoTo(10)"></button>
       <button class="dot" onclick="csGoTo(11)"></button>
-      <button class="dot" onclick="csGoTo(12)"></button>
     </div>
     <div class="slide-labels">
       <span class="slide-label-text" id="cs-label">Dash 1</span>
@@ -912,8 +910,7 @@
   </section>
   <div class="ui-slideshow-wrap">
     <div class="ui-slideshow" id="ref-slideshow" style="background:#1a1614;">
-      <img class="ui-slide active" src="UX Testing Ordering Portal.png" alt="UX Testing" style="object-fit:contain;object-position:center;" />
-      <img class="ui-slide" src="Mid Dash 1.png" alt="Mid Dash 1" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide active" src="Mid Dash 1.png" alt="Mid Dash 1" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="Mid Dash 2.png" alt="Mid Dash 2" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="Mid Dash 3.png" alt="Mid Dash 3" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="Order List Iteration 2.png" alt="Order List Iteration 2" style="object-fit:contain;object-position:center;" />
@@ -928,6 +925,7 @@
       <img class="ui-slide" src="test_selection_2.png" alt="Test Selection 2" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="test_selection_3.png" alt="Test Selection 3" style="object-fit:contain;object-position:center;" />
       <img class="ui-slide" src="Test Selection Color.png" alt="Test Selection Color" style="object-fit:contain;object-position:center;" />
+      <img class="ui-slide" src="UX Testing Ordering Portal.png" alt="UX Testing" style="object-fit:contain;object-position:center;" />
       <button class="slide-btn prev" onclick="refSlide(-1)">‹</button>
       <button class="slide-btn next" onclick="refSlide(1)">›</button>
       <div class="slide-counter" id="ref-counter">1 / 16</div>
@@ -1025,7 +1023,7 @@
   <script>
     const slides = document.querySelectorAll('#cs-slideshow .ui-slide');
     const dots = document.querySelectorAll('#cs-dots .dot');
-    const labels = ['Dash 1', 'Dash 2', 'Dashboard 1', 'Dashboard 2', 'Dashboard 3', 'Dashboard 4', 'Early Patient 1', 'Early Patient 2', 'Patient Deep Dive', 'Order Summary', 'Start an Order', 'Order Confirmation', 'Diagnosis'];
+    const labels = ['Dash 1', 'Dash 2', 'Dashboard 1', 'Dashboard 2', 'Dashboard 3', 'Dashboard 4', 'Early Patient 1', 'Early Patient 2', 'Patient Deep Dive', 'Order Summary', 'Start an Order', 'Diagnosis'];
     let current = 0;
 
     function csGoTo(n) {
@@ -1042,7 +1040,7 @@
 
     const refSlides = document.querySelectorAll('#ref-slideshow .ui-slide');
     const refDots = document.querySelectorAll('#ref-dots .dot');
-    const refLabelTexts = ['UX Testing', 'Mid Dash 1', 'Mid Dash 2', 'Mid Dash 3', 'Order List Iteration 2', 'Ordering Iterations 1', 'Ordering Iterations 2', 'Ordering Iterations 3', 'Ordering Iterations 4', 'Ordering Iterations 5', 'Patient Add', 'Reports View', 'Test Selection 1', 'Test Selection 2', 'Test Selection 3', 'Test Selection Color'];
+    const refLabelTexts = ['Mid Dash 1', 'Mid Dash 2', 'Mid Dash 3', 'Order List Iteration 2', 'Ordering Iterations 1', 'Ordering Iterations 2', 'Ordering Iterations 3', 'Ordering Iterations 4', 'Ordering Iterations 5', 'Patient Add', 'Reports View', 'Test Selection 1', 'Test Selection 2', 'Test Selection 3', 'Test Selection Color', 'UX Testing'];
     let refCurrent = 0;
 
     function refGoTo(n) {
